@@ -4,8 +4,10 @@
  */
 package bcc.IDataBase.Dao;
 
-import bcc.ibusiness.database.Conexao;
+
 import java.sql.*;
+import bcc.ibusiness.dominio.*;
+import bcc.IDataBase.Conexao.*;
 
 /**
  *
