@@ -5,8 +5,8 @@ package bcc.simpledatabase;
  * and open the template in the editor.
  */
 
-import org.hibernate.cfg.AnnotationConfiguration;
-import org.hibernate.SessionFactory;
+import java.sql.*;  
+
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory object.
@@ -14,22 +14,13 @@ import org.hibernate.SessionFactory;
  * @author Serginho
  */
 public class Conexao {
-
-    private static final SessionFactory sessionFactory;
-    
-    static {
-        try {
-            // Create the SessionFactory from standard (hibernate.cfg.xml) 
-            // config file.
-            sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
-        } catch (Throwable ex) {
-            // Log the exception. 
-            System.err.println("Initial SessionFactory creation failed." + ex);
-            throw new ExceptionInInitializerError(ex);
-        }
-    }
-    
-    public static SessionFactory getSessionFactory() {
-        return sessionFactory;
-    }
+     
+  private static final String MySQLDriver = "org.apache.derby.jdbc.ClientDriver";  
+  
+   public static Connection conexao(String url, String nome, String senha,  
+         int banco) throws ClassNotFoundException, SQLException {           
+         Class.forName(MySQLDriver);  
+      return DriverManager.getConnection(url, nome, senha);  
+   }  
 }
+  
