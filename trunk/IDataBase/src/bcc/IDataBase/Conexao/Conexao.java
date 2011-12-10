@@ -6,6 +6,8 @@ package bcc.IDataBase.Conexao;
  */
 
 import java.sql.*;  
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -14,12 +16,14 @@ import java.sql.*;
  */
 public class Conexao {
      
-  private static final String JavaDBDriver = "org.apache.derby.jdbc.ClientDriver";  
   
-  public static Connection conexao(String url, String nome, String senha
-          ) throws ClassNotFoundException, SQLException {           
-         Class.forName(Conexao.JavaDBDriver);  
-      return DriverManager.getConnection(url, nome, senha);  
-   }  
+  public Connection getConection(){           
+        try {
+            return DriverManager.getConnection("jdbc:derby//localhost:1527/IBusinessBD", "DHSS" , "ibusiness");
+        } catch(SQLException e) {
+            throw new RuntimeException(e);
+        }
+   } 
+  
 }
   
