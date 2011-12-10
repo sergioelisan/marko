@@ -9,17 +9,16 @@ import java.sql.*;
 
 
 /**
- * Hibernate Utility class with a convenient method to get Session Factory object.
  *
- * @author Serginho
+ * @author Douglas
  */
 public class Conexao {
      
-  private static final String MySQLDriver = "org.apache.derby.jdbc.ClientDriver";  
+  private static final String JavaDBDriver = "org.apache.derby.jdbc.ClientDriver";  
   
    public static Connection conexao(String url, String nome, String senha,  
          int banco) throws ClassNotFoundException, SQLException {           
-         Class.forName(MySQLDriver);  
+         Class.forName(JavaDBDriver);  
       return DriverManager.getConnection(url, nome, senha);  
    }  
 }
