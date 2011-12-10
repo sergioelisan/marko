@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-schema="APP"/>
+  <table-filter match-name="PRODUTO"/>
+  <table-filter match-name="ITEM"/>
+  <table-filter match-name="USUARIO"/>
+  <table-filter match-name="RECEITA"/>
+  <table-filter match-name="VENDA"/>
+  <table-filter match-name="FORNECEDOR"/>
+  <table-filter match-name="DESPESA"/>
+  <table-filter match-name="CLIENTE"/>
+  <table-filter match-name="CATEGORIA"/>
+  <table-filter match-name="FUNCIONARIO"/>
+</hibernate-reverse-engineering>
