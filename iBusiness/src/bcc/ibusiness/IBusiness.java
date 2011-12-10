@@ -6,7 +6,7 @@ package bcc.ibusiness;
 
 /**
  *
- * @author Serginho
+ * @author Sergio
  */
 public class IBusiness {
 
