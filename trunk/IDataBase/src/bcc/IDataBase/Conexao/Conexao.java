@@ -6,8 +6,7 @@ package bcc.IDataBase.Conexao;
  */
 
 import java.sql.*;  
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 
 /**
@@ -17,9 +16,9 @@ import java.util.logging.Logger;
 public class Conexao {
      
   
-  public Connection getConection(){           
+  public Connection getConection() throws ClassNotFoundException{           
         try {
-            return DriverManager.getConnection("jdbc:derby//localhost:1527/IBusinessBD", "DHSS" , "ibusiness");
+            return DriverManager.getConnection("jdbc:mysql//localhost:3306/bd_projeto_java", "root" , "dhss05091990");
         } catch(SQLException e) {
             throw new RuntimeException(e);
         }
