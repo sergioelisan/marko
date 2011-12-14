@@ -4,13 +4,12 @@ import br.senai.util.Tupla;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 /**
  *
- * @author Serginho
+ * @author Sergio
  */
 public class Horario implements Serializable {
 
@@ -42,12 +41,24 @@ public class Horario implements Serializable {
      */
     public boolean addAula(Tupla<Aula, Aula> aulas) {
         // Procura em todos os dias por um dia vago
-        for (Date dia : this.aulas.keySet()) {
-            if (this.aulas.get(dia) == null) {
-                this.aulas.put(dia, aulas);
+        Date[] dias = (Date[]) this.aulas.keySet().toArray();
+        
+        // encaixa em dias alternados
+        for (int i = 0; i < dias.length; i += 2) {
+            if (this.aulas.get(dias[i]) == null) {
+                this.aulas.put(dias[i], aulas);
                 return true;
             }
         }
+        
+        // Se nao tiver como encaixar em dias alternados
+        for (int i = 0; i < dias.length; i++) {
+            if (this.aulas.get(dias[i]) == null) {
+                this.aulas.put(dias[i], aulas);
+                return true;
+            }
+        }
+        
         // Se nao encontrar entao retorna false
         return false;
     }
@@ -60,18 +71,35 @@ public class Horario implements Serializable {
      * @return verdadeiro se alocou e falso se nao alocou
      */
     public boolean addAula(Aula aula) {
-        // Procura por uma dia vago
-        for (Date dia : this.aulas.keySet()) {
+        // Procura em todos os dias por um dia vago
+        Date[] dias = (Date[]) this.aulas.keySet().toArray();
+        
+        // encaixa em dias alternados
+        for (int i = 0; i < dias.length; i += 2) {
             // se nada foi alocado no dia ainda
-            if (aulas.get(dia) == null) {
-                aulas.put(dia, new Tupla<Aula, Aula>(aula, null));
+            if (aulas.get(dias[i]) == null) {
+                aulas.put(dias[i], new Tupla<Aula, Aula>(aula, null));
                 return true;
             } // se o segundo horario estiver vago e a primeira aula nao for da mesma disciplina
-            else if (aulas.get(dia).getSegundo() == null && !aulas.get(dia).getPrimeiro().equals(aula)) {
-                aulas.get(dia).setSegundo(aula);
+            else if (aulas.get(dias[i]).getSegundo() == null && !aulas.get(dias[i]).getPrimeiro().equals(aula)) {
+                aulas.get(dias[i]).setSegundo(aula);
                 return true;
             }
         }
+        
+        // encaixa em dias seguidos, caso nao haja a possibilidade de encaixar em dias alternados
+        for (int i = 0; i < dias.length; i++) {
+            // se nada foi alocado no dia ainda
+            if (aulas.get(dias[i]) == null) {
+                aulas.put(dias[i], new Tupla<Aula, Aula>(aula, null));
+                return true;
+            } // se o segundo horario estiver vago e a primeira aula nao for da mesma disciplina
+            else if (aulas.get(dias[i]).getSegundo() == null && !aulas.get(dias[i]).getPrimeiro().equals(aula)) {
+                aulas.get(dias[i]).setSegundo(aula);
+                return true;
+            }
+        }
+        
         // Se nao achar nenhum dia vago
         return false;
     }
