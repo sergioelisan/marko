@@ -5,9 +5,7 @@
 package bcc.IDataBase.Dao;
 
 
-import java.sql.*;
-import bcc.ibusiness.dominio.*;
-import bcc.IDataBase.Conexao.*;
+
 
 /**
  *
