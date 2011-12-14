@@ -80,7 +80,7 @@ public class Horario implements Serializable {
             if (aulas.get(dias[i]) == null) {
                 aulas.put(dias[i], new Tupla<Aula, Aula>(aula, null));
                 return true;
-            } // se o segundo horario estiver vago e a primeira aula nao for da mesma disciplina
+            } //  se o segundo horario estiver vago e a primeira aula nao for da mesma disciplina
             else if (aulas.get(dias[i]).getSegundo() == null && !aulas.get(dias[i]).getPrimeiro().equals(aula)) {
                 aulas.get(dias[i]).setSegundo(aula);
                 return true;
