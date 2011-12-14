@@ -89,7 +89,7 @@ public class Horario implements Serializable {
         
         // encaixa em dias seguidos, caso nao haja a possibilidade de encaixar em dias alternados
         for (int i = 0; i < dias.length; i++) {
-            // se nada foi alocado no dia ainda
+            // se nada foi alocado no  dia ainda
             if (aulas.get(dias[i]) == null) {
                 aulas.put(dias[i], new Tupla<Aula, Aula>(aula, null));
                 return true;
