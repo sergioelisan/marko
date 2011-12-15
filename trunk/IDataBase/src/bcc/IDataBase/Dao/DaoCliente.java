@@ -7,8 +7,6 @@ package bcc.IDataBase.Dao;
 import java.sql.*;
 import bcc.IDataBase.Conexao.Conexao;
 import bcc.ibusiness.dominio.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.*;
 
 
