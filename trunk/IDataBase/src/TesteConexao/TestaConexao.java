@@ -7,6 +7,8 @@ package TesteConexao;
 
 import java.sql.*;
 import bcc.IDataBase.Conexao.Conexao;
+import bcc.IDataBase.Dao.DaoCliente;
+import bcc.ibusiness.dominio.*;
 
 
 /**
@@ -17,9 +19,10 @@ public class TestaConexao {
     
     
     public static void main(String Args[]) throws ClassNotFoundException, SQLException {
-        Connection conn = new Conexao().getConection();
-        System.out.print("conexão aberta");
-        conn.close();
+         
+         
+         
     }
+    
     
 }
