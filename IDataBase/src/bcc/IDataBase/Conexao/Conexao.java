@@ -16,13 +16,14 @@ import java.sql.*;
 public class Conexao {
      
   
-  public Connection getConection() throws ClassNotFoundException{           
+  public Connection conectar() throws ClassNotFoundException{           
         try {
             return DriverManager.getConnection("jdbc:mysql://localhost:3306/bd_projeto_java", "root" , "dhss05091990");
         } catch(SQLException e) {
             throw new RuntimeException(e);
         }
-   } 
+   }
+
   
 }
   
