@@ -24,16 +24,15 @@ public class DaoCliente {
     }
     
     public void addClientes(Cliente cliente){
-        String sql = "INSERT INTO cliente (CODIGO,NOME,CPF,ENDERECO,FONE,EMAIL) VALUES (?,?,?,?,?,?)";
+        String sql = "INSERT INTO cliente (NOME,CPF,ENDERECO,FONE,EMAIL) VALUES (?,?,?,?,?)";
         
         try {
             PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setLong(1, cliente.getId());
-            stmt.setString(2, cliente.getNome());
-            stmt.setString(3, cliente.getCpf());
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setString(5, cliente.getFone());
-            stmt.setString(6, cliente.getEmail());
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getEndereco());
+            stmt.setString(4, cliente.getFone());
+            stmt.setString(5, cliente.getEmail());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -70,17 +69,17 @@ public class DaoCliente {
     }
     public void updateCliente(Cliente cliente){
      
-        String sql = "UPDATE cliente SET CODIGO=?,NOME=?, CPF=?, ENDERECO=?, FONE=?, EMAIL=? WHERE CODIGO=?";
+        String sql = "UPDATE cliente SET NOME=?, CPF=?, ENDERECO=?, FONE=?, EMAIL=? WHERE CODIGO=?";
         
      try {
             PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setLong(1, cliente.getId());
-            stmt.setString(2, cliente.getNome());
-            stmt.setString(3, cliente.getCpf());
-            stmt.setString(4, cliente.getEndereco());
-            stmt.setString(5, cliente.getFone());
-            stmt.setString(6, cliente.getEmail());
-            stmt.setLong(7, cliente.getId());
+            
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getEndereco());
+            stmt.setString(4, cliente.getFone());
+            stmt.setString(5, cliente.getEmail());
+            stmt.setLong(6,cliente.getId());
             
             stmt.execute();
             stmt.close();            
