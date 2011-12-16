@@ -74,21 +74,22 @@ public class DaoFuncionario {
     }
     public void updateCliente(Funcionario funcionario){
      
-        String sql = "UPDATE funcionario SET NOME=?, CPF=?, MATRICULA=?, "
+        String sql = "UPDATE funcionario SET CODIGO=?,NOME=?, CPF=?, MATRICULA=?, "
                 + "ENDERECO=?, FONE=?, CELULAR=?, CNTPS=?,SALARIO=? ,EMAIL=? WHERE ID=?";
         
      try {
             PreparedStatement stmt = conexao2.prepareStatement(sql);
-            stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getCpf());
-            stmt.setString(3, funcionario.getMatricula());
-            stmt.setString(4, funcionario.getEndereco());
-            stmt.setString(5, funcionario.getFone());
-            stmt.setString(6, funcionario.getCelular());
-            stmt.setString(7, funcionario.getCntps());
-            stmt.setDouble(8, funcionario.getSalario());
-            stmt.setString(9, funcionario.getEmail());
-            stmt.setLong(10, funcionario.getId());
+            stmt.setLong(1, funcionario.getId());
+            stmt.setString(2, funcionario.getNome());
+            stmt.setString(3, funcionario.getCpf());
+            stmt.setString(4, funcionario.getMatricula());
+            stmt.setString(5, funcionario.getEndereco());
+            stmt.setString(6, funcionario.getFone());
+            stmt.setString(7, funcionario.getCelular());
+            stmt.setString(8, funcionario.getCntps());
+            stmt.setDouble(9, funcionario.getSalario());
+            stmt.setString(10, funcionario.getEmail());
+            stmt.setLong(11, funcionario.getId());
             
             stmt.execute();
             stmt.close();            
