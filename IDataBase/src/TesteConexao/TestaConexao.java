@@ -8,7 +8,10 @@ package TesteConexao;
 import java.sql.*;
 import bcc.IDataBase.Conexao.Conexao;
 import bcc.IDataBase.Dao.DaoCliente;
+import bcc.IDataBase.Dao.DaoFuncionario;
 import bcc.ibusiness.dominio.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -18,8 +21,8 @@ import bcc.ibusiness.dominio.*;
 public class TestaConexao {
     
     
-    public static void main(String Args[]) throws ClassNotFoundException, SQLException {
-         
+    public static void main(String Args[]) {
+              
          
          
     }
