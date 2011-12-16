@@ -21,18 +21,18 @@ public class DaoFornecedor {
     }
     
     public void addFornecedor(Fornecedor fornecedor){
-        String sql = "INSERT INTO fornecedor (CODIGO,RAZAO_SOCIAL,CNPJ,ENDERECO,"
-                + "FONE,FAX,REPRESENTANTE) VALUES (?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO fornecedor (RAZAO_SOCIAL,CNPJ,ENDERECO,"
+                + "FONE,FAX,REPRESENTANTE) VALUES (?,?,?,?,?,?)";
         
         try {
             PreparedStatement stmt = conexao3.prepareStatement(sql);
-            stmt.setLong(1, fornecedor.getId());
-            stmt.setString(2, fornecedor.getRazao());
-            stmt.setString(3, fornecedor.getCnpj());
-            stmt.setString(4, fornecedor.getEndereco());
-            stmt.setString(5, fornecedor.getFone());
-            stmt.setString(6, fornecedor.getFax());
-            stmt.setString(7, fornecedor.getRepresentante());
+            
+            stmt.setString(1, fornecedor.getRazao());
+            stmt.setString(2, fornecedor.getCnpj());
+            stmt.setString(3, fornecedor.getEndereco());
+            stmt.setString(4, fornecedor.getFone());
+            stmt.setString(5, fornecedor.getFax());
+            stmt.setString(6, fornecedor.getRepresentante());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -71,19 +71,19 @@ public class DaoFornecedor {
     }
     public void updateFornecedor(Fornecedor fornecedor){
      
-        String sql = "UPDATE fornecedor SET CODIGO=?,RAZAO_SOCIAL=?,CNPJ=?,ENDERECO=?,"
+        String sql = "UPDATE fornecedor SET RAZAO_SOCIAL=?,CNPJ=?,ENDERECO=?,"
                 + "FONE=?,FAX=?,REPRESENTANTE=? WHERE CODIGO=?";
         
      try {
             PreparedStatement stmt = conexao3.prepareStatement(sql);
-            stmt.setLong(1, fornecedor.getId() );
-            stmt.setString(2, fornecedor.getRazao());
-            stmt.setString(3, fornecedor.getCnpj());
-            stmt.setString(4, fornecedor.getEndereco());
-            stmt.setString(5, fornecedor.getFone());
-            stmt.setString(6, fornecedor.getFax());
-            stmt.setString(7, fornecedor.getRepresentante());
-            stmt.setLong(8, fornecedor.getId());
+            
+            stmt.setString(1, fornecedor.getRazao());
+            stmt.setString(2, fornecedor.getCnpj());
+            stmt.setString(3, fornecedor.getEndereco());
+            stmt.setString(4, fornecedor.getFone());
+            stmt.setString(5, fornecedor.getFax());
+            stmt.setString(6, fornecedor.getRepresentante());
+            stmt.setLong(7, fornecedor.getId());
             
             stmt.execute();
             stmt.close();            

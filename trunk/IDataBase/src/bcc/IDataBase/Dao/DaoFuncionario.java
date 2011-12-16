@@ -20,20 +20,19 @@ public class DaoFuncionario {
     }
     
     public void addFuncionario(Funcionario funcionario){
-        String sql = "INSERT INTO funcionario (CODIGO,NOME,CPF,MATRICULA,ENDERECO"
-                + ",FONE,CELULAR,CNTPS,SALARIO,EMAIL) VALUES (?,?,?,?,?,?,?,?,?,?)"; 
+        String sql = "INSERT INTO funcionario (NOME,CPF,MATRICULA,ENDERECO"
+                + ",FONE,CELULAR,CNTPS,SALARIO,EMAIL) VALUES (?,?,?,?,?,?,?,?,?)"; 
         try {
             PreparedStatement stmt = conexao2.prepareStatement(sql);
-            stmt.setLong(1, funcionario.getId());
-            stmt.setString(2, funcionario.getNome());
-            stmt.setString(3, funcionario.getCpf());
-            stmt.setString(4, funcionario.getMatricula());
-            stmt.setString(5, funcionario.getEndereco());
-            stmt.setString(6, funcionario.getFone());
-            stmt.setString(7, funcionario.getCelular());
-            stmt.setString(8, funcionario.getCntps());
-            stmt.setDouble(9, funcionario.getSalario());
-            stmt.setString(10, funcionario.getEmail());
+            stmt.setString(1, funcionario.getNome());
+            stmt.setString(2, funcionario.getCpf());
+            stmt.setString(3, funcionario.getMatricula());
+            stmt.setString(4, funcionario.getEndereco());
+            stmt.setString(5, funcionario.getFone());
+            stmt.setString(6, funcionario.getCelular());
+            stmt.setString(7, funcionario.getCntps());
+            stmt.setDouble(8, funcionario.getSalario());
+            stmt.setString(9, funcionario.getEmail());
             stmt.execute();
             stmt.close();
         } catch (SQLException e) {
@@ -74,22 +73,22 @@ public class DaoFuncionario {
     }
     public void updateCliente(Funcionario funcionario){
      
-        String sql = "UPDATE funcionario SET CODIGO=?,NOME=?, CPF=?, MATRICULA=?, "
-                + "ENDERECO=?, FONE=?, CELULAR=?, CNTPS=?,SALARIO=? ,EMAIL=? WHERE ID=?";
+        String sql = "UPDATE funcionario SET NOME=?, CPF=?, MATRICULA=?, "
+                + "ENDERECO=?, FONE=?, CELULAR=?, CNTPS=?,SALARIO=? ,EMAIL=? WHERE CODIGO=?";
         
      try {
             PreparedStatement stmt = conexao2.prepareStatement(sql);
-            stmt.setLong(1, funcionario.getId());
-            stmt.setString(2, funcionario.getNome());
-            stmt.setString(3, funcionario.getCpf());
-            stmt.setString(4, funcionario.getMatricula());
-            stmt.setString(5, funcionario.getEndereco());
-            stmt.setString(6, funcionario.getFone());
-            stmt.setString(7, funcionario.getCelular());
-            stmt.setString(8, funcionario.getCntps());
-            stmt.setDouble(9, funcionario.getSalario());
-            stmt.setString(10, funcionario.getEmail());
-            stmt.setLong(11, funcionario.getId());
+           
+            stmt.setString(1, funcionario.getNome());
+            stmt.setString(2, funcionario.getCpf());
+            stmt.setString(3, funcionario.getMatricula());
+            stmt.setString(4, funcionario.getEndereco());
+            stmt.setString(5, funcionario.getFone());
+            stmt.setString(6, funcionario.getCelular());
+            stmt.setString(7, funcionario.getCntps());
+            stmt.setDouble(8, funcionario.getSalario());
+            stmt.setString(9, funcionario.getEmail());
+            stmt.setLong(10, funcionario.getId());
             
             stmt.execute();
             stmt.close();            
@@ -98,7 +97,7 @@ public class DaoFuncionario {
         }
     }
     public void rmFuncionario(Funcionario funcionario){
-        String sql="DELETE FROM funcionario WHERE ID=?";
+        String sql="DELETE FROM funcionario WHERE CODIGO=?";
         try {
             PreparedStatement stmt = conexao2.prepareStatement(sql);
             stmt.setLong(1, funcionario.getId());
@@ -110,7 +109,7 @@ public class DaoFuncionario {
         }
     }
     public Funcionario buscaFuncionario(CPF cpf){
-        String sql = "SELECT * FROM Funcionario";
+        String sql = "SELECT * FROM funcionario";
         Funcionario funcionario = new Funcionario();
         try {
             PreparedStatement stmt = conexao2.prepareStatement(sql);
