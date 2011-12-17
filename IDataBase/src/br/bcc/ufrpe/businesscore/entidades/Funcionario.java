@@ -9,7 +9,7 @@ public class Funcionario {
     public Funcionario() {
     }
 
-    public Funcionario(String nome, String cpf, String matricula, String endereco, String fone, String celular, String cntps, double salario, String email) {
+    public Funcionario(String nome, CPF cpf, String matricula, String endereco, String fone, String celular, String cntps, double salario, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.matricula = matricula;
@@ -37,11 +37,11 @@ public class Funcionario {
         this.cntps = cntps;
     }
 
-    public String getCpf() {
+    public CPF getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(CPF cpf) {
         this.cpf = cpf;
     }
 
@@ -161,7 +161,7 @@ public class Funcionario {
     
     private long id;
     private String nome;
-    private String cpf;
+    private CPF cpf;
     private String matricula;
     private String endereco;
     private String fone;

@@ -9,7 +9,7 @@ public class Cliente {
     public Cliente() {
     }
 
-    public Cliente(String nome, String cpf, String endereco, String fone, String cel, String email) {
+    public Cliente(String nome, CPF cpf, String endereco, String fone, String cel, String email) {
         this.nome = nome;
         this.cpf = cpf;
         this.endereco = endereco;
@@ -26,11 +26,11 @@ public class Cliente {
         this.cel = cel;
     }
 
-    public String getCpf() {
+    public CPF getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(CPF cpf) {
         this.cpf = cpf;
     }
 
@@ -122,7 +122,7 @@ public class Cliente {
 
     private long id;
     private String nome;
-    private String cpf;
+    private CPF cpf;
     private String endereco;
     private String fone;
     private String cel;
