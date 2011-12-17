@@ -27,7 +27,7 @@ public class DaoFornecedor {
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, fornecedor.getRazao());
-            stmt.setString(2, fornecedor.getCnpj());
+            stmt.setString(2, fornecedor.getCnpj().getCNPJ());
             stmt.setString(3, fornecedor.getEndereco());
             stmt.setString(4, fornecedor.getFone());
             stmt.setString(5, fornecedor.getFax());
@@ -54,7 +54,7 @@ public class DaoFornecedor {
                 Fornecedor fornecedor = new Fornecedor();
                 fornecedor.setId(rs.getLong("CODIGO"));
                 fornecedor.setRazao(rs.getString("RAZAO_SOCIAL"));
-                fornecedor.setCnpj(rs.getString("CNPJ"));
+                fornecedor.setCnpj(new CNPJ(rs.getString("CNPJ")) );
                 fornecedor.setEndereco(rs.getString("ENDERECO"));
                 fornecedor.setFone(rs.getString("FONE"));
                 fornecedor.setFax(rs.getString("FAX"));
@@ -79,7 +79,7 @@ public class DaoFornecedor {
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, fornecedor.getRazao());
-            stmt.setString(2, fornecedor.getCnpj());
+            stmt.setString(2, fornecedor.getCnpj().getCNPJ());
             stmt.setString(3, fornecedor.getEndereco());
             stmt.setString(4, fornecedor.getFone());
             stmt.setString(5, fornecedor.getFax());
@@ -122,7 +122,7 @@ public class DaoFornecedor {
             while (rs.next()) {
                 fornecedor.setId(rs.getLong("CODIGO"));
                 fornecedor.setRazao(rs.getString("RAZAO_SOCIAL"));
-                fornecedor.setCnpj(rs.getString("CNPJ"));
+                fornecedor.setCnpj(new CNPJ(rs.getString("CNPJ")) );
                 fornecedor.setEndereco(rs.getString("ENDERECO"));
                 fornecedor.setFone(rs.getString("FONE"));
                 fornecedor.setFax(rs.getString("FAX"));
@@ -150,7 +150,7 @@ public class DaoFornecedor {
             while (rs.next()) {
                 fornecedor.setId(rs.getLong("CODIGO"));
                 fornecedor.setRazao(rs.getString("RAZAO_SOCIAL"));
-                fornecedor.setCnpj(rs.getString("CNPJ"));
+                fornecedor.setCnpj(new CNPJ(rs.getString("CNPJ")) );
                 fornecedor.setEndereco(rs.getString("ENDERECO"));
                 fornecedor.setFone(rs.getString("FONE"));
                 fornecedor.setFax(rs.getString("FAX"));
