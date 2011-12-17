@@ -27,7 +27,7 @@ public class DaoCliente {
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
+            stmt.setString(2, cliente.getCpf().getCpf());
             stmt.setString(3, cliente.getEndereco());
             stmt.setString(4, cliente.getFone());
             stmt.setString(5, cliente.getEmail());
@@ -52,7 +52,7 @@ public class DaoCliente {
                 Cliente cliente = new Cliente();
                 cliente.setId(rs.getLong("CODIGO"));
                 cliente.setNome(rs.getString("NOME"));
-                cliente.setCpf(rs.getString("CPF"));
+                cliente.setCpf(new CPF(rs.getString("CPF")) );
                 cliente.setEndereco(rs.getString("ENDE"));
                 cliente.setFone(rs.getString("FONE"));
                 cliente.setEmail(rs.getString("EMAIL"));
@@ -75,7 +75,7 @@ public class DaoCliente {
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
-            stmt.setString(2, cliente.getCpf());
+            stmt.setString(2, cliente.getCpf().getCpf());
             stmt.setString(3, cliente.getEndereco());
             stmt.setString(4, cliente.getFone());
             stmt.setString(5, cliente.getEmail());
@@ -105,7 +105,7 @@ public class DaoCliente {
             while (rs.next()) {
                 cliente.setId(rs.getLong("CODIGO"));
                 cliente.setNome(rs.getString("NOME"));
-                cliente.setCpf(rs.getString("CPF"));
+                cliente.setCpf(new CPF(rs.getString("CPF")) );
                 cliente.setEndereco(rs.getString("ENDERECO"));
                 cliente.setFone(rs.getString("FONE"));
                 cliente.setEmail(rs.getString("EMAIL"));
@@ -126,7 +126,7 @@ public class DaoCliente {
             while (rs.next()) {
                 cliente.setId(rs.getLong("CODIGO"));
                 cliente.setNome(rs.getString("NOME"));
-                cliente.setCpf(rs.getString("CPF"));
+                cliente.setCpf(new CPF(rs.getString("CPF")) );
                 cliente.setEndereco(rs.getString("ENDERECO"));
                 cliente.setFone(rs.getString("FONE"));
                 cliente.setEmail(rs.getString("EMAIL"));

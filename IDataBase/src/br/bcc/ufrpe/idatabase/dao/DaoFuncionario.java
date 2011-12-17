@@ -29,7 +29,7 @@ public class DaoFuncionario {
         try {
             PreparedStatement stmt = conexao.prepareStatement(sql);
             stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getCpf());
+            stmt.setString(2, funcionario.getCpf().getCpf());
             stmt.setString(3, funcionario.getMatricula());
             stmt.setString(4, funcionario.getEndereco());
             stmt.setString(5, funcionario.getFone());
@@ -60,7 +60,7 @@ public class DaoFuncionario {
                 Funcionario funcionario = new Funcionario();
                 funcionario.setId(rs.getLong("CODIGO"));
                 funcionario.setNome(rs.getString("NOME"));
-                funcionario.setCpf(rs.getString("CPF"));
+                funcionario.setCpf(new CPF(rs.getString("CPF")) );
                 funcionario.setMatricula(rs.getString("MATRICULA"));
                 funcionario.setEndereco(rs.getString("ENDERECO"));
                 funcionario.setFone(rs.getString("FONE"));
@@ -87,7 +87,7 @@ public class DaoFuncionario {
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getCpf());
+            stmt.setString(2, funcionario.getCpf().getCpf());
             stmt.setString(3, funcionario.getMatricula());
             stmt.setString(4, funcionario.getEndereco());
             stmt.setString(5, funcionario.getFone());
@@ -133,7 +133,7 @@ public class DaoFuncionario {
             while (rs.next()) {
                 funcionario.setId(rs.getLong("CODIGO"));
                 funcionario.setNome(rs.getString("NOME"));
-                funcionario.setCpf(rs.getString("CPF"));
+                funcionario.setCpf(new CPF(rs.getString("CPF")) );
                 funcionario.setMatricula(rs.getString("MATRICULA"));
                 funcionario.setEndereco(rs.getString("ENDERECO"));
                 funcionario.setFone(rs.getString("FONE"));
@@ -164,7 +164,7 @@ public class DaoFuncionario {
             while (rs.next()) {
                 funcionario.setId(rs.getLong("CODIGO"));
                 funcionario.setNome(rs.getString("NOME"));
-                funcionario.setCpf(rs.getString("CPF"));
+                funcionario.setCpf(new CPF(rs.getString("CPF")) );
                 funcionario.setMatricula(rs.getString("MATRICULA"));
                 funcionario.setEndereco(rs.getString("ENDERECO"));
                 funcionario.setFone(rs.getString("FONE"));
