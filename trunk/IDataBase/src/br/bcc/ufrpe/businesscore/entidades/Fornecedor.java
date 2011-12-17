@@ -11,7 +11,7 @@ public class Fornecedor {
     public Fornecedor() {
     }
 
-    public Fornecedor(String razao, String cnpj, String endereco, String fone, String fax, String representante, Set<Produto> produtos) {
+    public Fornecedor(String razao, CNPJ cnpj, String endereco, String fone, String fax, String representante, Set<Produto> produtos) {
         this.razao = razao;
         this.cnpj = cnpj;
         this.endereco = endereco;
@@ -21,11 +21,11 @@ public class Fornecedor {
         this.produtos = produtos;
     }
 
-    public String getCnpj() {
+    public CNPJ getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(String cnpj) {
+    public void setCnpj(CNPJ cnpj) {
         this.cnpj = cnpj;
     }
 
@@ -137,7 +137,7 @@ public class Fornecedor {
     
     private long id;
     private String razao;
-    private String cnpj;
+    private CNPJ cnpj;
     private String endereco;
     private String fone;
     private String fax;
