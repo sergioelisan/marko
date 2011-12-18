@@ -5,11 +5,6 @@
 package br.ufrpe.bcc.ibusiness.venda;
 
 import br.ufrpe.bcc.ibusiness.cliente.Cliente;
-import br.ufrpe.bcc.ibusiness.usuario.Usuario;
-import br.ufrpe.bcc.ibusiness.venda.exception.HorarioInvalidoException;
-import br.ufrpe.bcc.ibusiness.venda.exception.ClienteInvalidoException;
-import br.ufrpe.bcc.ibusiness.venda.exception.ItemInvalidoException;
-import br.ufrpe.bcc.ibusiness.venda.exception.UsuarioInvalidoException;
 import java.util.List;
 
 /**
@@ -19,24 +14,20 @@ import java.util.List;
 public class RNVenda implements IVenda {
 
     @Override
-    public void submeterVenda(Venda venda) throws HorarioInvalidoException, ClienteInvalidoException, UsuarioInvalidoException, ItemInvalidoException {
+    public void submeterVenda(Venda venda) throws Exception {
         if (venda.getHorario() != null) {
             if (venda.getCliente() != null) {
-                if (venda.getUsuario() != null) {
-                    if (venda.getItem() != null) {
-                        DAOVenda dao = new DAOVenda();
-                        dao.submeterVenda(venda);
-                    } else {
-                        throw new ItemInvalidoException("O item informado é inválido.");
-                    }
+                if (venda.getItem() != null) {
+                    DAOVenda dao = new DAOVenda();
+                    dao.submeterVenda(venda);
                 } else {
-                    throw new UsuarioInvalidoException("O usuario informado é inválido.");
+                    throw new Exception("O item informado é inválido.");
                 }
             } else {
-                throw new ClienteInvalidoException("O cliente informado é inválido.");
+                throw new Exception("O cliente informado é inválido.");
             }
         } else {
-            throw new HorarioInvalidoException("O horário informado é inválido.");
+            throw new Exception("O horário informado é inválido.");
         }
     }
 
@@ -47,20 +38,20 @@ public class RNVenda implements IVenda {
     }
 
     @Override
-    public Venda buscarVenda(Integer codigo) {
+    public Venda buscarVenda(int id) {
         DAOVenda dao = new DAOVenda();
-        return dao.buscarVenda(codigo);
+        return dao.buscarVenda(id);
     }
 
     @Override
-    public List<Venda> buscarVenda(Usuario usuario) {
+    public List<Venda> buscarVendaFuncionario(int id) {
         DAOVenda dao = new DAOVenda();
-        return dao.buscarVenda(usuario);
+        return dao.buscarVendaFuncionario(id);
     }
 
     @Override
-    public List<Venda> buscarVenda(Cliente cliente) {
+    public List<Venda> buscarVendaCliente(int id) {
         DAOVenda dao = new DAOVenda();
-        return dao.buscarVenda(cliente);
+        return dao.buscarVendaCliente(id);
     }
 }

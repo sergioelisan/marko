@@ -1,11 +1,5 @@
 package br.ufrpe.bcc.ibusiness.cliente;
 
-import br.ufrpe.bcc.ibusiness.cliente.exception.CPFInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.CelInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.EmailInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.EnderecoInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.FoneInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.NomeInvalidoException;
 import java.sql.*;
 import br.ufrpe.bcc.ibusiness.util.CPF;
 import br.ufrpe.bcc.idatabase.Conexao;
@@ -32,9 +26,7 @@ public class DAOCliente implements ICliente {
      * Adiciona um cliente
      * @param cliente 
      */
-    public void addCliente(Cliente cliente) throws NomeInvalidoException, 
-            CPFInvalidoException, EnderecoInvalidoException, FoneInvalidoException, 
-            CelInvalidoException, EmailInvalidoException {
+    public void addCliente(Cliente cliente) throws Exception {
         String sql = DAOUtil.getQuery("cliente.insert");
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, cliente.getNome());
