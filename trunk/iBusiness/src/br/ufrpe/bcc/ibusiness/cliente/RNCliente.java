@@ -4,12 +4,6 @@
  */
 package br.ufrpe.bcc.ibusiness.cliente;
 
-import br.ufrpe.bcc.ibusiness.cliente.exception.NomeInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.EmailInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.FoneInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.CelInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.EnderecoInvalidoException;
-import br.ufrpe.bcc.ibusiness.cliente.exception.CPFInvalidoException;
 import br.ufrpe.bcc.ibusiness.util.CPF;
 import java.util.List;
 
@@ -26,7 +20,7 @@ public class RNCliente implements ICliente {
     }
 
     @Override
-    public void addCliente(Cliente cliente) throws NomeInvalidoException, CPFInvalidoException, EnderecoInvalidoException, FoneInvalidoException, CelInvalidoException, EmailInvalidoException {
+    public void addCliente(Cliente cliente) throws Exception {
         //Verifica se o nome do cliente não está vazio
         if (!cliente.getNome().trim().equals("")) {
             //Verifica se o CPF é válido
@@ -42,22 +36,22 @@ public class RNCliente implements ICliente {
                                 DAOCliente dao = new DAOCliente();
                                 dao.addCliente(cliente);
                             } else {
-                                throw new EmailInvalidoException("O e-mail informado é inválido.");
+                                throw new Exception("O e-mail informado é inválido.");
                             }
                         } else {
-                            throw new CelInvalidoException("O celular informado é inválido.");
+                            throw new Exception("O celular informado é inválido.");
                         }
                     } else {
-                        throw new FoneInvalidoException("O telefone informado é inválido.");
+                        throw new Exception("O telefone informado é inválido.");
                     }
                 } else {
-                    throw new EnderecoInvalidoException("O endereço informado é inválido.");
+                    throw new Exception("O endereço informado é inválido.");
                 }
             } else {
-                throw new CPFInvalidoException("O CPF informado é inválido.");
+                throw new Exception("O CPF informado é inválido.");
             }
         } else {
-            throw new NomeInvalidoException("O nome informado é inválido.");
+            throw new Exception("O nome informado é inválido.");
         }
     }
 
@@ -68,7 +62,7 @@ public class RNCliente implements ICliente {
     }
 
     @Override
-    public void updateCliente(Cliente cliente) throws NomeInvalidoException, CPFInvalidoException, EnderecoInvalidoException, FoneInvalidoException, CelInvalidoException, EmailInvalidoException {
+    public void updateCliente(Cliente cliente) throws Exception {
         //Verifica se o nome do cliente não está vazio
         if (!cliente.getNome().trim().equals("")) {
             //Verifica se o CPF é válido
@@ -84,42 +78,42 @@ public class RNCliente implements ICliente {
                                 DAOCliente dao = new DAOCliente();
                                 dao.updateCliente(cliente);
                             } else {
-                                throw new EmailInvalidoException("O e-mail informado é inválido.");
+                                throw new Exception("O e-mail informado é inválido.");
                             }
                         } else {
-                            throw new CelInvalidoException("O celular informado é inválido.");
+                            throw new Exception("O celular informado é inválido.");
                         }
                     } else {
-                        throw new FoneInvalidoException("O telefone informado é inválido.");
+                        throw new Exception("O telefone informado é inválido.");
                     }
                 } else {
-                    throw new EnderecoInvalidoException("O endereço informado é inválido.");
+                    throw new Exception("O endereço informado é inválido.");
                 }
             } else {
-                throw new CPFInvalidoException("O CPF informado é inválido.");
+                throw new Exception("O CPF informado é inválido.");
             }
         } else {
-            throw new NomeInvalidoException("O nome informado é inválido.");
+            throw new Exception("O nome informado é inválido.");
         }
     }
 
     @Override
-    public Cliente buscaCliente(CPF cpf) throws CPFInvalidoException {
+    public Cliente buscaCliente(CPF cpf) throws Exception {
         if (validarCPF(cpf.getCpf())) {
             DAOCliente dao = new DAOCliente();
             return dao.buscaCliente(cpf);
         } else {
-            throw new CPFInvalidoException("O CPF informado é inválido.");
+            throw new Exception("O CPF informado é inválido.");
         }
     }
 
     @Override
-    public Cliente buscaCliente(String nome) throws NomeInvalidoException {
+    public Cliente buscaCliente(String nome) throws Exception {
         if (!nome.trim().equals("")) {
             DAOCliente dao = new DAOCliente();
             return dao.buscaCliente(nome);
         } else {
-            throw new NomeInvalidoException("O nome informado é inválido.");
+            throw new Exception("O nome informado é inválido.");
         }
     }
 

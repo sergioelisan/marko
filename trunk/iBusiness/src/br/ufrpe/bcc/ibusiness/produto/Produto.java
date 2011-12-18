@@ -1,6 +1,5 @@
 package br.ufrpe.bcc.ibusiness.produto;
 
-import br.ufrpe.bcc.ibusiness.categoria.Categoria;
 import br.ufrpe.bcc.ibusiness.fornecedor.Fornecedor;
 import java.util.Date;
 
@@ -13,10 +12,9 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, String descricao, Categoria categoria, Fornecedor fornecedor, int estocado, int disponivel, Date compra, Date vencimento, double precoCompra, double precoVenda) {
+    public Produto(String nome, String descricao, Fornecedor fornecedor, int estocado, int disponivel, Date compra, Date vencimento, double precoCompra, double precoVenda) {
         this.nome = nome;
         this.descricao = descricao;
-        this.categoria = categoria;
         this.fornecedor = fornecedor;
         this.estocado = estocado;
         this.disponivel = disponivel;
@@ -24,14 +22,6 @@ public class Produto {
         this.vencimento = vencimento;
         this.precoCompra = precoCompra;
         this.precoVenda = precoVenda;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     public Date getCompra() {
@@ -132,9 +122,6 @@ public class Produto {
         if ((this.descricao == null) ? (other.descricao != null) : !this.descricao.equals(other.descricao)) {
             return false;
         }
-        if (this.categoria != other.categoria && (this.categoria == null || !this.categoria.equals(other.categoria))) {
-            return false;
-        }
         if (this.fornecedor != other.fornecedor && (this.fornecedor == null || !this.fornecedor.equals(other.fornecedor))) {
             return false;
         }
@@ -165,7 +152,6 @@ public class Produto {
         hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
         hash = 97 * hash + (this.nome != null ? this.nome.hashCode() : 0);
         hash = 97 * hash + (this.descricao != null ? this.descricao.hashCode() : 0);
-        hash = 97 * hash + (this.categoria != null ? this.categoria.hashCode() : 0);
         hash = 97 * hash + (this.fornecedor != null ? this.fornecedor.hashCode() : 0);
         hash = 97 * hash + this.estocado;
         hash = 97 * hash + this.disponivel;
@@ -179,7 +165,6 @@ public class Produto {
     private long id;
     private String nome;
     private String descricao;
-    private Categoria categoria;
     private Fornecedor fornecedor;
     private int estocado;
     private int disponivel;

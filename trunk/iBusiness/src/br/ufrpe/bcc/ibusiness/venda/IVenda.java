@@ -1,11 +1,5 @@
 package br.ufrpe.bcc.ibusiness.venda;
 
-import br.ufrpe.bcc.ibusiness.cliente.Cliente;
-import br.ufrpe.bcc.ibusiness.usuario.Usuario;
-import br.ufrpe.bcc.ibusiness.venda.exception.ClienteInvalidoException;
-import br.ufrpe.bcc.ibusiness.venda.exception.HorarioInvalidoException;
-import br.ufrpe.bcc.ibusiness.venda.exception.ItemInvalidoException;
-import br.ufrpe.bcc.ibusiness.venda.exception.UsuarioInvalidoException;
 import java.util.List;
 
 /**
@@ -14,13 +8,13 @@ import java.util.List;
  */
 public interface IVenda {
      
-    void submeterVenda(Venda venda) throws HorarioInvalidoException, ClienteInvalidoException, UsuarioInvalidoException, ItemInvalidoException;
+    void submeterVenda(Venda venda) throws Exception;
      
      List<Venda> listarVendas(); 
      
-     Venda buscarVenda(Integer codigo);
+     Venda buscarVenda(int id);
      
-     List<Venda> buscarVenda(Usuario usuario);
+     List<Venda> buscarVendaFuncionario(int id);
      
-     List<Venda> buscarVenda(Cliente cliente);
+     List<Venda> buscarVendaCliente(int id);
 }

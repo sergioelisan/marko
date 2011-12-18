@@ -4,15 +4,6 @@
  */
 package br.ufrpe.bcc.ibusiness.funcionario;
 
-import br.ufrpe.bcc.ibusiness.funcionario.exception.EnderecoInvalidoException;
-import br.ufrpe.bcc.ibusiness.funcionario.exception.MatriculaInvalidoException;
-import br.ufrpe.bcc.ibusiness.funcionario.exception.CNTPSInvalidoException;
-import br.ufrpe.bcc.ibusiness.funcionario.exception.NomeInvalidoException;
-import br.ufrpe.bcc.ibusiness.funcionario.exception.SalarioInvalidoException;
-import br.ufrpe.bcc.ibusiness.funcionario.exception.EmailInvalidoException;
-import br.ufrpe.bcc.ibusiness.funcionario.exception.FoneInvalidoException;
-import br.ufrpe.bcc.ibusiness.funcionario.exception.CelInvalidoException;
-import br.ufrpe.bcc.ibusiness.funcionario.exception.CPFInvalidoException;
 import br.ufrpe.bcc.ibusiness.util.CPF;
 import java.util.List;
 
@@ -29,7 +20,7 @@ public class RNFuncionario implements IFuncionario {
     }
 
     @Override
-    public void addFuncionario(Funcionario funcionario) throws NomeInvalidoException, CPFInvalidoException, MatriculaInvalidoException, EnderecoInvalidoException, FoneInvalidoException, CelInvalidoException, CNTPSInvalidoException, SalarioInvalidoException, EmailInvalidoException {
+    public void addFuncionario(Funcionario funcionario) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
@@ -40,27 +31,27 @@ public class RNFuncionario implements IFuncionario {
     }
 
     @Override
-    public void updateFuncionario(Funcionario funcionario) throws NomeInvalidoException, CPFInvalidoException, MatriculaInvalidoException, EnderecoInvalidoException, FoneInvalidoException, CelInvalidoException, CNTPSInvalidoException, SalarioInvalidoException, EmailInvalidoException {
+    public void updateFuncionario(Funcionario funcionario) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Funcionario buscaFuncionario(CPF cpf) throws CPFInvalidoException {
+    public Funcionario buscaFuncionario(CPF cpf) throws Exception {
         if (validarCPF(cpf.getCpf())) {
             DAOFuncionario dao = new DAOFuncionario();
             return dao.buscaFuncionario(cpf);
         } else {
-            throw new CPFInvalidoException("O CPF informado é inválido.");
+            throw new Exception("O CPF informado é inválido.");
         }
     }
 
     @Override
-    public Funcionario buscaFuncionario(String nome) throws NomeInvalidoException {
+    public Funcionario buscaFuncionario(String nome) throws Exception {
         if (!nome.trim().equals("")) {
             DAOFuncionario dao = new DAOFuncionario();
             return dao.buscaFuncionario(nome);
         } else {
-            throw new NomeInvalidoException("O nome informado é inválido.");
+            throw new Exception("O nome informado é inválido.");
         }
     }
 

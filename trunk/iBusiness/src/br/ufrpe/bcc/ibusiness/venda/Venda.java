@@ -1,7 +1,7 @@
 package br.ufrpe.bcc.ibusiness.venda;
 
 import br.ufrpe.bcc.ibusiness.cliente.Cliente;
-import br.ufrpe.bcc.ibusiness.usuario.Usuario;
+import br.ufrpe.bcc.ibusiness.funcionario.Funcionario;
 import java.util.Date;
 import java.util.Set;
 
@@ -14,10 +14,10 @@ public class Venda {
     public Venda() {
     }
 
-    public Venda(Date horario, Cliente cliente, Usuario usuario, Set<Item> item) {
+    public Venda(Date horario, Funcionario funcionario, Cliente cliente, Set<Item> item) {
         this.horario = horario;
+        this.funcionario = funcionario;
         this.cliente = cliente;
-        this.usuario = usuario;
         this.item = item;
     }
 
@@ -52,13 +52,19 @@ public class Venda {
     public void setItem(Set<Item> item) {
         this.item = item;
     }
-
-    public Usuario getUsuario() {
-        return usuario;
+    
+    /**
+     * @return the funcionario
+     */
+    public Funcionario getFuncionario() {
+        return funcionario;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    /**
+     * @param funcionario the funcionario to set
+     */
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
     }
 
     @Override
@@ -79,9 +85,6 @@ public class Venda {
         if (this.cliente != other.cliente && (this.cliente == null || !this.cliente.equals(other.cliente))) {
             return false;
         }
-        if (this.usuario != other.usuario && (this.usuario == null || !this.usuario.equals(other.usuario))) {
-            return false;
-        }
         if (this.item != other.item && (this.item == null || !this.item.equals(other.item))) {
             return false;
         }
@@ -94,15 +97,14 @@ public class Venda {
         hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
         hash = 97 * hash + (this.horario != null ? this.horario.hashCode() : 0);
         hash = 97 * hash + (this.cliente != null ? this.cliente.hashCode() : 0);
-        hash = 97 * hash + (this.usuario != null ? this.usuario.hashCode() : 0);
         hash = 97 * hash + (this.item != null ? this.item.hashCode() : 0);
         return hash;
     }
-    
     private long id;
     private Date horario;
     private Cliente cliente;
-    private Usuario usuario;
+    private Funcionario funcionario;
     private Set<Item> item;
+
     
 }
