@@ -51,8 +51,8 @@ public class Home extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1024, 620));
         setPreferredSize(new java.awt.Dimension(1024, 620));
 
-        lbLogo.setFont(new java.awt.Font("Roboto", 2, 36));
-        lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/bcc/ufrpe/ibusiness/ui/img/ibusinesslogo.png"))); // NOI18N
+        lbLogo.setFont(new java.awt.Font("Roboto", 2, 36)); // NOI18N
+        lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/ibusinesslogo.png"))); // NOI18N
 
         btQuit.setBackground(new java.awt.Color(66, 112, 181));
         btQuit.setFont(new java.awt.Font("Roboto", 1, 24));
@@ -75,10 +75,10 @@ public class Home extends javax.swing.JPanel {
         btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
 
         btOptions.setBackground(new java.awt.Color(66, 112, 181));
-        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         btOptions.setForeground(new java.awt.Color(255, 255, 255));
         btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/bcc/ufrpe/ibusiness/ui/img/engrenagem.png"))); // NOI18N
+        btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
         btOptions.setMaximumSize(new java.awt.Dimension(38, 38));
         btOptions.setMinimumSize(new java.awt.Dimension(38, 38));
         btOptions.setOpaque(true);
@@ -194,10 +194,10 @@ public class Home extends javax.swing.JPanel {
         mainPanel.add(jPanel6);
 
         btUp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/bcc/ufrpe/ibusiness/ui/img/seta_acima_inactive.png"))); // NOI18N
+        btUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_inactive.png"))); // NOI18N
 
         btDown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/bcc/ufrpe/ibusiness/ui/img/seta_baixo_inactive.png"))); // NOI18N
+        btDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_inactive.png"))); // NOI18N
 
         jLabel1.setText("Usuario");
 
