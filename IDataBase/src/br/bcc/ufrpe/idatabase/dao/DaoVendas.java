@@ -123,8 +123,8 @@ public class DaoVendas {
 
     }
 
-    public List<Venda> buscarVenda(Cliente cliente){
-       String sql = DaoUtil.getQuery("venda.cliente");
+    public List<Venda> buscarVenda(Cliente cliente) {
+        String sql = DaoUtil.getQuery("venda.cliente");
         List<Venda> Vendas = new ArrayList<>();
 
         try (PreparedStatement stmt = conexao5.prepareStatement(sql)) {
@@ -150,6 +150,56 @@ public class DaoVendas {
 
         } catch (SQLException e) {
             throw DaoUtil.exception(e, "Erro ao buscar pelo login do usuario");
-        }   
+        }
     }
+
+    public void insereProdutos(Venda venda) {
+
+        for (Item item : venda.getItem()) {
+
+            String sql = DaoUtil.getQuery("item.insert");
+
+            try (PreparedStatement stmt = conexao5.prepareStatement(sql)) {
+                stmt.setLong(1, venda.getId());
+                stmt.setLong(2, item.getProduto().getId());
+                stmt.setString(3, item.getProduto().getDescricao());
+                stmt.setLong(4, item.getQuantidade());
+                stmt.setDouble(5, item.getValor());
+                stmt.setDouble(6, item.getQuantidade() * item.getValor());
+                stmt.execute();
+            } catch (SQLException e) {
+                throw DaoUtil.exception(e, "Erro ao buscar pelo login do usuario");
+            }
+
+        }
+
+    }
+
+    public List<Item> listarItens(Venda venda) {
+
+        List<Item> Itens = new ArrayList();
+        String sql = DaoUtil.getQuery("item.select");
+
+
+        try (PreparedStatement stmt = conexao5.prepareStatement(sql)) {
+            stmt.setLong(1, venda.getId());
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Item item = new Item();
+                item.setQuantidade(rs.getInt("QUANTIDADE"));
+                item.setValor(rs.getDouble("VALOR_UNITARIO"));
+                Produto produto = new Produto();
+                produto.setDescricao(rs.getString("DESCRICAO"));
+                produto.setId(rs.getLong("CODIGO_PRODUTO"));
+                item.setProduto(produto);
+                Itens.add(item);
+            }
+            rs.close();
+            return Itens;
+        }catch (SQLException e) {
+            throw DaoUtil.exception(e, "Erro ao buscar pelo login do usuario");
+        }
+        
+    }    
 }
+
