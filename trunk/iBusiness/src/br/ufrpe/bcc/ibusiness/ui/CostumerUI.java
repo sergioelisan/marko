@@ -111,10 +111,10 @@ public class CostumerUI extends javax.swing.JPanel {
         lbPanel.setText("Clientes");
 
         btOptions1.setBackground(new java.awt.Color(66, 112, 181));
-        btOptions1.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         btOptions1.setForeground(new java.awt.Color(255, 255, 255));
         btOptions1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btOptions1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/bcc/ufrpe/ibusiness/ui/img/casinha.png"))); // NOI18N
+        btOptions1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/casinha.png"))); // NOI18N
         btOptions1.setMaximumSize(new java.awt.Dimension(38, 38));
         btOptions1.setMinimumSize(new java.awt.Dimension(38, 38));
         btOptions1.setOpaque(true);
