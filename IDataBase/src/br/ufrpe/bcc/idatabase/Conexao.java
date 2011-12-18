@@ -1,4 +1,4 @@
-package br.ufrpe.bcc.idatabase.conexao;
+package br.ufrpe.bcc.idatabase;
 
 /*
  * To change this template, choose Tools | Templates

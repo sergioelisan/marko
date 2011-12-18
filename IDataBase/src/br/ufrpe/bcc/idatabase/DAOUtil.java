@@ -1,4 +1,4 @@
-package br.ufrpe.bcc.idatabase.dao;
+package br.ufrpe.bcc.idatabase;
 
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -7,7 +7,7 @@ import java.util.ResourceBundle;
  *
  * @author serginho
  */
-public class DaoUtil {
+public class DAOUtil {
     
     /**
      * Retorna uma query a partir de uma chave
