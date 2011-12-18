@@ -88,7 +88,7 @@
           <Font name="Roboto" size="36" style="2"/>
         </Property>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/bcc/ufrpe/ibusiness/ui/img/ibusinesslogo.png"/>
+          <Image iconType="3" name="/br/ufrpe/bcc/ibusiness/ui/img/ibusinesslogo.png"/>
         </Property>
       </Properties>
     </Component>
@@ -155,7 +155,7 @@
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/bcc/ufrpe/ibusiness/ui/img/engrenagem.png"/>
+          <Image iconType="3" name="/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[38, 38]"/>
@@ -353,7 +353,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/bcc/ufrpe/ibusiness/ui/img/seta_acima_inactive.png"/>
+          <Image iconType="3" name="/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_inactive.png"/>
         </Property>
       </Properties>
     </Component>
@@ -361,7 +361,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/br/bcc/ufrpe/ibusiness/ui/img/seta_baixo_inactive.png"/>
+          <Image iconType="3" name="/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_inactive.png"/>
         </Property>
       </Properties>
     </Component>
