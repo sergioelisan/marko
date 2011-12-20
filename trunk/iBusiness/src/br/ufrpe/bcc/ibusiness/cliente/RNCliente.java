@@ -4,8 +4,7 @@
  */
 package br.ufrpe.bcc.ibusiness.cliente;
 
-import br.ufrpe.bcc.ibusiness.util.CPF;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,15 +13,16 @@ import java.util.List;
 public class RNCliente implements ICliente {
 
     @Override
-    public List<Cliente> listarClientes() {
+    public ArrayList<Cliente> listarClientes() {
         DAOCliente dao = new DAOCliente();
         return dao.listarClientes();
     }
 
     @Override
-    public void addCliente(Cliente cliente) throws Exception {
+    public void inserirCliente(Cliente cliente) throws Exception {
         //Verifica se o nome do cliente não está vazio
-        if (!cliente.getNome().trim().equals("")) {
+        if ((!cliente.getNome().trim().equals("")
+                && !cliente.getNome().matches("[a-zA-Z\\s]*"))) {
             //Verifica se o CPF é válido
             if (validarCPF(cliente.getCpf())) {
                 //Verificar se o endereço não está vazio
@@ -34,7 +34,7 @@ public class RNCliente implements ICliente {
                             //Verfica se o e-mail é válido: x@x.x
                             if (cliente.getEmail().matches("\\w+@\\w+.\\w+")) {
                                 DAOCliente dao = new DAOCliente();
-                                dao.addCliente(cliente);
+                                dao.inserirCliente(cliente);
                             } else {
                                 throw new Exception("O e-mail informado é inválido.");
                             }
@@ -56,65 +56,59 @@ public class RNCliente implements ICliente {
     }
 
     @Override
-    public void rmCliente(Cliente c) {
+    public void atualizarCliente(Cliente cliente) throws Exception {
+        //Verifica se o nome do cliente não está vazio
+        if ((!cliente.getNome().trim().equals("")
+                && !cliente.getNome().matches("[a-zA-Z\\s]*"))) {
+            //Verifica se o CPF é válido
+            if (validarCPF(cliente.getCpf())) {
+                //Verificar se o endereço não está vazio
+                if (!cliente.getEndereco().trim().equals("")) {
+                    //Verifica se o telefone é válido: (00)0000-0000
+                    if (cliente.getTelefone().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
+                        //Verifica se o celular é válido: (00)0000-0000
+                        if (cliente.getCelular().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
+                            //Verfica se o e-mail é válido: x@x.x
+                            if (cliente.getEmail().matches("\\w+@\\w+.\\w+")) {
+                                DAOCliente dao = new DAOCliente();
+                                dao.inserirCliente(cliente);
+                            } else {
+                                throw new Exception("O e-mail informado é inválido.");
+                            }
+                        } else {
+                            throw new Exception("O celular informado é inválido.");
+                        }
+                    } else {
+                        throw new Exception("O telefone informado é inválido.");
+                    }
+                } else {
+                    throw new Exception("O endereço informado é inválido.");
+                }
+            } else {
+                throw new Exception("O CPF informado é inválido.");
+            }
+        } else {
+            throw new Exception("O nome informado é inválido.");
+        }
+    }
+
+    @Override
+    public Cliente buscarClienteCPF(String cpf) {
         DAOCliente dao = new DAOCliente();
-        dao.rmCliente(c);
+        return dao.buscarClienteCPF(cpf);
     }
 
     @Override
-    public void updateCliente(Cliente cliente) throws Exception {
-        //Verifica se o nome do cliente não está vazio
-        if (!cliente.getNome().trim().equals("")) {
-            //Verifica se o CPF é válido
-            if (validarCPF(cliente.getCpf())) {
-                //Verificar se o endereço não está vazio
-                if (!cliente.getEndereco().trim().equals("")) {
-                    //Verifica se o telefone é válido: (00)0000-0000
-                    if (cliente.getTelefone().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
-                        //Verifica se o celular é válido: (00)0000-0000
-                        if (cliente.getCelular().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
-                            //Verfica se o e-mail é válido: x@x.x
-                            if (cliente.getEmail().matches("\\w+@\\w+.\\w+")) {
-                                DAOCliente dao = new DAOCliente();
-                                dao.updateCliente(cliente);
-                            } else {
-                                throw new Exception("O e-mail informado é inválido.");
-                            }
-                        } else {
-                            throw new Exception("O celular informado é inválido.");
-                        }
-                    } else {
-                        throw new Exception("O telefone informado é inválido.");
-                    }
-                } else {
-                    throw new Exception("O endereço informado é inválido.");
-                }
-            } else {
-                throw new Exception("O CPF informado é inválido.");
-            }
-        } else {
-            throw new Exception("O nome informado é inválido.");
-        }
+    public Cliente buscarClienteNome(String nome) {
+        DAOCliente dao = new DAOCliente();
+        return dao.buscarClienteNome(nome);
+
     }
 
     @Override
-    public Cliente buscaCliente(CPF cpf) throws Exception {
-        if (validarCPF(cpf.getCpf())) {
-            DAOCliente dao = new DAOCliente();
-            return dao.buscaCliente(cpf);
-        } else {
-            throw new Exception("O CPF informado é inválido.");
-        }
-    }
-
-    @Override
-    public Cliente buscaCliente(String nome) throws Exception {
-        if (!nome.trim().equals("")) {
-            DAOCliente dao = new DAOCliente();
-            return dao.buscaCliente(nome);
-        } else {
-            throw new Exception("O nome informado é inválido.");
-        }
+    public void removerCliente(int id) {
+        DAOCliente dao = new DAOCliente();
+        dao.removerCliente(id);
     }
 
     public boolean validarCPF(String cpfNum) {

@@ -4,8 +4,7 @@
  */
 package br.ufrpe.bcc.ibusiness.venda;
 
-import br.ufrpe.bcc.ibusiness.cliente.Cliente;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,14 +13,18 @@ import java.util.List;
 public class RNVenda implements IVenda {
 
     @Override
-    public void submeterVenda(Venda venda) throws Exception {
+    public void inserirVenda(Venda venda) throws Exception {
         if (venda.getHorario() != null) {
             if (venda.getCliente() != null) {
-                if (venda.getItem() != null) {
-                    DAOVenda dao = new DAOVenda();
-                    dao.submeterVenda(venda);
+                if (venda.getItens().size() > 0) {
+                    if (venda.getFuncionario() != null) {
+                        DAOVenda dao = new DAOVenda();
+                        dao.inserirVenda(venda);
+                    } else {
+                        throw new Exception("O funcionário informado é inválido.");
+                    }
                 } else {
-                    throw new Exception("O item informado é inválido.");
+                    throw new Exception("A lista de vendas não pode estar vazia.");
                 }
             } else {
                 throw new Exception("O cliente informado é inválido.");
@@ -32,25 +35,25 @@ public class RNVenda implements IVenda {
     }
 
     @Override
-    public List<Venda> listarVendas() {
+    public ArrayList<Venda> listarVendas() {
         DAOVenda dao = new DAOVenda();
         return dao.listarVendas();
     }
 
     @Override
-    public Venda buscarVenda(int id) {
+    public Venda buscarVendaId(int id) {
         DAOVenda dao = new DAOVenda();
-        return dao.buscarVenda(id);
+        return dao.buscarVendaId(id);
     }
 
     @Override
-    public List<Venda> buscarVendaFuncionario(int id) {
+    public Venda buscarVendaFuncionario(int id) {
         DAOVenda dao = new DAOVenda();
         return dao.buscarVendaFuncionario(id);
     }
 
     @Override
-    public List<Venda> buscarVendaCliente(int id) {
+    public Venda buscarVendaCliente(int id) {
         DAOVenda dao = new DAOVenda();
         return dao.buscarVendaCliente(id);
     }

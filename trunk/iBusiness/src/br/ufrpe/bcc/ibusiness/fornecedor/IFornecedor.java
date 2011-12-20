@@ -20,7 +20,7 @@ public interface IFornecedor {
 
     public void atualizarFornecedor(Fornecedor fornecedor) throws Exception;
 
-    public Fornecedor buscarFornecedorCNPJ(String cnpj) throws Exception;
+    public Fornecedor buscarFornecedorCNPJ(String cnpj);
 
-    public Fornecedor buscarFornecedorRazao(String razao) throws Exception;
+    public Fornecedor buscarFornecedorRazao(String razao);
 }

@@ -23,5 +23,5 @@ public interface IProduto {
 
     public Produto buscarProdutoID(int id);
 
-    public Produto buscarProdutoNome(String nome) throws Exception;
+    public Produto buscarProdutoNome(String nome);
 }

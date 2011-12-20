@@ -14,5 +14,5 @@ public interface IItem {
 
     public ArrayList<Item> listarItens();
 
-    public void inserirItem(ArrayList<Item> itens) throws Exception;
+    public void inserirItem(Item item) throws Exception;
 }

@@ -1,11 +1,7 @@
 package br.ufrpe.bcc.ibusiness.funcionario;
 
-import br.ufrpe.bcc.ibusiness.util.CPF;
-import br.ufrpe.bcc.idatabase.Conexao;
 
-import br.ufrpe.bcc.idatabase.DAOUtil;
 import java.util.*;
-import java.sql.*;
 
 /**
  * Objeto de acesso aos dados de funcionarios
@@ -14,174 +10,33 @@ import java.sql.*;
  */
 public class DAOFuncionario implements IFuncionario {
 
-    private Connection conexao;
-
-    public DAOFuncionario() {
-        try {
-            this.conexao = new Conexao().conectar();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+    @Override
+    public ArrayList<Funcionario> listarFuncionarios() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
-     * Adiciona um funcionario
-     * @param funcionario 
-     */
-    public void addFuncionario(Funcionario funcionario) {
-        String sql = DAOUtil.getQuery("funcionario.insert");
-        try {
-            PreparedStatement stmt = conexao.prepareStatement(sql);
-            stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getCpf().getCpf());
-            stmt.setString(3, funcionario.getMatricula());
-            stmt.setString(4, funcionario.getEndereco());
-            stmt.setString(5, funcionario.getFone());
-            stmt.setString(6, funcionario.getCelular());
-            stmt.setString(7, funcionario.getCntps());
-            stmt.setDouble(8, funcionario.getSalario());
-            stmt.setString(9, funcionario.getEmail());
-            stmt.execute();
-            stmt.close();
-        } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao cadastrar funcionario");
-        }
-
+    @Override
+    public void inserirFuncionario(Funcionario funcionario) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
-     * Lista todos os funcionarios da base
-     * @return uma lista com todos os funcionarios
-     */
-    public List<Funcionario> listarFuncionarios() {
-        List<Funcionario> funcionarios = new ArrayList<>();
-        String sql = DAOUtil.getQuery("funcionario.select");
-
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                Funcionario funcionario = new Funcionario();
-                funcionario.setId(rs.getLong("CODIGO"));
-                funcionario.setNome(rs.getString("NOME"));
-                funcionario.setCpf(new CPF(rs.getString("CPF")) );
-                funcionario.setMatricula(rs.getString("MATRICULA"));
-                funcionario.setEndereco(rs.getString("ENDERECO"));
-                funcionario.setFone(rs.getString("FONE"));
-                funcionario.setCelular(rs.getString("CELULAR"));
-                funcionario.setCntps(rs.getString("CNTPS"));
-                funcionario.setSalario(rs.getDouble("SALARIO"));
-                funcionario.setEmail(rs.getString("EMAIL"));
-                funcionarios.add(funcionario);
-            }
-
-            rs.close();
-            return funcionarios;
-        } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao listar os funcionarios");
-        }
+    @Override
+    public void removerFuncionario(int id) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
-     * Altera os dados de um funcionario
-     * @param funcionario 
-     */
-    public void updateFuncionario(Funcionario funcionario) {
-        String sql = DAOUtil.getQuery("funcionario.update");
-
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setString(1, funcionario.getNome());
-            stmt.setString(2, funcionario.getCpf().getCpf());
-            stmt.setString(3, funcionario.getMatricula());
-            stmt.setString(4, funcionario.getEndereco());
-            stmt.setString(5, funcionario.getFone());
-            stmt.setString(6, funcionario.getCelular());
-            stmt.setString(7, funcionario.getCntps());
-            stmt.setDouble(8, funcionario.getSalario());
-            stmt.setString(9, funcionario.getEmail());
-            stmt.setLong(10, funcionario.getId());
-
-            stmt.execute();
-
-        } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao alterar um funcionario");
-        }
+    @Override
+    public void atualizarFuncionario(Funcionario funcionario) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
-     * Remove um funcionario do banco
-     * @param funcionario 
-     */
-    public void rmFuncionario(Funcionario funcionario) {
-        String sql = DAOUtil.getQuery("funcionario.delete");
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setLong(1, funcionario.getId());
-            stmt.execute();
-        } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao remover um funcionario");
-        }
+    @Override
+    public Funcionario buscarFuncionarioCPF(String cpf) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    /**
-     * Busca por um funcionario pelo CPF
-     * @param cpf
-     * @return 
-     */
-    public Funcionario buscaFuncionario(CPF cpf) {
-        String sql = DAOUtil.getQuery("funcionario.cpf");
-        Funcionario funcionario = new Funcionario();
-
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setString(1, cpf.getCpf());
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                funcionario.setId(rs.getLong("CODIGO"));
-                funcionario.setNome(rs.getString("NOME"));
-                funcionario.setCpf(new CPF(rs.getString("CPF")) );
-                funcionario.setMatricula(rs.getString("MATRICULA"));
-                funcionario.setEndereco(rs.getString("ENDERECO"));
-                funcionario.setFone(rs.getString("FONE"));
-                funcionario.setCelular(rs.getString("CELULAR"));
-                funcionario.setCntps(rs.getString("CNTPS"));
-                funcionario.setSalario(rs.getDouble("SALARIO"));
-                funcionario.setEmail(rs.getString("EMAIL"));
-            }
-            rs.close();
-
-            return funcionario;
-        } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao buscar por um funcionario pelo CPF");
-        }
-    }
-
-    /**
-     * Busca um funcionario pelo nome
-     * @param nome
-     * @return 
-     */
-    public Funcionario buscaFuncionario(String nome) {
-        String sql = DAOUtil.getQuery("funcionario.nome");
-        Funcionario funcionario = new Funcionario();
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setString(1, sql);
-            ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
-                funcionario.setId(rs.getLong("CODIGO"));
-                funcionario.setNome(rs.getString("NOME"));
-                funcionario.setCpf(new CPF(rs.getString("CPF")) );
-                funcionario.setMatricula(rs.getString("MATRICULA"));
-                funcionario.setEndereco(rs.getString("ENDERECO"));
-                funcionario.setFone(rs.getString("FONE"));
-                funcionario.setCelular(rs.getString("CELULAR"));
-                funcionario.setCntps(rs.getString("CNTPS"));
-                funcionario.setSalario(rs.getDouble("SALARIO"));
-                funcionario.setEmail(rs.getString("EMAIL"));
-            }
-            rs.close();
-
-            return funcionario;
-        } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao buscar um funcionario pelo nome");
-        }
+    @Override
+    public Funcionario buscarFuncionarioNome(String nome) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

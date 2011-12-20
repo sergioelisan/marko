@@ -14,6 +14,7 @@ public class Despesa {
     private String credor;
     private Double valor;
     private Date lancamento;
+    private Date vencimento;
 
     public Despesa() {
     }
@@ -58,6 +59,14 @@ public class Despesa {
         this.valor = valor;
     }
 
+    public Date getVencimento() {
+        return vencimento;
+    }
+
+    public void setVencimento(Date vencimento) {
+        this.vencimento = vencimento;
+    }
+
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -81,16 +90,22 @@ public class Despesa {
         if (!Objects.equals(this.lancamento, other.lancamento)) {
             return false;
         }
+        if (!Objects.equals(this.vencimento, other.vencimento)) {
+            return false;
+        }
         return true;
     }
 
     public int hashCode() {
-        int hash = 3;
-        hash = 29 * hash + this.id;
-        hash = 29 * hash + Objects.hashCode(this.descricao);
-        hash = 29 * hash + Objects.hashCode(this.credor);
-        hash = 29 * hash + Objects.hashCode(this.valor);
-        hash = 29 * hash + Objects.hashCode(this.lancamento);
+        int hash = 5;
+        hash = 79 * hash + this.id;
+        hash = 79 * hash + Objects.hashCode(this.descricao);
+        hash = 79 * hash + Objects.hashCode(this.credor);
+        hash = 79 * hash + Objects.hashCode(this.valor);
+        hash = 79 * hash + Objects.hashCode(this.lancamento);
+        hash = 79 * hash + Objects.hashCode(this.vencimento);
         return hash;
     }
+    
+    
 }

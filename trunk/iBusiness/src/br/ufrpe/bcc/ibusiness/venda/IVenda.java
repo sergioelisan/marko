@@ -12,9 +12,9 @@ public interface IVenda {
 
     public ArrayList<Venda> listarVendas();
 
-    public ArrayList<Venda> buscarVendaId(int id);
+    public Venda buscarVendaId(int id);
 
-    public ArrayList<Venda> buscarVendaUsuario(int id);
+    public Venda buscarVendaCliente(int id);
 
-    public ArrayList<Venda> buscarVendaFuncionario(int id);
+    public Venda buscarVendaFuncionario(int id);
 }

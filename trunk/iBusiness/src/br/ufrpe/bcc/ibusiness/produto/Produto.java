@@ -1,6 +1,5 @@
 package br.ufrpe.bcc.ibusiness.produto;
 
-import br.ufrpe.bcc.ibusiness.fornecedor.Fornecedor;
 import java.util.Date;
 import java.util.Objects;
 
