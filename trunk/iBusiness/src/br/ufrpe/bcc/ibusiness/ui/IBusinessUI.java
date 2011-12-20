@@ -14,6 +14,7 @@ public class IBusinessUI extends javax.swing.JFrame {
     public IBusinessUI() {
         initComponents();
         setContentPane(new Home() );
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")
