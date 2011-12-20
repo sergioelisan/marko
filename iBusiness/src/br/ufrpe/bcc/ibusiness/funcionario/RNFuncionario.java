@@ -48,18 +48,6 @@ public class RNFuncionario implements IFuncionario {
         }
     }
 
-    @Override
-    public Funcionario buscarFuncionarioCPF(String cpf) {
-        DAOFuncionario dao = new DAOFuncionario();
-        return dao.buscarFuncionarioCPF(cpf);
-    }
-
-    @Override
-    public Funcionario buscarFuncionarioNome(String nome) {
-        DAOFuncionario dao = new DAOFuncionario();
-        return dao.buscarFuncionarioNome(nome);
-    }
-
     public boolean validarCPF(String cpfNum) {
         int[] cpf = new int[cpfNum.length()]; //Define o valor com o tamanho da string  
         int resultP = 0;
