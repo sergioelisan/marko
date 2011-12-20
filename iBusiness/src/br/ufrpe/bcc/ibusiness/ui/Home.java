@@ -103,8 +103,10 @@ public class Home extends javax.swing.JPanel {
         btDown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_inactive.png"))); // NOI18N
 
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuario");
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Data e Hora");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

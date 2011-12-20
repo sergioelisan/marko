@@ -31,7 +31,7 @@ public class RNProduto implements IProduto {
                                     if (produto.getPrecoCompra() >= 0) {
                                         if (produto.getPrecoVenda() >= 0) {
                                             DAOProduto dao = new DAOProduto();
-                                            dao.addProduto(produto);
+                                            //dao.addProduto(produto);
                                         } else {
                                             throw new Exception("O preço de venda informado é inválido.");
                                         }
@@ -64,7 +64,7 @@ public class RNProduto implements IProduto {
     @Override
     public void rmProduto(int id) {
         DAOProduto dao = new DAOProduto();
-        dao.rmProduto(id);
+        //dao.rmProduto(id);
     }
 
     @Override
@@ -124,6 +124,6 @@ public class RNProduto implements IProduto {
     @Override
     public ArrayList<Produto> buscaProdutos(Date validade) {
         DAOProduto dao = new DAOProduto();
-        return dao.buscaProdutos(validade);
+        return null; //dao.buscaProdutos(validade);
     }
 }
