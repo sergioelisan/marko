@@ -55,7 +55,6 @@ public class Home extends javax.swing.JPanel {
     private void initComponents() {
 
         lbLogo = new javax.swing.JLabel();
-        btQuit = new javax.swing.JLabel();
         btHelp = new javax.swing.JLabel();
         btOptions = new javax.swing.JLabel();
         mainPanel = new javax.swing.JPanel();
@@ -64,27 +63,17 @@ public class Home extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(64, 128, 128));
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1024, 620));
         setPreferredSize(new java.awt.Dimension(1024, 620));
 
-        lbLogo.setFont(new java.awt.Font("Roboto", 2, 36)); // NOI18N
+        lbLogo.setFont(new java.awt.Font("Roboto", 2, 36));
         lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/ibusinesslogo.png"))); // NOI18N
 
-        btQuit.setBackground(new java.awt.Color(66, 112, 181));
-        btQuit.setFont(new java.awt.Font("Roboto", 1, 24));
-        btQuit.setForeground(new java.awt.Color(255, 255, 255));
-        btQuit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btQuit.setText("X");
-        btQuit.setMaximumSize(new java.awt.Dimension(38, 38));
-        btQuit.setMinimumSize(new java.awt.Dimension(38, 38));
-        btQuit.setOpaque(true);
-        btQuit.setPreferredSize(new java.awt.Dimension(38, 38));
-
-        btHelp.setBackground(new java.awt.Color(66, 112, 181));
-        btHelp.setFont(new java.awt.Font("Roboto", 1, 24));
-        btHelp.setForeground(new java.awt.Color(255, 255, 255));
+        btHelp.setBackground(new java.awt.Color(255, 255, 255));
+        btHelp.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btHelp.setForeground(new java.awt.Color(64, 128, 128));
         btHelp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btHelp.setText("?");
         btHelp.setMaximumSize(new java.awt.Dimension(38, 38));
@@ -92,7 +81,7 @@ public class Home extends javax.swing.JPanel {
         btHelp.setOpaque(true);
         btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
 
-        btOptions.setBackground(new java.awt.Color(66, 112, 181));
+        btOptions.setBackground(new java.awt.Color(255, 204, 0));
         btOptions.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         btOptions.setForeground(new java.awt.Color(255, 255, 255));
         btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,20 +114,18 @@ public class Home extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(lbLogo)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 580, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 628, Short.MAX_VALUE)
                         .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btUp, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
-                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
-                    .addComponent(btDown, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
+                        .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btUp, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
+                    .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
+                    .addComponent(btDown, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 887, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 910, Short.MAX_VALUE)
                         .addComponent(jLabel2)))
                 .addContainerGap())
         );
@@ -146,10 +133,9 @@ public class Home extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lbLogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbLogo)
                     .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btUp)
@@ -157,21 +143,20 @@ public class Home extends javax.swing.JPanel {
                 .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btDown)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
                 .addContainerGap())
         );
 
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btHelp, btOptions, btQuit});
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btHelp, btOptions});
 
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btDown;
     private javax.swing.JLabel btHelp;
     private javax.swing.JLabel btOptions;
-    private javax.swing.JLabel btQuit;
     private javax.swing.JLabel btUp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
