@@ -16,11 +16,11 @@ public interface ICliente {
 
     public void inserirCliente(Cliente cliente) throws Exception;
 
-    public void removerCliente(Cliente cliente);
+    public void removerCliente(int id);
 
     public void atualizarCliente(Cliente cliente) throws Exception;
 
-    public Cliente buscarClienteCPF(String cpf) throws Exception;
+    public Cliente buscarClienteCPF(String cpf);
 
-    public Cliente buscarClienteNome(String nome) throws Exception;
+    public Cliente buscarClienteNome(String nome);
 }

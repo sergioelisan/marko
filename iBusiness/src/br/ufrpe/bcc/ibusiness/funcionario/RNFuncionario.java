@@ -4,8 +4,7 @@
  */
 package br.ufrpe.bcc.ibusiness.funcionario;
 
-import br.ufrpe.bcc.ibusiness.util.CPF;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,45 +13,51 @@ import java.util.List;
 public class RNFuncionario implements IFuncionario {
 
     @Override
-    public List<Funcionario> listarFuncionarios() {
+    public ArrayList<Funcionario> listarFuncionarios() {
         DAOFuncionario dao = new DAOFuncionario();
         return dao.listarFuncionarios();
     }
 
     @Override
-    public void addFuncionario(Funcionario funcionario) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public void inserirFuncionario(Funcionario funcionario) throws Exception {
+        if (!funcionario.getLogin().equals("")) {
+            if (!funcionario.getSenha().equals("")) {
+                DAOFuncionario dao = new DAOFuncionario();
+                dao.inserirFuncionario(funcionario);
+            } else {
+                throw new Exception("A senha não pode se vazia.");
+            }
+        } else {
+            throw new Exception("O login não pode ser vazio.");
+        }
     }
 
     @Override
-    public void rmFuncionario(Funcionario id) {
+    public void removerFuncionario(int id) {
         DAOFuncionario dao = new DAOFuncionario();
-        dao.rmFuncionario(id);
+        dao.removerFuncionario(id);
     }
 
     @Override
-    public void updateFuncionario(Funcionario funcionario) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Funcionario buscaFuncionario(CPF cpf) throws Exception {
-        if (validarCPF(cpf.getCpf())) {
+    public void atualizarFuncionario(Funcionario funcionario) throws Exception {
+        if (!funcionario.getSenha().equals("")) {
             DAOFuncionario dao = new DAOFuncionario();
-            return dao.buscaFuncionario(cpf);
+            dao.inserirFuncionario(funcionario);
         } else {
-            throw new Exception("O CPF informado é inválido.");
+            throw new Exception("O login não pode ser vazio.");
         }
     }
 
     @Override
-    public Funcionario buscaFuncionario(String nome) throws Exception {
-        if (!nome.trim().equals("")) {
-            DAOFuncionario dao = new DAOFuncionario();
-            return dao.buscaFuncionario(nome);
-        } else {
-            throw new Exception("O nome informado é inválido.");
-        }
+    public Funcionario buscarFuncionarioCPF(String cpf) {
+        DAOFuncionario dao = new DAOFuncionario();
+        return dao.buscarFuncionarioCPF(cpf);
+    }
+
+    @Override
+    public Funcionario buscarFuncionarioNome(String nome) {
+        DAOFuncionario dao = new DAOFuncionario();
+        return dao.buscarFuncionarioNome(nome);
     }
 
     public boolean validarCPF(String cpfNum) {

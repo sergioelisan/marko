@@ -20,7 +20,7 @@ public interface IFuncionario {
 
     public void atualizarFuncionario(Funcionario funcionario) throws Exception;
 
-    public Funcionario buscarFuncionarioCPF(String cpf) throws Exception;
+    public Funcionario buscarFuncionarioCPF(String cpf);
 
-    public Funcionario buscarFuncionarioNoe(String nome) throws Exception;
+    public Funcionario buscarFuncionarioNome(String nome);
 }

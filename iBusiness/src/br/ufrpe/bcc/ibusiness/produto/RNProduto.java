@@ -5,7 +5,6 @@
 package br.ufrpe.bcc.ibusiness.produto;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  *
@@ -20,38 +19,30 @@ public class RNProduto implements IProduto {
     }
 
     @Override
-    public void addProduto(Produto produto) throws Exception {
+    public void inserirProduto(Produto produto) throws Exception {
         if (!produto.getNome().trim().equals("")) {
             if (!produto.getDescricao().equals("")) {
-                if (produto.getFornecedor() != null) {
-                    if (produto.getEstocado() >= 0) {
-                        if (produto.getDisponivel() >= 0) {
-                            if (produto.getCompra() != null) {
-                                if (produto.getVencimento() != null) {
-                                    if (produto.getPrecoCompra() >= 0) {
-                                        if (produto.getPrecoVenda() >= 0) {
-                                            DAOProduto dao = new DAOProduto();
-                                            //dao.addProduto(produto);
-                                        } else {
-                                            throw new Exception("O preço de venda informado é inválido.");
-                                        }
-                                    } else {
-                                        throw new Exception("O preço de compra informado é inválido.");
-                                    }
+                if (produto.getEstocado() >= 0) {
+                    if (produto.getCompra() != null) {
+                        if (produto.getVencimento() != null) {
+                            if (produto.getPrecoCompra() >= 0) {
+                                if (produto.getPrecoVenda() >= 0) {
+                                    DAOProduto dao = new DAOProduto();
+                                    dao.inserirProduto(produto);
                                 } else {
-                                    throw new Exception("A data de vencimento informada é inválida.");
+                                    throw new Exception("O preço de venda informado é inválido.");
                                 }
                             } else {
-                                throw new Exception("A data de compra informada é inválida.");
+                                throw new Exception("O preço de compra informado é inválido.");
                             }
                         } else {
-                            throw new Exception("A quantidade disponível é inválida.");
+                            throw new Exception("A data de vencimento informada é inválida.");
                         }
                     } else {
-                        throw new Exception("A quantidade estocada é inválida.");
+                        throw new Exception("A data de compra informada é inválida.");
                     }
                 } else {
-                    throw new Exception("O fornecedor informado é inválido.");
+                    throw new Exception("A quantidade estocada é inválida.");
                 }
             } else {
                 throw new Exception("A descrição informada é inválida.");
@@ -62,44 +53,36 @@ public class RNProduto implements IProduto {
     }
 
     @Override
-    public void rmProduto(int id) {
+    public void removerProduto(int id) {
         DAOProduto dao = new DAOProduto();
-        //dao.rmProduto(id);
+        dao.removerProduto(id);
     }
 
     @Override
-    public void updateProduto(Produto produto) throws Exception {
+    public void atualizarProduto(Produto produto) throws Exception {
         if (!produto.getNome().trim().equals("")) {
             if (!produto.getDescricao().equals("")) {
-                if (produto.getFornecedor() != null) {
-                    if (produto.getEstocado() >= 0) {
-                        if (produto.getDisponivel() >= 0) {
-                            if (produto.getCompra() != null) {
-                                if (produto.getVencimento() != null) {
-                                    if (produto.getPrecoCompra() >= 0) {
-                                        if (produto.getPrecoVenda() >= 0) {
-                                            DAOProduto dao = new DAOProduto();
-                                            dao.updateProduto(produto);
-                                        } else {
-                                            throw new Exception("O preço de venda informado é inválido.");
-                                        }
-                                    } else {
-                                        throw new Exception("O preço de compra informado é inválido.");
-                                    }
+                if (produto.getEstocado() >= 0) {
+                    if (produto.getCompra() != null) {
+                        if (produto.getVencimento() != null) {
+                            if (produto.getPrecoCompra() >= 0) {
+                                if (produto.getPrecoVenda() >= 0) {
+                                    DAOProduto dao = new DAOProduto();
+                                    dao.atualizarProduto(produto);
                                 } else {
-                                    throw new Exception("A data de vencimento informada é inválida.");
+                                    throw new Exception("O preço de venda informado é inválido.");
                                 }
                             } else {
-                                throw new Exception("A data de compra informada é inválida.");
+                                throw new Exception("O preço de compra informado é inválido.");
                             }
                         } else {
-                            throw new Exception("A quantidade disponível é inválida.");
+                            throw new Exception("A data de vencimento informada é inválida.");
                         }
                     } else {
-                        throw new Exception("A quantidade estocada é inválida.");
+                        throw new Exception("A data de compra informada é inválida.");
                     }
                 } else {
-                    throw new Exception("O fornecedor informado é inválido.");
+                    throw new Exception("A quantidade estocada é inválida.");
                 }
             } else {
                 throw new Exception("A descrição informada é inválida.");
@@ -110,20 +93,14 @@ public class RNProduto implements IProduto {
     }
 
     @Override
-    public Produto buscaProduto(int codigo) {
+    public Produto buscarProdutoID(int id) {
         DAOProduto dao = new DAOProduto();
-        return dao.buscaProduto(codigo);
+        return dao.buscarProdutoID(id);
     }
 
     @Override
-    public Produto buscaProduto(String nome) throws Exception {
+    public Produto buscarProdutoNome(String nome) {
         DAOProduto dao = new DAOProduto();
-        return dao.buscaProduto(nome);
-    }
-
-    @Override
-    public ArrayList<Produto> buscaProdutos(Date validade) {
-        DAOProduto dao = new DAOProduto();
-        return null; //dao.buscaProdutos(validade);
+        return dao.buscarProdutoNome(nome);
     }
 }
