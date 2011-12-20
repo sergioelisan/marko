@@ -38,11 +38,13 @@ public class PartnesTile extends Tile {
 
         setBackground(new java.awt.Color(255, 153, 102));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Resumo do estado dos fornecedores");
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/iconeFornecedorInterna.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans", 0, 28)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("fornecedores");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

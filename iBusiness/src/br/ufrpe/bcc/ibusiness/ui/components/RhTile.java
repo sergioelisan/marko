@@ -38,11 +38,13 @@ public class RhTile extends Tile {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Resumo do estado do RH");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/1324410180_testimonials.png"))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 28)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("funcionários");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

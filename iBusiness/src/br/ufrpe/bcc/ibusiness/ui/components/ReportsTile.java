@@ -36,9 +36,10 @@ public class ReportsTile extends Tile {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 51));
         setForeground(new java.awt.Color(61, 61, 61));
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 28)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 28)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(61, 61, 61));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("relatórios");
@@ -52,7 +53,7 @@ public class ReportsTile extends Tile {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(151, Short.MAX_VALUE)
+                .addContainerGap(163, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
