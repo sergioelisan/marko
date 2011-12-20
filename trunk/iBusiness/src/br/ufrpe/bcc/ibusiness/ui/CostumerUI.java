@@ -58,7 +58,7 @@ public class CostumerUI extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1024, 620));
 
         btHelp.setBackground(new java.awt.Color(255, 255, 255));
-        btHelp.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btHelp.setFont(new java.awt.Font("Roboto", 1, 24));
         btHelp.setForeground(new java.awt.Color(64, 128, 128));
         btHelp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btHelp.setText("?");
@@ -68,7 +68,7 @@ public class CostumerUI extends javax.swing.JPanel {
         btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
 
         btOptions.setBackground(new java.awt.Color(255, 204, 0));
-        btOptions.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
         btOptions.setForeground(new java.awt.Color(255, 255, 255));
         btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
@@ -77,13 +77,13 @@ public class CostumerUI extends javax.swing.JPanel {
         btOptions.setOpaque(true);
         btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
 
-        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36)); // NOI18N
+        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36));
         lbPanel.setForeground(new java.awt.Color(255, 255, 255));
         lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPanel.setText("Clientes");
 
         btOptions1.setBackground(new java.awt.Color(153, 0, 153));
-        btOptions1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btOptions1.setFont(new java.awt.Font("Roboto", 1, 24));
         btOptions1.setForeground(new java.awt.Color(255, 255, 255));
         btOptions1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btOptions1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/casinha.png"))); // NOI18N
@@ -92,7 +92,7 @@ public class CostumerUI extends javax.swing.JPanel {
         btOptions1.setOpaque(true);
         btOptions1.setPreferredSize(new java.awt.Dimension(38, 38));
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel2.setForeground(new java.awt.Color(64, 128, 128));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Contactar via Facebook");
@@ -131,7 +131,7 @@ public class CostumerUI extends javax.swing.JPanel {
         jLabel6.setOpaque(true);
 
         jLabel7.setBackground(new java.awt.Color(64, 128, 128));
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Limpar");
