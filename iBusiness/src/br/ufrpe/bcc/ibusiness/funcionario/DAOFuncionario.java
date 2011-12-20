@@ -29,14 +29,4 @@ public class DAOFuncionario implements IFuncionario {
     public void atualizarFuncionario(Funcionario funcionario) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    @Override
-    public Funcionario buscarFuncionarioCPF(String cpf) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public Funcionario buscarFuncionarioNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }
