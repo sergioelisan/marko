@@ -6,16 +6,6 @@
 package br.ufrpe.bcc.ibusiness.ui;
 
 import br.ufrpe.bcc.continuous.components.Tile;
-import br.ufrpe.bcc.ibusiness.ui.components.ConfigTile;
-import br.ufrpe.bcc.ibusiness.ui.components.CostumerTile;
-import br.ufrpe.bcc.ibusiness.ui.components.HelpTile;
-import br.ufrpe.bcc.ibusiness.ui.components.PartnesTile;
-import br.ufrpe.bcc.ibusiness.ui.components.ReportsTile;
-import br.ufrpe.bcc.ibusiness.ui.components.RhTile;
-import br.ufrpe.bcc.ibusiness.ui.components.SalesTile;
-import br.ufrpe.bcc.ibusiness.ui.components.SocialTile;
-import br.ufrpe.bcc.ibusiness.ui.components.StoqTile;
-import javax.swing.JViewport;
 
 /**
  *
@@ -23,46 +13,22 @@ import javax.swing.JViewport;
  */
 public class Home extends javax.swing.JPanel {
 
-    public Home() {
-        initComponents();        
+    public Home(IBusinessUI main) {
+        this.mainFrame = main;
+        initComponents();
         initTiles();
-        
         scroll.getViewport().setOpaque(false);
         scroll.setOpaque(false);
     }
-    
+
     /**
      * Cria as tiles do sistema
      */
     private void initTiles() {
-        costumers = new CostumerTile();
-        mainPanel.add(costumers);
-        
-        social = new SocialTile();
-        mainPanel.add(social);
-        
-        partners = new PartnesTile();
-        mainPanel.add(partners);
-        
-        stoq = new StoqTile();
-        mainPanel.add(stoq);
-        
-        rh = new RhTile();
-        mainPanel.add(rh);
-        
-        config = new ConfigTile();
-        mainPanel.add(config);
-        
-        help = new HelpTile();
-        mainPanel.add(help);
-        
-        sales = new SalesTile();
-        mainPanel.add(sales);
-        
-        reports = new ReportsTile();       
-        mainPanel.add(reports);
-        
-        mainPanel.updateUI();                
+        for (Tile tile : mainFrame.getModulos()) {
+            mainPanel.add(tile);
+        }
+        mainPanel.updateUI();
     }
 
     @SuppressWarnings("unchecked")
@@ -82,14 +48,36 @@ public class Home extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1024, 620));
         setPreferredSize(new java.awt.Dimension(1024, 620));
 
-        lbLogo.setFont(new java.awt.Font("Roboto", 2, 36)); // NOI18N
+        lbLogo.setFont(new java.awt.Font("Roboto", 2, 36));
         lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/logo 124.jpg"))); // NOI18N
 
         btUp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_inactive.png"))); // NOI18N
+        btUp.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btUpMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btUpMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btUpMouseExited(evt);
+            }
+        });
 
         btDown.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_inactive.png"))); // NOI18N
+        btDown.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btDownMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btDownMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btDownMouseExited(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Usuario");
@@ -106,7 +94,7 @@ public class Home extends javax.swing.JPanel {
         mainPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         mainPanel.setOpaque(false);
         mainPanel.setPreferredSize(new java.awt.Dimension(1000, 376));
-        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 25, 25));
+        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
         scroll.setViewportView(mainPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -144,6 +132,32 @@ public class Home extends javax.swing.JPanel {
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
+
+private void btUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUpMouseClicked
+    int atualposicao = scroll.getVerticalScrollBar().getValue();
+    scroll.getVerticalScrollBar().setValue(atualposicao - 100);
+}//GEN-LAST:event_btUpMouseClicked
+
+private void btUpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUpMouseEntered
+    btUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_active.png")));
+}//GEN-LAST:event_btUpMouseEntered
+
+private void btUpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUpMouseExited
+    btUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_inactive.png")));
+}//GEN-LAST:event_btUpMouseExited
+
+private void btDownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDownMouseClicked
+    int atualposicao = scroll.getVerticalScrollBar().getValue();
+    scroll.getVerticalScrollBar().setValue(atualposicao + 100);
+}//GEN-LAST:event_btDownMouseClicked
+
+private void btDownMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDownMouseEntered
+    btDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_active.png")));
+}//GEN-LAST:event_btDownMouseEntered
+
+private void btDownMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDownMouseExited
+    btDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_inactive.png")));
+}//GEN-LAST:event_btDownMouseExited
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btDown;
     private javax.swing.JLabel btUp;
@@ -153,14 +167,5 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JPanel mainPanel;
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
-
-    private Tile costumers;
-    private Tile social;
-    private Tile partners;
-    private Tile stoq;
-    private Tile rh;
-    private Tile sales;
-    private Tile reports;
-    private Tile config;
-    private Tile help;
+    private IBusinessUI mainFrame;
 }

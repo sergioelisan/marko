@@ -2,8 +2,8 @@ package br.ufrpe.bcc.ibusiness.venda;
 
 import br.ufrpe.bcc.ibusiness.funcionario.Funcionario;
 import br.ufrpe.bcc.ibusiness.cliente.Cliente;
-import br.ufrpe.bcc.idatabase.Conexao;
-import br.ufrpe.bcc.idatabase.DAOUtil;
+import br.ufrpe.bcc.ibusiness.database.Conexao;
+import br.ufrpe.bcc.ibusiness.database.DAOUtil;
 import java.sql.*;
 import java.util.*;
 
