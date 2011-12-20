@@ -36,11 +36,10 @@ class DAOProduto implements IProduto{
                 produto.setDescricao(rs.getString("DESCRICAO"));
                 produto.setFornecedor(new Fornecedor(rs.getInt("FORNECEDOR")) );
                 produto.setEstocado(rs.getInt("ESTOCADO"));
-                produto.setDisponivel(rs.getInt("DISPONIVEL"));
-                produto.setCompra(rs.getDate("COMPRA"));
+                produto.setCompra(rs.getDate("DATA_DE_COMPRA"));
                 produto.setVencimento(rs.getDate("VENCIMENTO"));
-                produto.setPrecoCompra(rs.getInt("PRECO_VENDA"));
-                produto.setPrecoVenda(rs.getInt("PRECO_COMPRA"));
+                produto.setPrecoCompra(rs.getDouble("CUSTO"));
+                produto.setPrecoVenda(rs.getDouble("PRECO_DE_COMPRA"));
                                 
                 produtos.add(produto);
             }
@@ -63,11 +62,10 @@ class DAOProduto implements IProduto{
             stmt.setString(2, produto.getDescricao());
             stmt.setInt(3, produto.getFornecedor().getId());
             stmt.setInt(4, produto.getEstocado());
-            stmt.setInt(5, produto.getDisponivel());
-            stmt.setDate(6, produto.getCompra());
-            stmt.setDate(7, produto.getVencimento());
-            stmt.setDouble(8, produto.getPrecoCompra());
-            stmt.setDouble(9, produto.getPrecoVenda());
+            stmt.setDate(5, produto.getCompra());
+            stmt.setDate(6, produto.getVencimento());
+            stmt.setDouble(7, produto.getPrecoCompra());
+            stmt.setDouble(8, produto.getPrecoVenda());
 
             stmt.executeUpdate();
 
@@ -98,11 +96,11 @@ class DAOProduto implements IProduto{
             stmt.setString(2, produto.getDescricao());
             stmt.setInt(3, produto.getFornecedor().getId());
             stmt.setInt(4, produto.getEstocado());
-            stmt.setInt(5, produto.getDisponivel());
-            stmt.setDate(6, produto.getCompra());
-            stmt.setDate(7, produto.getVencimento());
-            stmt.setDouble(8, produto.getPrecoCompra());
-            stmt.setDouble(9, produto.getPrecoVenda());
+            stmt.setDate(5, produto.getCompra());
+            stmt.setDate(6, produto.getVencimento());
+            stmt.setDouble(7, produto.getPrecoCompra());
+            stmt.setDouble(8, produto.getPrecoVenda());
+            stmt.setlONG(9, produto.getId());
 
             stmt.executeUpdate();
 
@@ -111,10 +109,7 @@ class DAOProduto implements IProduto{
         }
     }
 
-    @Override
-    public Produto buscaProduto(int codigo) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+
 
     public Produto buscaProduto(Int id) {
         String sql = DAOUtil.getQuery("produto.codigo");
@@ -128,11 +123,10 @@ class DAOProduto implements IProduto{
                 produto.setDescricao(rs.getString("RAZAO_SOCIAL"));
                 produto.setFornecedor(new Fornecedor(rs.getInt("FORNECEDOR")) );
                 produto.setEstocado(rs.getInt("ESTOCADO"));
-                produto.setDisponivel(rs.getInt("DISPONIVEL"));
-                produto.setCompra(rs.getDate("COMPRA"));
+                produto.setCompra(rs.getDate("DATA_DE_COMPRA"));
                 produto.setVencimento(rs.getDate("VENCIMENTO"));
-                produto.setPrecoCompra(rs.getInt("PRECO_VENDA"));
-                produto.setPrecoVenda(rs.getInt("PRECO_COMPRA"));               
+                produto.setPrecoCompra(rs.getDouble("CUSTO"));
+                produto.setPrecoVenda(rs.getDouble("PRECO_DE_VENDA"));               
             }
             
             rs.close();
@@ -143,8 +137,35 @@ class DAOProduto implements IProduto{
     }
 
     @Override
-    public ArrayList<Produto> buscaProdutos(Date validade) {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public ArrayList<Produto> buscaProdutosNome(String nome) {
+        ArrayList<Produto> produtos = new ArrayList<>();
+        String sql = DAOUtil.getQuery("produto.NOME");
+        
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                Produto produto = new Produto();
+                
+                produto.setNome(rs.getString("NOME"));
+                produto.setDescricao(rs.getString("RAZAO_SOCIAL"));
+                produto.setFornecedor(new Fornecedor(rs.getInt("FORNECEDOR")) );
+                produto.setEstocado(rs.getInt("ESTOCADO"));
+                produto.setDisponivel(rs.getInt("DISPONIVEL"));
+                produto.setCompra(rs.getDate("COMPRA"));
+                produto.setVencimento(rs.getDate("VENCIMENTO"));
+                produto.setPrecoCompra(rs.getInt("PRECO_VENDA"));
+                produto.setPrecoVenda(rs.getInt("PRECO_COMPRA"));  
+                
+                produtos.add(produto);
+            }
+            
+            rs.close();
+            return produtos;
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao buscar produto pelo nome");
+        }
     }
     
 }
