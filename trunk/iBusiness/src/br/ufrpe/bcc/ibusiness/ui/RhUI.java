@@ -41,7 +41,6 @@ public class RhUI extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        btOptions1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextField8 = new javax.swing.JTextField();
@@ -50,6 +49,7 @@ public class RhUI extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btOptions = new javax.swing.JLabel();
+        lbhome = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(64, 128, 128));
         setMaximumSize(new java.awt.Dimension(1366, 768));
@@ -66,7 +66,7 @@ public class RhUI extends javax.swing.JPanel {
         btHelp.setOpaque(true);
         btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
 
-        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36)); // NOI18N
+        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36));
         lbPanel.setForeground(new java.awt.Color(255, 255, 255));
         lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPanel.setText("Funcionários");
@@ -151,16 +151,6 @@ public class RhUI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btOptions1.setBackground(new java.awt.Color(66, 112, 181));
-        btOptions1.setFont(new java.awt.Font("Roboto", 1, 24));
-        btOptions1.setForeground(new java.awt.Color(255, 255, 255));
-        btOptions1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btOptions1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/casinha.png"))); // NOI18N
-        btOptions1.setMaximumSize(new java.awt.Dimension(38, 38));
-        btOptions1.setMinimumSize(new java.awt.Dimension(38, 38));
-        btOptions1.setOpaque(true);
-        btOptions1.setPreferredSize(new java.awt.Dimension(38, 38));
-
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel2.setForeground(new java.awt.Color(61, 61, 61));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -220,6 +210,16 @@ public class RhUI extends javax.swing.JPanel {
         btOptions.setOpaque(true);
         btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
 
+        lbhome.setBackground(new java.awt.Color(153, 0, 153));
+        lbhome.setFont(new java.awt.Font("Roboto", 1, 24));
+        lbhome.setForeground(new java.awt.Color(255, 255, 255));
+        lbhome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbhome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/casinha.png"))); // NOI18N
+        lbhome.setMaximumSize(new java.awt.Dimension(38, 38));
+        lbhome.setMinimumSize(new java.awt.Dimension(38, 38));
+        lbhome.setOpaque(true);
+        lbhome.setPreferredSize(new java.awt.Dimension(38, 38));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -234,7 +234,7 @@ public class RhUI extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbhome, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 636, Short.MAX_VALUE)
@@ -257,13 +257,13 @@ public class RhUI extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbPanel)
-                            .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbhome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lbPanel))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -286,7 +286,6 @@ public class RhUI extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btHelp;
     private javax.swing.JLabel btOptions;
-    private javax.swing.JLabel btOptions1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -304,5 +303,6 @@ public class RhUI extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JLabel lbPanel;
+    private javax.swing.JLabel lbhome;
     // End of variables declaration//GEN-END:variables
 }
