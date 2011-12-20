@@ -1,7 +1,6 @@
 package br.ufrpe.bcc.ibusiness.cliente;
 
 import java.sql.*;
-import br.ufrpe.bcc.ibusiness.util.CPF;
 import br.ufrpe.bcc.idatabase.Conexao;
 import br.ufrpe.bcc.idatabase.DAOUtil;
 import java.util.*;

@@ -4,8 +4,7 @@
  */
 package br.ufrpe.bcc.ibusiness.cliente;
 
-import br.ufrpe.bcc.ibusiness.util.CPF;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,15 +12,15 @@ import java.util.List;
  */
 public interface ICliente {
 
-    public List<Cliente> listarClientes();
+    public ArrayList<Cliente> listarClientes();
 
-    public void addCliente(Cliente cliente)throws Exception;
+    public void inserirCliente(Cliente cliente) throws Exception;
 
-    public void rmCliente(Cliente cliente);
+    public void removerCliente(Cliente cliente);
 
-    public void updateCliente(Cliente cliente) throws Exception;
+    public void atualizarCliente(Cliente cliente) throws Exception;
 
-    public Cliente buscaCliente(CPF cpf) throws Exception;
+    public Cliente buscarClienteCPF(String cpf) throws Exception;
 
-    public Cliente buscaCliente(String nome) throws Exception;
+    public Cliente buscarClienteNome(String nome) throws Exception;
 }

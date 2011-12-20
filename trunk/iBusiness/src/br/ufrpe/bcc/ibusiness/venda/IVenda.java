@@ -1,20 +1,20 @@
 package br.ufrpe.bcc.ibusiness.venda;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
  * @author Wolf
  */
 public interface IVenda {
-     
-    void submeterVenda(Venda venda) throws Exception;
-     
-     List<Venda> listarVendas(); 
-     
-     Venda buscarVenda(int id);
-     
-     List<Venda> buscarVendaFuncionario(int id);
-     
-     List<Venda> buscarVendaCliente(int id);
+
+    public void inserirVenda(Venda venda) throws Exception;
+
+    public ArrayList<Venda> listarVendas();
+
+    public ArrayList<Venda> buscarVendaId(int id);
+
+    public ArrayList<Venda> buscarVendaUsuario(int id);
+
+    public ArrayList<Venda> buscarVendaFuncionario(int id);
 }

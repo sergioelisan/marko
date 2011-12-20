@@ -1,6 +1,7 @@
 package br.ufrpe.bcc.ibusiness.despesa;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -8,14 +9,13 @@ import java.util.Date;
  */
 public class Despesa {
 
-    public Despesa() {
-    }
+    private int id;
+    private String descricao;
+    private String credor;
+    private Double valor;
+    private Date lancamento;
 
-    public Despesa(String descricao, String credor, double valor, Date lancamento) {
-        this.descricao = descricao;
-        this.credor = credor;
-        this.valor = valor;
-        this.lancamento = lancamento;
+    public Despesa() {
     }
 
     public String getCredor() {
@@ -34,11 +34,11 @@ public class Despesa {
         this.descricao = descricao;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -50,15 +50,14 @@ public class Despesa {
         this.lancamento = lancamento;
     }
 
-    public double getValor() {
+    public Double getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(Double valor) {
         this.valor = valor;
     }
 
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -70,35 +69,28 @@ public class Despesa {
         if (this.id != other.id) {
             return false;
         }
-        if ((this.descricao == null) ? (other.descricao != null) : !this.descricao.equals(other.descricao)) {
+        if (!Objects.equals(this.descricao, other.descricao)) {
             return false;
         }
-        if ((this.credor == null) ? (other.credor != null) : !this.credor.equals(other.credor)) {
+        if (!Objects.equals(this.credor, other.credor)) {
             return false;
         }
-        if (Double.doubleToLongBits(this.valor) != Double.doubleToLongBits(other.valor)) {
+        if (!Objects.equals(this.valor, other.valor)) {
             return false;
         }
-        if (this.lancamento != other.lancamento && (this.lancamento == null || !this.lancamento.equals(other.lancamento))) {
+        if (!Objects.equals(this.lancamento, other.lancamento)) {
             return false;
         }
         return true;
     }
 
-    @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 97 * hash + (this.descricao != null ? this.descricao.hashCode() : 0);
-        hash = 97 * hash + (this.credor != null ? this.credor.hashCode() : 0);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.valor) ^ (Double.doubleToLongBits(this.valor) >>> 32));
-        hash = 97 * hash + (this.lancamento != null ? this.lancamento.hashCode() : 0);
+        hash = 29 * hash + this.id;
+        hash = 29 * hash + Objects.hashCode(this.descricao);
+        hash = 29 * hash + Objects.hashCode(this.credor);
+        hash = 29 * hash + Objects.hashCode(this.valor);
+        hash = 29 * hash + Objects.hashCode(this.lancamento);
         return hash;
     }
-    
-    private long id;
-    private String descricao;
-    private String credor;
-    private double valor;
-    private Date lancamento;    
 }

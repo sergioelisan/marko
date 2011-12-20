@@ -15,15 +15,13 @@ public interface IProduto {
 
     public ArrayList<Produto> listarProdutos();
 
-    public void addProduto(Produto produto) throws Exception;
+    public void inserirProduto(Produto produto) throws Exception;
 
-    public void rmProduto(int id);
+    public void removerProduto(int id);
 
-    public void updateProduto(Produto produto) throws Exception;
+    public void atualizarProduto(Produto produto) throws Exception;
 
-    public Produto buscaProduto(int codigo);
+    public Produto buscarProdutoID(int id);
 
-    public Produto buscaProduto(String nome) throws Exception;
-
-    public ArrayList<Produto> buscaProdutos(Date validade);
+    public Produto buscarProdutoNome(String nome) throws Exception;
 }

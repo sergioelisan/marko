@@ -4,10 +4,15 @@
  */
 package br.ufrpe.bcc.ibusiness.item;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Wolf
  */
 public interface IItem {
-    
+
+    public ArrayList<Item> listarItens();
+
+    public void inserirItem(ArrayList<Item> itens) throws Exception;
 }
