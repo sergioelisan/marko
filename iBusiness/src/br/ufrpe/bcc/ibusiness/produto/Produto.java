@@ -2,6 +2,7 @@ package br.ufrpe.bcc.ibusiness.produto;
 
 import br.ufrpe.bcc.ibusiness.fornecedor.Fornecedor;
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -9,19 +10,16 @@ import java.util.Date;
  */
 public class Produto {
 
-    public Produto() {
-    }
+    private int id;
+    private String nome;
+    private String descricao;
+    private int estocado;
+    private Date compra;
+    private Date vencimento;
+    private double precoCompra;
+    private double precoVenda;
 
-    public Produto(String nome, String descricao, Fornecedor fornecedor, int estocado, int disponivel, Date compra, Date vencimento, double precoCompra, double precoVenda) {
-        this.nome = nome;
-        this.descricao = descricao;
-        this.fornecedor = fornecedor;
-        this.estocado = estocado;
-        this.disponivel = disponivel;
-        this.compra = compra;
-        this.vencimento = vencimento;
-        this.precoCompra = precoCompra;
-        this.precoVenda = precoVenda;
+    public Produto() {
     }
 
     public Date getCompra() {
@@ -40,14 +38,6 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public int getDisponivel() {
-        return disponivel;
-    }
-
-    public void setDisponivel(int disponivel) {
-        this.disponivel = disponivel;
-    }
-
     public int getEstocado() {
         return estocado;
     }
@@ -56,19 +46,11 @@ public class Produto {
         this.estocado = estocado;
     }
 
-    public Fornecedor getFornecedor() {
-        return fornecedor;
-    }
-
-    public void setFornecedor(Fornecedor fornecedor) {
-        this.fornecedor = fornecedor;
-    }
-
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -104,7 +86,6 @@ public class Produto {
         this.vencimento = vencimento;
     }
 
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -116,25 +97,19 @@ public class Produto {
         if (this.id != other.id) {
             return false;
         }
-        if ((this.nome == null) ? (other.nome != null) : !this.nome.equals(other.nome)) {
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        if ((this.descricao == null) ? (other.descricao != null) : !this.descricao.equals(other.descricao)) {
-            return false;
-        }
-        if (this.fornecedor != other.fornecedor && (this.fornecedor == null || !this.fornecedor.equals(other.fornecedor))) {
+        if (!Objects.equals(this.descricao, other.descricao)) {
             return false;
         }
         if (this.estocado != other.estocado) {
             return false;
         }
-        if (this.disponivel != other.disponivel) {
+        if (!Objects.equals(this.compra, other.compra)) {
             return false;
         }
-        if (this.compra != other.compra && (this.compra == null || !this.compra.equals(other.compra))) {
-            return false;
-        }
-        if (this.vencimento != other.vencimento && (this.vencimento == null || !this.vencimento.equals(other.vencimento))) {
+        if (!Objects.equals(this.vencimento, other.vencimento)) {
             return false;
         }
         if (Double.doubleToLongBits(this.precoCompra) != Double.doubleToLongBits(other.precoCompra)) {
@@ -146,30 +121,16 @@ public class Produto {
         return true;
     }
 
-    @Override
     public int hashCode() {
         int hash = 7;
-        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 97 * hash + (this.nome != null ? this.nome.hashCode() : 0);
-        hash = 97 * hash + (this.descricao != null ? this.descricao.hashCode() : 0);
-        hash = 97 * hash + (this.fornecedor != null ? this.fornecedor.hashCode() : 0);
-        hash = 97 * hash + this.estocado;
-        hash = 97 * hash + this.disponivel;
-        hash = 97 * hash + (this.compra != null ? this.compra.hashCode() : 0);
-        hash = 97 * hash + (this.vencimento != null ? this.vencimento.hashCode() : 0);
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.precoCompra) ^ (Double.doubleToLongBits(this.precoCompra) >>> 32));
-        hash = 97 * hash + (int) (Double.doubleToLongBits(this.precoVenda) ^ (Double.doubleToLongBits(this.precoVenda) >>> 32));
+        hash = 59 * hash + this.id;
+        hash = 59 * hash + Objects.hashCode(this.nome);
+        hash = 59 * hash + Objects.hashCode(this.descricao);
+        hash = 59 * hash + this.estocado;
+        hash = 59 * hash + Objects.hashCode(this.compra);
+        hash = 59 * hash + Objects.hashCode(this.vencimento);
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.precoCompra) ^ (Double.doubleToLongBits(this.precoCompra) >>> 32));
+        hash = 59 * hash + (int) (Double.doubleToLongBits(this.precoVenda) ^ (Double.doubleToLongBits(this.precoVenda) >>> 32));
         return hash;
     }
-    
-    private long id;
-    private String nome;
-    private String descricao;
-    private Fornecedor fornecedor;
-    private int estocado;
-    private int disponivel;
-    private Date compra;
-    private Date vencimento;
-    private double precoCompra;
-    private double precoVenda;
 }

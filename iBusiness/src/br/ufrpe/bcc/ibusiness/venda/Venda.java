@@ -2,8 +2,10 @@ package br.ufrpe.bcc.ibusiness.venda;
 
 import br.ufrpe.bcc.ibusiness.cliente.Cliente;
 import br.ufrpe.bcc.ibusiness.funcionario.Funcionario;
+import br.ufrpe.bcc.ibusiness.item.Item;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.Objects;
 
 /**
  *
@@ -11,14 +13,13 @@ import java.util.Set;
  */
 public class Venda {
 
-    public Venda() {
-    }
+    private int id;
+    private Date horario;
+    private Cliente cliente;
+    private ArrayList<Item> itens;
+    private Funcionario funcionario;
 
-    public Venda(Date horario, Funcionario funcionario, Cliente cliente, Set<Item> item) {
-        this.horario = horario;
-        this.funcionario = funcionario;
-        this.cliente = cliente;
-        this.item = item;
+    public Venda() {
     }
 
     public Cliente getCliente() {
@@ -29,6 +30,14 @@ public class Venda {
         this.cliente = cliente;
     }
 
+    public Funcionario getFuncionario() {
+        return funcionario;
+    }
+
+    public void setFuncionario(Funcionario funcionario) {
+        this.funcionario = funcionario;
+    }
+
     public Date getHorario() {
         return horario;
     }
@@ -37,37 +46,22 @@ public class Venda {
         this.horario = horario;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public Set<Item> getItem() {
-        return item;
+    public ArrayList<Item> getItens() {
+        return itens;
     }
 
-    public void setItem(Set<Item> item) {
-        this.item = item;
-    }
-    
-    /**
-     * @return the funcionario
-     */
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public void setItens(ArrayList<Item> itens) {
+        this.itens = itens;
     }
 
-    /**
-     * @param funcionario the funcionario to set
-     */
-    public void setFuncionario(Funcionario funcionario) {
-        this.funcionario = funcionario;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -79,32 +73,28 @@ public class Venda {
         if (this.id != other.id) {
             return false;
         }
-        if (this.horario != other.horario && (this.horario == null || !this.horario.equals(other.horario))) {
+        if (!Objects.equals(this.horario, other.horario)) {
             return false;
         }
-        if (this.cliente != other.cliente && (this.cliente == null || !this.cliente.equals(other.cliente))) {
+        if (!Objects.equals(this.cliente, other.cliente)) {
             return false;
         }
-        if (this.item != other.item && (this.item == null || !this.item.equals(other.item))) {
+        if (!Objects.equals(this.itens, other.itens)) {
+            return false;
+        }
+        if (!Objects.equals(this.funcionario, other.funcionario)) {
             return false;
         }
         return true;
     }
 
-    @Override
     public int hashCode() {
         int hash = 5;
-        hash = 97 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 97 * hash + (this.horario != null ? this.horario.hashCode() : 0);
-        hash = 97 * hash + (this.cliente != null ? this.cliente.hashCode() : 0);
-        hash = 97 * hash + (this.item != null ? this.item.hashCode() : 0);
+        hash = 47 * hash + this.id;
+        hash = 47 * hash + Objects.hashCode(this.horario);
+        hash = 47 * hash + Objects.hashCode(this.cliente);
+        hash = 47 * hash + Objects.hashCode(this.itens);
+        hash = 47 * hash + Objects.hashCode(this.funcionario);
         return hash;
     }
-    private long id;
-    private Date horario;
-    private Cliente cliente;
-    private Funcionario funcionario;
-    private Set<Item> item;
-
-    
 }

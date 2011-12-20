@@ -4,8 +4,7 @@
  */
 package br.ufrpe.bcc.ibusiness.funcionario;
 
-import br.ufrpe.bcc.ibusiness.util.CPF;
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -13,15 +12,15 @@ import java.util.List;
  */
 public interface IFuncionario {
 
-    List<Funcionario> listarFuncionarios();
+    public ArrayList<Funcionario> listarFuncionarios();
 
-    void addFuncionario(Funcionario funcionario) throws Exception;
+    public void inserirFuncionario(Funcionario funcionario) throws Exception;
 
-    void rmFuncionario(Funcionario funcionario);
+    public void removerFuncionario(int id);
 
-    void updateFuncionario(Funcionario funcionario) throws Exception;
+    public void atualizarFuncionario(Funcionario funcionario) throws Exception;
 
-    Funcionario buscaFuncionario(CPF cpf) throws Exception;
+    public Funcionario buscarFuncionarioCPF(String cpf) throws Exception;
 
-    Funcionario buscaFuncionario(String nome) throws Exception;
+    public Funcionario buscarFuncionarioNoe(String nome) throws Exception;
 }

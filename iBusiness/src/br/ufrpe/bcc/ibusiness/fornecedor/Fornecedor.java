@@ -1,8 +1,6 @@
 package br.ufrpe.bcc.ibusiness.fornecedor;
 
-import br.ufrpe.bcc.ibusiness.util.CNPJ;
-import br.ufrpe.bcc.ibusiness.produto.Produto;
-import java.util.Set;
+import java.util.Objects;
 
 /**
  *
@@ -10,24 +8,22 @@ import java.util.Set;
  */
 public class Fornecedor {
 
+    private int id;
+    private String razao;
+    private String cnpj;
+    private String endereco;
+    private String fone;
+    private String fax;
+    private String representante;
+
     public Fornecedor() {
     }
 
-    public Fornecedor(String razao, CNPJ cnpj, String endereco, String fone, String fax, String representante, Set<Produto> produtos) {
-        this.razao = razao;
-        this.cnpj = cnpj;
-        this.endereco = endereco;
-        this.fone = fone;
-        this.fax = fax;
-        this.representante = representante;
-        this.produtos = produtos;
-    }
-
-    public CNPJ getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
 
-    public void setCnpj(CNPJ cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
 
@@ -55,20 +51,12 @@ public class Fornecedor {
         this.fone = fone;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
-    }
-
-    public Set<Produto> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(Set<Produto> produtos) {
-        this.produtos = produtos;
     }
 
     public String getRazao() {
@@ -87,7 +75,6 @@ public class Fornecedor {
         this.representante = representante;
     }
 
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -99,51 +86,36 @@ public class Fornecedor {
         if (this.id != other.id) {
             return false;
         }
-        if ((this.razao == null) ? (other.razao != null) : !this.razao.equals(other.razao)) {
+        if (!Objects.equals(this.razao, other.razao)) {
             return false;
         }
-        if ((this.cnpj == null) ? (other.cnpj != null) : !this.cnpj.equals(other.cnpj)) {
+        if (!Objects.equals(this.cnpj, other.cnpj)) {
             return false;
         }
-        if ((this.endereco == null) ? (other.endereco != null) : !this.endereco.equals(other.endereco)) {
+        if (!Objects.equals(this.endereco, other.endereco)) {
             return false;
         }
-        if ((this.fone == null) ? (other.fone != null) : !this.fone.equals(other.fone)) {
+        if (!Objects.equals(this.fone, other.fone)) {
             return false;
         }
-        if ((this.fax == null) ? (other.fax != null) : !this.fax.equals(other.fax)) {
+        if (!Objects.equals(this.fax, other.fax)) {
             return false;
         }
-        if ((this.representante == null) ? (other.representante != null) : !this.representante.equals(other.representante)) {
-            return false;
-        }
-        if (this.produtos != other.produtos && (this.produtos == null || !this.produtos.equals(other.produtos))) {
+        if (!Objects.equals(this.representante, other.representante)) {
             return false;
         }
         return true;
     }
 
-    @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 53 * hash + (int) (this.id ^ (this.id >>> 32));
-        hash = 53 * hash + (this.razao != null ? this.razao.hashCode() : 0);
-        hash = 53 * hash + (this.cnpj != null ? this.cnpj.hashCode() : 0);
-        hash = 53 * hash + (this.endereco != null ? this.endereco.hashCode() : 0);
-        hash = 53 * hash + (this.fone != null ? this.fone.hashCode() : 0);
-        hash = 53 * hash + (this.fax != null ? this.fax.hashCode() : 0);
-        hash = 53 * hash + (this.representante != null ? this.representante.hashCode() : 0);
-        hash = 53 * hash + (this.produtos != null ? this.produtos.hashCode() : 0);
+        int hash = 5;
+        hash = 59 * hash + this.id;
+        hash = 59 * hash + Objects.hashCode(this.razao);
+        hash = 59 * hash + Objects.hashCode(this.cnpj);
+        hash = 59 * hash + Objects.hashCode(this.endereco);
+        hash = 59 * hash + Objects.hashCode(this.fone);
+        hash = 59 * hash + Objects.hashCode(this.fax);
+        hash = 59 * hash + Objects.hashCode(this.representante);
         return hash;
     }
-    
-    private long id;
-    private String razao;
-    private CNPJ cnpj;
-    private String endereco;
-    private String fone;
-    private String fax;
-    private String representante;
-    private Set<Produto> produtos;
-    
 }

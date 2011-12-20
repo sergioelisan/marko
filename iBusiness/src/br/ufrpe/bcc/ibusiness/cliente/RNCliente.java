@@ -24,13 +24,13 @@ public class RNCliente implements ICliente {
         //Verifica se o nome do cliente não está vazio
         if (!cliente.getNome().trim().equals("")) {
             //Verifica se o CPF é válido
-            if (validarCPF(cliente.getCpf().getCpf())) {
+            if (validarCPF(cliente.getCpf())) {
                 //Verificar se o endereço não está vazio
                 if (!cliente.getEndereco().trim().equals("")) {
                     //Verifica se o telefone é válido: (00)0000-0000
-                    if (cliente.getFone().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
+                    if (cliente.getTelefone().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
                         //Verifica se o celular é válido: (00)0000-0000
-                        if (cliente.getCel().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
+                        if (cliente.getCelular().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
                             //Verfica se o e-mail é válido: x@x.x
                             if (cliente.getEmail().matches("\\w+@\\w+.\\w+")) {
                                 DAOCliente dao = new DAOCliente();
@@ -66,13 +66,13 @@ public class RNCliente implements ICliente {
         //Verifica se o nome do cliente não está vazio
         if (!cliente.getNome().trim().equals("")) {
             //Verifica se o CPF é válido
-            if (validarCPF(cliente.getCpf().getCpf())) {
+            if (validarCPF(cliente.getCpf())) {
                 //Verificar se o endereço não está vazio
                 if (!cliente.getEndereco().trim().equals("")) {
                     //Verifica se o telefone é válido: (00)0000-0000
-                    if (cliente.getFone().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
+                    if (cliente.getTelefone().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
                         //Verifica se o celular é válido: (00)0000-0000
-                        if (cliente.getCel().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
+                        if (cliente.getCelular().matches("(\\d\\d)\\d\\d\\d\\d\\-\\d\\d\\d\\d")) {
                             //Verfica se o e-mail é válido: x@x.x
                             if (cliente.getEmail().matches("\\w+@\\w+.\\w+")) {
                                 DAOCliente dao = new DAOCliente();

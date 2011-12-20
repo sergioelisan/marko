@@ -1,6 +1,7 @@
 package br.ufrpe.bcc.ibusiness.item;
 
 import br.ufrpe.bcc.ibusiness.produto.Produto;
+import java.util.Objects;
 
 /**
  *
@@ -8,13 +9,10 @@ import br.ufrpe.bcc.ibusiness.produto.Produto;
  */
 public class Item {
 
-    public Item() {
-    }
+    private int quantidade;
+    private Produto produto;
 
-    public Item(Produto produto, int quantidade, double valor) {
-        this.produto = produto;
-        this.quantidade = quantidade;
-        this.valor = valor;
+    public Item() {
     }
 
     public Produto getProduto() {
@@ -33,15 +31,6 @@ public class Item {
         this.quantidade = quantidade;
     }
 
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (obj == null) {
             return false;
@@ -50,28 +39,19 @@ public class Item {
             return false;
         }
         final Item other = (Item) obj;
-        if (this.produto != other.produto && (this.produto == null || !this.produto.equals(other.produto))) {
-            return false;
-        }
         if (this.quantidade != other.quantidade) {
             return false;
         }
-        if (Double.doubleToLongBits(this.valor) != Double.doubleToLongBits(other.valor)) {
+        if (!Objects.equals(this.produto, other.produto)) {
             return false;
         }
         return true;
     }
 
-    @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 47 * hash + (this.produto != null ? this.produto.hashCode() : 0);
-        hash = 47 * hash + this.quantidade;
-        hash = 47 * hash + (int) (Double.doubleToLongBits(this.valor) ^ (Double.doubleToLongBits(this.valor) >>> 32));
+        int hash = 3;
+        hash = 73 * hash + this.quantidade;
+        hash = 73 * hash + Objects.hashCode(this.produto);
         return hash;
     }
-
-    private Produto produto;
-    private int quantidade;
-    private double valor;
 }
