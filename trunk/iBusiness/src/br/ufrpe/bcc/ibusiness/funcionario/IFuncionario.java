@@ -19,8 +19,4 @@ public interface IFuncionario {
     public void removerFuncionario(int id);
 
     public void atualizarFuncionario(Funcionario funcionario) throws Exception;
-
-    public Funcionario buscarFuncionarioCPF(String cpf);
-
-    public Funcionario buscarFuncionarioNome(String nome);
 }
