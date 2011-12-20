@@ -30,9 +30,7 @@ public class RhUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btQuit = new javax.swing.JLabel();
         btHelp = new javax.swing.JLabel();
-        btOptions = new javax.swing.JLabel();
         lbPanel = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextField6 = new javax.swing.JTextField();
@@ -51,25 +49,16 @@ public class RhUI extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        btOptions = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(64, 128, 128));
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1024, 620));
         setPreferredSize(new java.awt.Dimension(1024, 620));
 
-        btQuit.setBackground(new java.awt.Color(66, 112, 181));
-        btQuit.setFont(new java.awt.Font("Roboto", 1, 24));
-        btQuit.setForeground(new java.awt.Color(255, 255, 255));
-        btQuit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btQuit.setText("X");
-        btQuit.setMaximumSize(new java.awt.Dimension(38, 38));
-        btQuit.setMinimumSize(new java.awt.Dimension(38, 38));
-        btQuit.setOpaque(true);
-        btQuit.setPreferredSize(new java.awt.Dimension(38, 38));
-
-        btHelp.setBackground(new java.awt.Color(66, 112, 181));
+        btHelp.setBackground(new java.awt.Color(255, 255, 255));
         btHelp.setFont(new java.awt.Font("Roboto", 1, 24));
-        btHelp.setForeground(new java.awt.Color(255, 255, 255));
+        btHelp.setForeground(new java.awt.Color(64, 128, 128));
         btHelp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btHelp.setText("?");
         btHelp.setMaximumSize(new java.awt.Dimension(38, 38));
@@ -77,16 +66,8 @@ public class RhUI extends javax.swing.JPanel {
         btHelp.setOpaque(true);
         btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
 
-        btOptions.setBackground(new java.awt.Color(66, 112, 181));
-        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
-        btOptions.setForeground(new java.awt.Color(255, 255, 255));
-        btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btOptions.setMaximumSize(new java.awt.Dimension(38, 38));
-        btOptions.setMinimumSize(new java.awt.Dimension(38, 38));
-        btOptions.setOpaque(true);
-        btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
-
-        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36));
+        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36)); // NOI18N
+        lbPanel.setForeground(new java.awt.Color(255, 255, 255));
         lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPanel.setText("Funcionários");
 
@@ -229,6 +210,16 @@ public class RhUI extends javax.swing.JPanel {
         jLabel6.setIconTextGap(15);
         jLabel6.setOpaque(true);
 
+        btOptions.setBackground(new java.awt.Color(255, 204, 0));
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions.setForeground(new java.awt.Color(255, 255, 255));
+        btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
+        btOptions.setMaximumSize(new java.awt.Dimension(38, 38));
+        btOptions.setMinimumSize(new java.awt.Dimension(38, 38));
+        btOptions.setOpaque(true);
+        btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -246,12 +237,10 @@ public class RhUI extends javax.swing.JPanel {
                         .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 592, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 636, Short.MAX_VALUE)
                         .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -268,15 +257,13 @@ public class RhUI extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btOptions, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btQuit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btHelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbPanel)
-                            .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -300,7 +287,6 @@ public class RhUI extends javax.swing.JPanel {
     private javax.swing.JLabel btHelp;
     private javax.swing.JLabel btOptions;
     private javax.swing.JLabel btOptions1;
-    private javax.swing.JLabel btQuit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
