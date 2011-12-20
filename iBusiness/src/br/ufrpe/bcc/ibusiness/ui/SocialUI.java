@@ -30,21 +30,89 @@ public class SocialUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        jPopupMenu1 = new javax.swing.JPopupMenu();
+        btOptions1 = new javax.swing.JLabel();
+        lbPanel = new javax.swing.JLabel();
+        btOptions = new javax.swing.JLabel();
+        btHelp = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(64, 128, 128));
         setMinimumSize(new java.awt.Dimension(1024, 620));
         setPreferredSize(new java.awt.Dimension(1024, 620));
+
+        btOptions1.setBackground(new java.awt.Color(153, 0, 153));
+        btOptions1.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions1.setForeground(new java.awt.Color(255, 255, 255));
+        btOptions1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btOptions1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/casinha.png"))); // NOI18N
+        btOptions1.setMaximumSize(new java.awt.Dimension(38, 38));
+        btOptions1.setMinimumSize(new java.awt.Dimension(38, 38));
+        btOptions1.setOpaque(true);
+        btOptions1.setPreferredSize(new java.awt.Dimension(38, 38));
+
+        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36));
+        lbPanel.setForeground(new java.awt.Color(255, 255, 255));
+        lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPanel.setText("Social");
+
+        btOptions.setBackground(new java.awt.Color(255, 204, 0));
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions.setForeground(new java.awt.Color(255, 255, 255));
+        btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
+        btOptions.setMaximumSize(new java.awt.Dimension(38, 38));
+        btOptions.setMinimumSize(new java.awt.Dimension(38, 38));
+        btOptions.setOpaque(true);
+        btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
+
+        btHelp.setBackground(new java.awt.Color(255, 255, 255));
+        btHelp.setFont(new java.awt.Font("Roboto", 1, 24));
+        btHelp.setForeground(new java.awt.Color(64, 128, 128));
+        btHelp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btHelp.setText("?");
+        btHelp.setMaximumSize(new java.awt.Dimension(38, 38));
+        btHelp.setMinimumSize(new java.awt.Dimension(38, 38));
+        btHelp.setOpaque(true);
+        btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 824, Short.MAX_VALUE)
+                        .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lbPanel, javax.swing.GroupLayout.Alignment.TRAILING, 0, 0, Short.MAX_VALUE)
+                    .addComponent(btOptions1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(571, 571, 571))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btHelp, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
+                .addGap(582, 582, 582))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(582, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btHelp;
+    private javax.swing.JLabel btOptions;
+    private javax.swing.JLabel btOptions1;
+    private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JLabel lbPanel;
     // End of variables declaration//GEN-END:variables
 }

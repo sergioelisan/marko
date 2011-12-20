@@ -30,21 +30,85 @@ public class ReportUI extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        btOptions2 = new javax.swing.JLabel();
+        btHelp = new javax.swing.JLabel();
+        btOptions = new javax.swing.JLabel();
+        lbPanel = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(64, 128, 128));
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1024, 620));
+
+        btOptions2.setBackground(new java.awt.Color(153, 0, 153));
+        btOptions2.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions2.setForeground(new java.awt.Color(255, 255, 255));
+        btOptions2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btOptions2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/casinha.png"))); // NOI18N
+        btOptions2.setMaximumSize(new java.awt.Dimension(38, 38));
+        btOptions2.setMinimumSize(new java.awt.Dimension(38, 38));
+        btOptions2.setOpaque(true);
+        btOptions2.setPreferredSize(new java.awt.Dimension(38, 38));
+
+        btHelp.setBackground(new java.awt.Color(255, 255, 255));
+        btHelp.setFont(new java.awt.Font("Roboto", 1, 24));
+        btHelp.setForeground(new java.awt.Color(64, 128, 128));
+        btHelp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btHelp.setText("?");
+        btHelp.setMaximumSize(new java.awt.Dimension(38, 38));
+        btHelp.setMinimumSize(new java.awt.Dimension(38, 38));
+        btHelp.setOpaque(true);
+        btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
+
+        btOptions.setBackground(new java.awt.Color(255, 204, 0));
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions.setForeground(new java.awt.Color(255, 255, 255));
+        btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
+        btOptions.setMaximumSize(new java.awt.Dimension(38, 38));
+        btOptions.setMinimumSize(new java.awt.Dimension(38, 38));
+        btOptions.setOpaque(true);
+        btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
+
+        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36));
+        lbPanel.setForeground(new java.awt.Color(255, 255, 255));
+        lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbPanel.setText("Relatórios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1024, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btOptions2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 708, Short.MAX_VALUE)
+                .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 620, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbPanel, 0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btOptions2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btHelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(571, 571, 571))
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel btHelp;
+    private javax.swing.JLabel btOptions;
+    private javax.swing.JLabel btOptions2;
+    private javax.swing.JLabel lbPanel;
     // End of variables declaration//GEN-END:variables
 }
