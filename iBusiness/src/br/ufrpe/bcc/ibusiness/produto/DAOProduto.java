@@ -1,11 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufrpe.bcc.ibusiness.produto;
 
-import java.util.ArrayList;
-import java.util.Date;
+import br.ufrpe.bcc.ibusiness.database.Conexao;
+import br.ufrpe.bcc.ibusiness.database.DAOUtil;
+import java.util.*;
+import java.sql.*;
 
 /**
  *
@@ -15,8 +13,12 @@ class DAOProduto implements IProduto{
 
     private Connection conexao;
 
-    public DAOFornecedor() throws ClassNotFoundException {
-        this.conexao = new Conexao().conectar();
+    public DAOProduto() {
+        try {
+            this.conexao = new Conexao().conectar();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
@@ -32,15 +34,15 @@ class DAOProduto implements IProduto{
 
             while (rs.next()) {
                 Produto produto = new Produto();
+                
+                produto.setId(rs.getInt("CODIGO"));
                 produto.setNome(rs.getString("NOME"));
                 produto.setDescricao(rs.getString("DESCRICAO"));
-                produto.setFornecedor(new Fornecedor(rs.getInt("FORNECEDOR")) );
-                produto.setEstocado(rs.getInt("ESTOCADO"));
-                produto.setDisponivel(rs.getInt("DISPONIVEL"));
-                produto.setCompra(rs.getDate("COMPRA"));
+                produto.setEstocado(rs.getInt("QUANTIDADE"));
+                produto.setCompra(rs.getDate("DATA_DE_COMPRA"));
                 produto.setVencimento(rs.getDate("VENCIMENTO"));
-                produto.setPrecoCompra(rs.getInt("PRECO_VENDA"));
-                produto.setPrecoVenda(rs.getInt("PRECO_COMPRA"));
+                produto.setPrecoCompra(rs.getDouble("PRECO_DE_VENDA"));
+                produto.setPrecoVenda(rs.getDouble("PRECO_DE_COMPRA"));
                                 
                 produtos.add(produto);
             }
@@ -61,14 +63,19 @@ class DAOProduto implements IProduto{
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDescricao());
-            stmt.setInt(3, produto.getFornecedor().getId());
             stmt.setInt(4, produto.getEstocado());
-            stmt.setInt(5, produto.getDisponivel());
-            stmt.setDate(6, produto.getCompra());
-            stmt.setDate(7, produto.getVencimento());
-            stmt.setDouble(8, produto.getPrecoCompra());
-            stmt.setDouble(9, produto.getPrecoVenda());
-
+            
+            java.util.Date utilDataCompra = produto.getCompra();
+            java.sql.Date sqlDataCompra = new java.sql.Date(utilDataCompra.getTime());
+            stmt.setDate(5, sqlDataCompra);
+            
+            java.util.Date utilDataVencimento = produto.getVencimento();
+            java.sql.Date sqlDataVencimento = new java.sql.Date(utilDataVencimento.getTime());
+            stmt.setDate(6, sqlDataVencimento);
+            
+            stmt.setDouble(7, produto.getPrecoCompra());
+            stmt.setDouble(8, produto.getPrecoVenda());
+            
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -76,10 +83,10 @@ class DAOProduto implements IProduto{
         }
     }
 
-    public void removerProduto(Produto produto) {
+    public void removerProduto(int id) {
         String sql = DAOUtil.getQuery("produto.delete");
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setLong(1, produto.getId());
+            stmt.setLong(1, id);
             stmt.executeUpdate();
         } catch (SQLException e) {
             throw DAOUtil.exception(e, "Problemas ao remover um produto no banco");
@@ -90,20 +97,24 @@ class DAOProduto implements IProduto{
      * Altera os fornecedores do banco
      * @param fornecedor 
      */
-    public void updateProduto(Produto produto) {
+    public void atualizarProduto(Produto produto) {
         String sql = DAOUtil.getQuery("produto.update");
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDescricao());
-            stmt.setInt(3, produto.getFornecedor().getId());
             stmt.setInt(4, produto.getEstocado());
-            stmt.setInt(5, produto.getDisponivel());
-            stmt.setDate(6, produto.getCompra());
-            stmt.setDate(7, produto.getVencimento());
-            stmt.setDouble(8, produto.getPrecoCompra());
-            stmt.setDouble(9, produto.getPrecoVenda());
-
+            java.util.Date utilDataCompra = produto.getCompra();
+            java.sql.Date sqlDataCompra = new java.sql.Date(utilDataCompra.getTime());
+            stmt.setDate(5, sqlDataCompra);
+            
+            java.util.Date utilDataVencimento = produto.getVencimento();
+            java.sql.Date sqlDataVencimento = new java.sql.Date(utilDataVencimento.getTime());
+            stmt.setDate(6, sqlDataVencimento);
+            
+            stmt.setDouble(7, produto.getPrecoCompra());
+            stmt.setDouble(8, produto.getPrecoVenda());
+            
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -111,23 +122,22 @@ class DAOProduto implements IProduto{
         }
     }
 
-    public Produto buscaProduto(Int id) {
+    public Produto buscarProdutoID(int id) {
         String sql = DAOUtil.getQuery("produto.codigo");
         Produto produto = new Produto();
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setString(1, id);
+            stmt.setInt(1, id);
             
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                produto.setId(rs.getInt("CODIGO"));
                 produto.setNome(rs.getString("NOME"));
-                produto.setDescricao(rs.getString("RAZAO_SOCIAL"));
-                produto.setFornecedor(new Fornecedor(rs.getInt("FORNECEDOR")) );
-                produto.setEstocado(rs.getInt("ESTOCADO"));
-                produto.setDisponivel(rs.getInt("DISPONIVEL"));
-                produto.setCompra(rs.getDate("COMPRA"));
+                produto.setDescricao(rs.getString("DESCRICAO"));
+                produto.setEstocado(rs.getInt("QUANTIDADE"));
+                produto.setCompra(rs.getDate("DATA_DE_COMPRA"));
                 produto.setVencimento(rs.getDate("VENCIMENTO"));
-                produto.setPrecoCompra(rs.getInt("PRECO_VENDA"));
-                produto.setPrecoVenda(rs.getInt("PRECO_COMPRA"));               
+                produto.setPrecoCompra(rs.getDouble("PRECO_DE_VENDA"));
+                produto.setPrecoVenda(rs.getDouble("PRECO_DE_COMPRA"));
             }
             
             rs.close();
@@ -137,4 +147,29 @@ class DAOProduto implements IProduto{
         }
     }
    
+    
+    public Produto buscarProdutoNome(String nome) {
+        String sql = DAOUtil.getQuery("produto.nome");
+        Produto produto = new Produto();
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, nome);
+            
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                produto.setId(rs.getInt("CODIGO"));
+                produto.setNome(rs.getString("NOME"));
+                produto.setDescricao(rs.getString("DESCRICAO"));
+                produto.setEstocado(rs.getInt("ESTOCADO"));
+                produto.setCompra(rs.getDate("COMPRA"));
+                produto.setVencimento(rs.getDate("VENCIMENTO"));
+                produto.setPrecoCompra(rs.getDouble("PRECO_VENDA"));
+                produto.setPrecoVenda(rs.getDouble("PRECO_COMPRA"));
+            }
+            
+            rs.close();
+            return produto;
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao buscar produto pelo nome");
+        }
+    }
 }
