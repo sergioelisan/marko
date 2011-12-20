@@ -47,17 +47,17 @@ public class StoqUI extends javax.swing.JPanel {
         jTextField7 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btQuit = new javax.swing.JLabel();
         btHelp = new javax.swing.JLabel();
-        btOptions = new javax.swing.JLabel();
         btOptions1 = new javax.swing.JLabel();
+        btOptions = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(64, 128, 128));
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1024, 620));
         setPreferredSize(new java.awt.Dimension(1024, 620));
 
-        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36));
+        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36)); // NOI18N
+        lbPanel.setForeground(new java.awt.Color(255, 255, 255));
         lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPanel.setText("Estoque");
 
@@ -190,34 +190,15 @@ public class StoqUI extends javax.swing.JPanel {
         jLabel3.setIconTextGap(15);
         jLabel3.setOpaque(true);
 
-        btQuit.setBackground(new java.awt.Color(66, 112, 181));
-        btQuit.setFont(new java.awt.Font("Roboto", 1, 24));
-        btQuit.setForeground(new java.awt.Color(255, 255, 255));
-        btQuit.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btQuit.setText("X");
-        btQuit.setMaximumSize(new java.awt.Dimension(38, 38));
-        btQuit.setMinimumSize(new java.awt.Dimension(38, 38));
-        btQuit.setOpaque(true);
-        btQuit.setPreferredSize(new java.awt.Dimension(38, 38));
-
-        btHelp.setBackground(new java.awt.Color(66, 112, 181));
-        btHelp.setFont(new java.awt.Font("Roboto", 1, 24));
-        btHelp.setForeground(new java.awt.Color(255, 255, 255));
+        btHelp.setBackground(new java.awt.Color(255, 255, 255));
+        btHelp.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btHelp.setForeground(new java.awt.Color(64, 128, 128));
         btHelp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btHelp.setText("?");
         btHelp.setMaximumSize(new java.awt.Dimension(38, 38));
         btHelp.setMinimumSize(new java.awt.Dimension(38, 38));
         btHelp.setOpaque(true);
         btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
-
-        btOptions.setBackground(new java.awt.Color(66, 112, 181));
-        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
-        btOptions.setForeground(new java.awt.Color(255, 255, 255));
-        btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btOptions.setMaximumSize(new java.awt.Dimension(38, 38));
-        btOptions.setMinimumSize(new java.awt.Dimension(38, 38));
-        btOptions.setOpaque(true);
-        btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
 
         btOptions1.setBackground(new java.awt.Color(66, 112, 181));
         btOptions1.setFont(new java.awt.Font("Roboto", 1, 24));
@@ -228,6 +209,16 @@ public class StoqUI extends javax.swing.JPanel {
         btOptions1.setMinimumSize(new java.awt.Dimension(38, 38));
         btOptions1.setOpaque(true);
         btOptions1.setPreferredSize(new java.awt.Dimension(38, 38));
+
+        btOptions.setBackground(new java.awt.Color(255, 204, 0));
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions.setForeground(new java.awt.Color(255, 255, 255));
+        btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
+        btOptions.setMaximumSize(new java.awt.Dimension(38, 38));
+        btOptions.setMinimumSize(new java.awt.Dimension(38, 38));
+        btOptions.setOpaque(true);
+        btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -254,31 +245,27 @@ public class StoqUI extends javax.swing.JPanel {
                         .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 697, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 741, Short.MAX_VALUE)
                 .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btQuit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btOptions, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btQuit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btHelp, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lbPanel))))
+                            .addComponent(lbPanel)))
+                    .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(313, 313, 313)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -303,7 +290,6 @@ public class StoqUI extends javax.swing.JPanel {
     private javax.swing.JLabel btHelp;
     private javax.swing.JLabel btOptions;
     private javax.swing.JLabel btOptions1;
-    private javax.swing.JLabel btQuit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
