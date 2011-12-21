@@ -7,7 +7,6 @@ package br.ufrpe.bcc.ibusiness.ui;
 
 import br.ufrpe.bcc.continuous.components.MagicScroll;
 import br.ufrpe.bcc.continuous.components.Tile;
-import br.ufrpe.bcc.continuous.util.GuiUtil;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,7 +16,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.text.DateFormat;
-import java.util.Calendar;
 import java.util.Date;
 import javax.swing.Timer;
 import javax.swing.ImageIcon;
@@ -186,39 +184,33 @@ public class Home extends javax.swing.JPanel {
         containerPanel.setOpaque(false);
         containerPanel.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 36));
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("home");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        lbData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbData.setFont(new java.awt.Font("Tahoma", 0, 14));
         lbData.setForeground(new java.awt.Color(255, 255, 255));
-        lbData.setText("data");
+        lbData.setText("loading...");
 
-        lbHora.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbHora.setFont(new java.awt.Font("Tahoma", 0, 24));
         lbHora.setForeground(new java.awt.Color(255, 255, 255));
-        lbHora.setText("hora");
+        lbHora.setText("carregando...");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
-                            .addComponent(btUp, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
-                            .addComponent(btDown, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbData))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lbHora)))
+                    .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                    .addComponent(btUp, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                    .addComponent(btDown, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                    .addComponent(lbData)
+                    .addComponent(lbHora))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -232,7 +224,7 @@ public class Home extends javax.swing.JPanel {
                 .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btDown)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addComponent(lbHora)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbData)

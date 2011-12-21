@@ -405,7 +405,7 @@ public class CostumerUI extends javax.swing.JPanel {
             }
         });
 
-        txtfone.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        txtfone.setFont(new java.awt.Font("Roboto", 0, 18));
         txtfone.setText("Fone");
         txtfone.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -498,7 +498,7 @@ public class CostumerUI extends javax.swing.JPanel {
 
         clientsPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
         clientsPane.setOpaque(false);
-        clientsPane.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
+        clientsPane.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 15));
 
         txtpesquisa.setFont(new java.awt.Font("Roboto", 2, 14));
         txtpesquisa.setText("Pesquisa");
