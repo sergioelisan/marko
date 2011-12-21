@@ -11,6 +11,9 @@ import java.util.*;
  */
 public class DAODespesa implements IDespesa {
 
+    /**
+     * Atributo de conexão
+     */
     private Connection conexao7;
 
     public DAODespesa() {
@@ -43,11 +46,10 @@ public class DAODespesa implements IDespesa {
 
             stmt.execute();
         } catch (SQLException e) {
-            throw DAOUtil.exception(e, "problemas ao adicionar um cliente ao banco");
+            throw DAOUtil.exception(e, "problemas ao adicionar uma despesa no banco");
         }
     }
 
-    ;
 
     /**
      * Remover uma Despesa
@@ -59,13 +61,13 @@ public class DAODespesa implements IDespesa {
             stmt.setLong(1, id);
             stmt.execute();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw DAOUtil.exception(e, "problemas ao remover uma despesa no banco");
         }
     }
 
     /**
      * Altera uma Despesa
-     * @param id
+     * @param despesa
      */
     public void atualizarDespesa(Despesa despesa) {
         String sql = DAOUtil.getQuery("despesa.update");
@@ -88,7 +90,7 @@ public class DAODespesa implements IDespesa {
 
             stmt.execute();
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw DAOUtil.exception(e, "problemas ao atualizar despesa");
         }
     }
 
@@ -124,13 +126,13 @@ public class DAODespesa implements IDespesa {
 
             return despesas;
         } catch (SQLException e) {
-            throw DAOUtil.exception(e, "problemas ao listar clientes");
+            throw DAOUtil.exception(e, "problemas ao listar despesa");
         }
     }
 
      /**
      * busca uma Despesa
-     * @param 
+     * @param id 
      */
     public Despesa buscarDespesa(int id) {
         String sql = DAOUtil.getQuery("despesa.buscar");
@@ -158,7 +160,7 @@ public class DAODespesa implements IDespesa {
             return despesa;
 
         } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Erro ao buscar pelo login do usuario");
+            throw DAOUtil.exception(e, "Erro ao buscar despesa");
         }
     }
 }
