@@ -59,27 +59,15 @@ public class DAOItem implements IItem{
     public void inserirItem(Produto produto) {
         String sql = DAOUtil.getQuery("item.insert");
 
-        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+        /*try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDescricao());
-            stmt.setInt(4, produto.getEstocado());
-            
-            java.util.Date utilDataCompra = produto.getCompra();
-            java.sql.Date sqlDataCompra = new java.sql.Date(utilDataCompra.getTime());
-            stmt.setDate(5, sqlDataCompra);
-            
-            java.util.Date utilDataVencimento = produto.getVencimento();
-            java.sql.Date sqlDataVencimento = new java.sql.Date(utilDataVencimento.getTime());
-            stmt.setDate(6, sqlDataVencimento);
-            
-            stmt.setDouble(7, produto.getPrecoCompra());
-            stmt.setDouble(8, produto.getPrecoVenda());
             
             stmt.executeUpdate();
 
         } catch (SQLException e) {
             throw DAOUtil.exception(e, "Problemas ao adicionar produto ao banco");
         }
-    }
+    }*/
     
 }
