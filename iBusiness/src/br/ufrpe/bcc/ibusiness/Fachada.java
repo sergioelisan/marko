@@ -209,22 +209,20 @@ public class Fachada implements ICliente, IDespesa, IFornecedor, IFuncionario, I
     public Venda buscarVendaId(int id) {
         RNVenda rn = new RNVenda();
         return rn.buscarVendaId(id);
-    }
-    
-    @Override
-    public Venda buscarVendaCliente(int id) {
-        RNVenda rn = new RNVenda();
-        return rn.buscarVendaId(id);
-    }
-    
-    @Override
-    public Venda buscarVendaFuncionario(int id) {
-        RNVenda rn = new RNVenda();
-        return rn.buscarVendaFuncionario(id);
-    }
+    }   
 
     @Override
     public Funcionario buscarFuncionarioNome(String nome) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public ArrayList<Venda> buscarVendaCliente(int id) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public ArrayList<Venda> buscarVendaFuncionario(int id) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
