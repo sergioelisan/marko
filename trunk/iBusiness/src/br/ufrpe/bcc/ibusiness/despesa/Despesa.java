@@ -50,6 +50,14 @@ public class Despesa {
     public void setLancamento(Date lancamento) {
         this.lancamento = lancamento;
     }
+    
+     public Date getVencimento() {
+        return vencimento;
+    }
+
+    public void setVencimento(Date vencimento) {
+        this.vencimento = vencimento;
+    }
 
     public Double getValor() {
         return valor;
@@ -59,13 +67,6 @@ public class Despesa {
         this.valor = valor;
     }
 
-    public Date getVencimento() {
-        return vencimento;
-    }
-
-    public void setVencimento(Date vencimento) {
-        this.vencimento = vencimento;
-    }
 
     public boolean equals(Object obj) {
         if (obj == null) {
