@@ -213,7 +213,7 @@ public class Fachada implements ICliente, IDespesa, IFornecedor, IFuncionario, I
 
     @Override
     public Funcionario buscarFuncionarioNome(String nome) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        return new DAOFuncionario().buscarFuncionarioNome(nome);
     }
 
     @Override

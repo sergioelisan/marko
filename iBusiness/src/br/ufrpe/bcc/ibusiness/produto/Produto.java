@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @author Serginho
  */
-public class Produto {
+public class Produto implements Comparable<Produto> {
 
     private int id;
     private String nome;
@@ -131,5 +131,10 @@ public class Produto {
         hash = 59 * hash + (int) (Double.doubleToLongBits(this.precoCompra) ^ (Double.doubleToLongBits(this.precoCompra) >>> 32));
         hash = 59 * hash + (int) (Double.doubleToLongBits(this.precoVenda) ^ (Double.doubleToLongBits(this.precoVenda) >>> 32));
         return hash;
+    }
+
+    @Override
+    public int compareTo(Produto o) {
+        return nome.compareTo(o.nome);
     }
 }

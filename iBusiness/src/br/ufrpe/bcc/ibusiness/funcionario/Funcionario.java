@@ -6,7 +6,7 @@ import java.util.Objects;
  *
  * @author Serginho
  */
-public class Funcionario {
+public class Funcionario implements Comparable<Funcionario> {
 
     private int id;
     private String login;
@@ -65,5 +65,10 @@ public class Funcionario {
         hash = 37 * hash + Objects.hashCode(this.login);
         hash = 37 * hash + Objects.hashCode(this.senha);
         return hash;
+    }
+
+    @Override
+    public int compareTo(Funcionario o) {
+        return login.compareTo(o.login);
     }
 }

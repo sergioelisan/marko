@@ -40,7 +40,7 @@ class DAOProduto implements IProduto {
                 produto.setDescricao(rs.getString("DESCRICAO"));
                 produto.setEstocado(rs.getInt("QUANTIDADE"));
 
-                java.sql.Date dataSql = rs.getDate("COMPRA");
+                java.sql.Date dataSql = rs.getDate("DATA_DE_COMPRA");
                 java.util.Date utilData = new Date(dataSql.getTime());
                 produto.setCompra(utilData);
 
@@ -49,7 +49,7 @@ class DAOProduto implements IProduto {
                 produto.setVencimento(utilData2);
 
                 produto.setPrecoVenda(rs.getDouble("CUSTO"));
-                produto.setPrecoCompra(rs.getDouble("PRECO_VENDA"));
+                produto.setPrecoCompra(rs.getDouble("PRECO_DE_VENDA"));
 
                 produtos.add(produto);
             }
@@ -133,27 +133,29 @@ class DAOProduto implements IProduto {
     public Produto buscarProdutoID(int id) {
         String sql = DAOUtil.getQuery("produto.codigo");
         Produto produto = new Produto();
+        
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setInt(1, id);
-
+            
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
+                produto.setId(rs.getInt("Codigo"));
                 produto.setNome(rs.getString("NOME"));
                 produto.setDescricao(rs.getString("DESCRICAO"));
                 produto.setEstocado(rs.getInt("QUANTIDADE"));
 
-                java.sql.Date dataSql = rs.getDate("COMPRA");
+                java.sql.Date dataSql = rs.getDate("DATA_DE_COMPRA");
                 java.util.Date utilData = new Date(dataSql.getTime());
                 produto.setCompra(utilData);
 
                 java.sql.Date dataSql2 = rs.getDate("VENCIMENTO");
                 java.util.Date utilData2 = new Date(dataSql2.getTime());
                 produto.setVencimento(utilData2);
-                produto.setPrecoCompra(rs.getDouble("PRECO_VENDA"));
-                produto.setPrecoVenda(rs.getDouble("PRECO_COMPRA"));
+                produto.setPrecoCompra(rs.getDouble("PRECO_DE_VENDA"));
+                produto.setPrecoVenda(rs.getDouble("CUSTO"));
             }
 
-            rs.close();
+            rs.close();            
             return produto;
         } catch (SQLException e) {
             throw DAOUtil.exception(e, "problemas ao buscar produto pelo id");
@@ -167,20 +169,21 @@ class DAOProduto implements IProduto {
             stmt.setString(1, nome);
 
             ResultSet rs = stmt.executeQuery();
-            while (rs.next()) {
+            while (rs.next()) {                
+                produto.setId(rs.getInt("Codigo"));
                 produto.setNome(rs.getString("NOME"));
                 produto.setDescricao(rs.getString("DESCRICAO"));
                 produto.setEstocado(rs.getInt("QUANTIDADE"));
 
-                java.sql.Date dataSql = rs.getDate("COMPRA");
+                java.sql.Date dataSql = rs.getDate("DATA_DE_COMPRA");
                 java.util.Date utilData = new Date(dataSql.getTime());
                 produto.setCompra(utilData);
 
                 java.sql.Date dataSql2 = rs.getDate("VENCIMENTO");
                 java.util.Date utilData2 = new Date(dataSql2.getTime());
                 produto.setVencimento(utilData2);
-                produto.setPrecoCompra(rs.getDouble("PRECO_VENDA"));
-                produto.setPrecoVenda(rs.getDouble("PRECO_COMPRA"));
+                produto.setPrecoCompra(rs.getDouble("PRECO_DE_VENDA"));
+                produto.setPrecoVenda(rs.getDouble("CUSTO"));
             }
 
             rs.close();
