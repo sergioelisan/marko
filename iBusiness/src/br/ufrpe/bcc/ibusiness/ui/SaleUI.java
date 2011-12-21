@@ -84,21 +84,21 @@ public class SaleUI extends javax.swing.JPanel {
         btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
 
         jLabel1.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 2, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 2, 12));
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("código do produto...");
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
         jLabel1.setOpaque(true);
 
         jLabel4.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel4.setFont(new java.awt.Font("Lucida Sans", 2, 12)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Lucida Sans", 2, 12));
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("descrição do produto...");
         jLabel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
         jLabel4.setOpaque(true);
 
         jTextField1.setBackground(new java.awt.Color(204, 204, 204));
-        jTextField1.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
+        jTextField1.setFont(new java.awt.Font("Lucida Sans", 1, 14));
         jTextField1.setForeground(new java.awt.Color(51, 51, 51));
         jTextField1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,14 +108,14 @@ public class SaleUI extends javax.swing.JPanel {
         });
 
         jLabel2.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel2.setFont(new java.awt.Font("Lucida Sans", 2, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Lucida Sans", 2, 12));
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("quantid...");
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
         jLabel2.setOpaque(true);
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Lucida Sans", 0, 14));
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Total:");
         jLabel3.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(51, 51, 51), 1, true));
@@ -130,10 +130,11 @@ public class SaleUI extends javax.swing.JPanel {
                 .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbPanel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 761, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 749, Short.MAX_VALUE)
                 .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12))
             .addGroup(layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -152,14 +153,11 @@ public class SaleUI extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(582, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btHelp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btOptions, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btOptions1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(103, 103, 103)

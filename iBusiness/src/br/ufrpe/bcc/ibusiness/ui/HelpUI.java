@@ -43,7 +43,7 @@ public class HelpUI extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1024, 620));
 
         btOptions.setBackground(new java.awt.Color(255, 204, 0));
-        btOptions.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
         btOptions.setForeground(new java.awt.Color(255, 255, 255));
         btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
@@ -53,7 +53,7 @@ public class HelpUI extends javax.swing.JPanel {
         btOptions.setPreferredSize(new java.awt.Dimension(38, 38));
 
         btOptions1.setBackground(new java.awt.Color(153, 0, 153));
-        btOptions1.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btOptions1.setFont(new java.awt.Font("Roboto", 1, 24));
         btOptions1.setForeground(new java.awt.Color(255, 255, 255));
         btOptions1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btOptions1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/casinha.png"))); // NOI18N
@@ -62,7 +62,7 @@ public class HelpUI extends javax.swing.JPanel {
         btOptions1.setOpaque(true);
         btOptions1.setPreferredSize(new java.awt.Dimension(38, 38));
 
-        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36)); // NOI18N
+        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36));
         lbPanel.setForeground(new java.awt.Color(255, 255, 255));
         lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPanel.setText("Ajuda");
@@ -85,8 +85,8 @@ public class HelpUI extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btOptions, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(lbPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 38, Short.MAX_VALUE)
-                    .addComponent(btOptions, javax.swing.GroupLayout.DEFAULT_SIZE, 38, Short.MAX_VALUE)
                     .addComponent(btOptions1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(571, 571, 571))
         );
