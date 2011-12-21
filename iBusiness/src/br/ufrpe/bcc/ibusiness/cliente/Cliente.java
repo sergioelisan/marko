@@ -6,7 +6,7 @@ import java.util.Objects;
  *
  * @author Serginho
  */
-public class Cliente {
+public class Cliente implements Comparable<Cliente> {
 
     private int id;
     private String nome;
@@ -117,5 +117,10 @@ public class Cliente {
         hash = 97 * hash + Objects.hashCode(this.celular);
         hash = 97 * hash + Objects.hashCode(this.email);
         return hash;
+    }
+
+    @Override
+    public int compareTo(Cliente o) {
+        return nome.compareTo(o.nome);
     }
 }

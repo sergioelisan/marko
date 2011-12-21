@@ -18,7 +18,7 @@ class DAOProduto implements IProduto {
      */
     private Connection conexao;
 
-    public DAOProduto() throws ClassNotFoundException {
+    public DAOProduto() {
         this.conexao = new Conexao().conectar();
     }
 

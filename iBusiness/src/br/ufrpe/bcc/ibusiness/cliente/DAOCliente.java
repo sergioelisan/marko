@@ -20,11 +20,7 @@ public class DAOCliente implements ICliente {
     private Connection conexao;
 
     public DAOCliente() {
-        try {
-            this.conexao = new Conexao().conectar();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        this.conexao = new Conexao().conectar();
     }
 
     /**
@@ -62,7 +58,7 @@ public class DAOCliente implements ICliente {
                 cliente.setId(rs.getInt("CODIGO"));
                 cliente.setNome(rs.getString("NOME"));
                 cliente.setCpf(rs.getString("CPF"));
-                cliente.setEndereco(rs.getString("ENDE"));
+                cliente.setEndereco(rs.getString("ENDERECO"));
                 cliente.setTelefone(rs.getString("FONE"));
                 cliente.setCelular(rs.getString("CEL"));
                 cliente.setEmail(rs.getString("EMAIL"));
@@ -120,6 +116,7 @@ public class DAOCliente implements ICliente {
         String sql = DAOUtil.getQuery("cliente.cpf");
         Cliente cliente = new Cliente();
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, cpf);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 cliente.setId(rs.getInt("CODIGO"));
@@ -146,6 +143,7 @@ public class DAOCliente implements ICliente {
         String sql = DAOUtil.getQuery("cliente.nome");
         Cliente cliente = new Cliente();
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, nome);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 cliente.setId(rs.getInt("CODIGO"));
@@ -160,7 +158,7 @@ public class DAOCliente implements ICliente {
             return cliente;
 
         } catch (SQLException e) {
-            throw DAOUtil.exception(e, "problemas ao buscar cliente pelo cpf");
+            throw DAOUtil.exception(e, "problemas ao buscar cliente pelo nome");
         }
     }
 }

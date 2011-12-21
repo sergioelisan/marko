@@ -35,8 +35,5 @@ public class DAOUtil {
     /**
      * Endereco do arquivo que contem as queries
      */
-    public static final String queryURL = "br/bcc/ufrpe/ibusiness/database/queries/queries";
-
-    
-    
+    public static final String queryURL = "br/ufrpe/bcc/ibusiness/database/queries";    
 }

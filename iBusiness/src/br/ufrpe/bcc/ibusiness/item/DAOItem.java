@@ -14,11 +14,7 @@ public class DAOItem implements IItem{
     private Connection conexao;
 
     public DAOItem() {
-        try {
-            this.conexao = new Conexao().conectar();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        this.conexao = new Conexao().conectar();
     }
     /**
      * Lista todos os itens da base

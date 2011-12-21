@@ -11,17 +11,11 @@ import java.util.*;
  */
 public class DAODespesa implements IDespesa {
 
-    /**
-     * Atributo de conexão
-     */
+    // MERMAOOOO ! Pra que conexao1, conexao2... ne tudo a mesma conexao? (Sergio)
     private Connection conexao7;
 
     public DAODespesa() {
-        try {
-            this.conexao7 = new Conexao().conectar();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+        this.conexao7 = new Conexao().conectar();
     }
 
     /**

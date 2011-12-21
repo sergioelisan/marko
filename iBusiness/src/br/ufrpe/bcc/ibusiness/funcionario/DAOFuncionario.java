@@ -14,11 +14,7 @@ public class DAOFuncionario implements IFuncionario {
     private Connection conexao;
 
     public DAOFuncionario() {
-        try {
-            this.conexao = new Conexao().conectar();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+       this.conexao = new Conexao().conectar();
     }
 
     /**
