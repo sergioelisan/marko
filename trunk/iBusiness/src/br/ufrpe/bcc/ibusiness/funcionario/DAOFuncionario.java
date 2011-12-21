@@ -96,4 +96,24 @@ public class DAOFuncionario implements IFuncionario {
         }
     }
 
+    @Override
+    public Funcionario buscarFuncionarioNome(String Login) {
+        String sql = DAOUtil.getQuery("funcionario.login");
+        Funcionario funcionario = new Funcionario();
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                funcionario.setId(rs.getInt("CODIGO"));
+                funcionario.setLogin(rs.getString("LOGIN"));
+                funcionario.setSenha(rs.getString("SENHA"));
+                
+            }
+            rs.close();
+            return funcionario;
+
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao buscar funcionario pelo Login");
+        }
+    }
+
 }
