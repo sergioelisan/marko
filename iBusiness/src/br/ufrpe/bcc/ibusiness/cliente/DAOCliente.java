@@ -1,40 +1,160 @@
 package br.ufrpe.bcc.ibusiness.cliente;
 
+import java.sql.*;
+import br.ufrpe.bcc.idatabase.Conexao;
+import br.ufrpe.bcc.idatabase.DAOUtil;
 import java.util.*;
 
 /**
  * Objeto de acesso aos dados de clientes
- * @author douglas
+ * @author Douglas Henrique e Francisco Fernandes
  */
 public class DAOCliente implements ICliente {
 
-    @Override
-    public ArrayList<Cliente> listarClientes() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private Connection conexao;
+
+    public DAOCliente() {
+        try {
+            this.conexao = new Conexao().conectar();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
-    @Override
+    /**
+     * Adiciona um cliente
+     * @param cliente 
+     */
     public void inserirCliente(Cliente cliente) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sql = DAOUtil.getQuery("cliente.insert");
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getEndereco());
+            stmt.setString(4, cliente.getTelefone());
+            stmt.setString(5, cliente.getCelular());
+            stmt.setString(6, cliente.getEmail());
+            stmt.execute();
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao adicionar um cliente ao banco");
+        }
     }
 
-    @Override
+    /**
+     * Lista os clientes do banco
+     * @return 
+     */
+    public ArrayList<Cliente> listarClientes() {
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        String sql = DAOUtil.getQuery("cliente.select");
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Cliente cliente = new Cliente();
+                cliente.setId(rs.getInt("CODIGO"));
+                cliente.setNome(rs.getString("NOME"));
+                cliente.setCpf(rs.getString("CPF"));
+                cliente.setEndereco(rs.getString("ENDE"));
+                cliente.setTelefone(rs.getString("FONE"));
+                cliente.setCelular(rs.getString("CEL"));
+                cliente.setEmail(rs.getString("EMAIL"));
+                clientes.add(cliente);
+            }
+            rs.close();
+
+            return clientes;
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao listar clientes");
+        }
+    }
+
+    /**
+     * Alterar clientes
+     * @param cliente 
+     */
+    public void atualizarCliente(Cliente cliente) {
+        String sql = DAOUtil.getQuery("cliente.update");
+
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, cliente.getNome());
+            stmt.setString(2, cliente.getCpf());
+            stmt.setString(3, cliente.getEndereco());
+            stmt.setString(4, cliente.getTelefone());
+            stmt.setString(5, cliente.getCelular());
+            stmt.setString(6, cliente.getEmail());
+            stmt.setLong(7, cliente.getId());
+
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Remover clientes
+     * @param cliente 
+     */
     public void removerCliente(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sql = DAOUtil.getQuery("cliente.delete");
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @Override
-    public void atualizarCliente(Cliente cliente) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
+    /**
+     * Busca Clientes por cpf
+     * @param cliente 
+     */
     public Cliente buscarClienteCPF(String cpf) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sql = DAOUtil.getQuery("cliente.cpf");
+        Cliente cliente = new Cliente();
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                cliente.setId(rs.getInt("CODIGO"));
+                cliente.setNome(rs.getString("NOME"));
+                cliente.setCpf(rs.getString("CPF"));
+                cliente.setEndereco(rs.getString("ENDERECO"));
+                cliente.setTelefone(rs.getString("FONE"));
+                cliente.setCelular(rs.getString("CEL"));
+                cliente.setEmail(rs.getString("EMAIL"));
+            }
+            rs.close();
+            return cliente;
+
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao buscar cliente pelo cpf");
+        }
     }
 
-    @Override
+    /**
+     * Busca Clientes por nome
+     * @param cliente 
+     */
     public Cliente buscarClienteNome(String nome) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sql = DAOUtil.getQuery("cliente.nome");
+        Cliente cliente = new Cliente();
+        try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            while (rs.next()) {
+                cliente.setId(rs.getInt("CODIGO"));
+                cliente.setNome(rs.getString("NOME"));
+                cliente.setCpf(rs.getString("CPF"));
+                cliente.setEndereco(rs.getString("ENDERECO"));
+                cliente.setTelefone(rs.getString("FONE"));
+                cliente.setCelular(rs.getString("CEL"));
+                cliente.setEmail(rs.getString("EMAIL"));
+            }
+            rs.close();
+            return cliente;
+
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao buscar cliente pelo cpf");
+        }
     }
 }
