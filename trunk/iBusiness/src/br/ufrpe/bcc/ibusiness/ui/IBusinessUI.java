@@ -45,6 +45,7 @@ public class IBusinessUI extends javax.swing.JFrame {
         modulos.add(new ReportsTile());        
         modulos.add(new ConfigTile());
         modulos.add(new HelpTile());        
+        setExtendedState(MAXIMIZED_BOTH);
     }
 
     @SuppressWarnings("unchecked")

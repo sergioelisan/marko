@@ -75,7 +75,7 @@ public class CostumerUI extends javax.swing.JPanel {
         btHelp.setPreferredSize(new java.awt.Dimension(38, 38));
 
         btOptions.setBackground(new java.awt.Color(255, 204, 0));
-        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         btOptions.setForeground(new java.awt.Color(255, 255, 255));
         btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
@@ -299,7 +299,9 @@ public class CostumerUI extends javax.swing.JPanel {
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)

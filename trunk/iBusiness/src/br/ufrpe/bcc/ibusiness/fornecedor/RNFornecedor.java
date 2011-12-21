@@ -14,7 +14,12 @@ public class RNFornecedor implements IFornecedor {
 
     @Override
     public ArrayList<Fornecedor> listarFornecedores() {
-        DAOFornecedor dao = new DAOFornecedor();
+        DAOFornecedor dao = null;
+        try {
+            dao = new DAOFornecedor();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
         return dao.listarFornecedores();
     }
 
@@ -50,7 +55,12 @@ public class RNFornecedor implements IFornecedor {
 
     @Override
     public void removerFornecedor(int id) {
-        DAOFornecedor dao = new DAOFornecedor();
+        DAOFornecedor dao = null;
+        try {
+            dao = new DAOFornecedor();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
         dao.removerFornecedor(id);
     }
 
@@ -86,13 +96,23 @@ public class RNFornecedor implements IFornecedor {
 
     @Override
     public Fornecedor buscarFornecedorCNPJ(String cnpj) {
-        DAOFornecedor dao = new DAOFornecedor();
+        DAOFornecedor dao = null;
+        try {
+            dao = new DAOFornecedor();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
         return dao.buscarFornecedorCNPJ(cnpj);
     }
 
     @Override
     public Fornecedor buscarFornecedorRazao(String razao) {
-        DAOFornecedor dao = new DAOFornecedor();
+        DAOFornecedor dao = null;
+        try {
+            dao = new DAOFornecedor();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
         return dao.buscarFornecedorRazao(razao);
     }
 
