@@ -1,8 +1,8 @@
 package br.ufrpe.bcc.ibusiness.despesa;
 
 import java.sql.*;
-import br.ufrpe.bcc.idatabase.Conexao;
-import br.ufrpe.bcc.idatabase.DAOUtil;
+import br.ufrpe.bcc.ibusiness.database.Conexao;
+import br.ufrpe.bcc.ibusiness.database.DAOUtil;
 import java.util.*;
 
 /**
