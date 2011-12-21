@@ -1,8 +1,8 @@
 package br.ufrpe.bcc.ibusiness.fornecedor;
 
 
-import br.ufrpe.bcc.idatabase.Conexao;
-import br.ufrpe.bcc.idatabase.DAOUtil;
+import br.ufrpe.bcc.ibusiness.database.Conexao;
+import br.ufrpe.bcc.ibusiness.database.DAOUtil;
 import java.sql.*;
 import java.util.*;
 
@@ -164,5 +164,3 @@ public class DAOFornecedor implements IFornecedor {
         }
     }
 }
-
-
