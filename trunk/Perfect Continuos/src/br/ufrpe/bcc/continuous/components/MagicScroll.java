@@ -1,10 +1,9 @@
 package br.ufrpe.bcc.continuous.components;
 
 import java.awt.Component;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
@@ -19,18 +18,20 @@ public class MagicScroll extends JScrollPane {
 
     private int sensibility;
 
-    public MagicScroll(Component comp) {
+    public MagicScroll(Component comp, Integer sensibility, Boolean activeMouseGesture) {
         this.setViewportView(comp);
         this.setOpaque(false);
         this.getViewport().setOpaque(false);
         this.setBorder(null);
-        this.sensibility = 7;
+        this.sensibility = sensibility;
 
         this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         this.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
 
-        this.addMouseMotionListener(new MouseGesture());
-        this.addMouseWheelListener(new MouseWhellGesture());
+        if (activeMouseGesture) {
+            this.addMouseMotionListener(new MouseGesture());
+            this.addMouseWheelListener(new MouseWhellGesture());
+        }
     }
 
     /**
@@ -121,7 +122,7 @@ public class MagicScroll extends JScrollPane {
      * Motion), capturar a posição onde eles foram gerados e chamar o método 
      * devido.
      */
-    private class MouseGesture implements MouseMotionListener {
+    public class MouseGesture extends MouseAdapter {
 
         public void mouseDragged(MouseEvent e) {
         }
@@ -135,7 +136,7 @@ public class MagicScroll extends JScrollPane {
      * Handler responsável por tratar os eventos da rodinha do mouse (Whell
      * Motion), capturar a direção e chamar o método devido
      */
-    private class MouseWhellGesture implements MouseWheelListener {
+    public class MouseWhellGesture extends MouseAdapter {
 
         public void mouseWheelMoved(MouseWheelEvent e) {
             detectWheel(e.getWheelRotation());

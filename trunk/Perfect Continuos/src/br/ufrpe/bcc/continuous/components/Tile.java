@@ -33,11 +33,11 @@ public class Tile extends JPanel implements PerfectContinuousConstants {
         }               
     }
     
-    private void over() {
+    public void over() {
         setBackground(entered);
     }
     
-    private void exit() {
+    public void exit() {
         setBackground(exited);
     }
     
