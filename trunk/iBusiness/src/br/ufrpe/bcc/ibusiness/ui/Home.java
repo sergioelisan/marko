@@ -5,12 +5,24 @@
  */
 package br.ufrpe.bcc.ibusiness.ui;
 
+import br.ufrpe.bcc.continuous.components.MagicScroll;
 import br.ufrpe.bcc.continuous.components.Tile;
+import br.ufrpe.bcc.continuous.util.GuiUtil;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.DateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import javax.swing.Timer;
+import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 
 /**
  *
@@ -21,13 +33,48 @@ public class Home extends javax.swing.JPanel {
     public Home(IBusinessUI main) {
         this.mainFrame = main;
         initComponents();
+        rotinas();
+        
+        mainPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 7, 7));
+        mainPanel.setOpaque(false);
+        mainPanel.setBackground(Color.red);
+        mainPanel.setPreferredSize(new Dimension(this.getSize().width - 30, 1080));
         initTiles();
-        scroll.getViewport().setOpaque(false);
+
+        scroll = new MagicScroll(mainPanel, 50, false);
+        scroll.setPreferredSize(new Dimension(mainPanel.getSize().width, mainPanel.getSize().height));
+        containerPanel.add(scroll, BorderLayout.CENTER);
+
+        btUp.addMouseListener(scroll.new MouseGesture());
+        btDown.addMouseListener(scroll.new MouseGesture());
+        
     }
 
+    /**
+     * retorna para a pagina inicial
+     */
     public void Return() {
         mainFrame.setContentPane(this);
         ((JComponent) mainFrame.getContentPane()).updateUI();
+    }
+
+    /**
+     * Inicia as rotinas do sistema
+     */
+    private void rotinas() {
+        // Atualiza o relógio e o calendário
+        Timer clock = new Timer(1000, new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                DateFormat fmt = DateFormat.getDateInstance(DateFormat.LONG);
+                lbData.setText(fmt.format(new Date()));
+                
+                fmt = DateFormat.getTimeInstance(DateFormat.MEDIUM);
+                lbHora.setText(fmt.format(new Date() ) );
+            }
+        });
+
+        clock.start();
     }
 
     /**
@@ -36,34 +83,33 @@ public class Home extends javax.swing.JPanel {
      */
     public void Switch(String panel) {
         switch (panel) {
-            case "client":
+            case Home.CLIENT:
                 mainFrame.setContentPane(costumer);
                 break;
-            case "rh":
+            case Home.RH:
                 mainFrame.setContentPane(rh);
                 break;
-            case "stoq":
+            case Home.STOQ:
                 mainFrame.setContentPane(stoq);
                 break;
-            case "sales":
+            case Home.SALES:
                 mainFrame.setContentPane(sale);
                 break;
-            case "social":
+            case Home.SOCIAL:
                 mainFrame.setContentPane(social);
                 break;
-            case "partners":
+            case Home.PARTNERS:
                 mainFrame.setContentPane(partner);
                 break;
-            case "report":
+            case Home.REPORT:
                 mainFrame.setContentPane(report);
                 break;
-            case "config":
+            case Home.CONFIG:
                 mainFrame.setContentPane(config);
                 break;
-            case "help":
+            case Home.HELP:
                 mainFrame.setContentPane(help);
                 break;
-
         }
 
         ((JComponent) mainFrame.getContentPane()).updateUI();
@@ -73,16 +119,19 @@ public class Home extends javax.swing.JPanel {
      * Cria as tiles do sistema
      */
     private void initTiles() {
-        String[] actions = {"client", "social", "partners", "stoq", "rh", "sales", "report", "config", "help"};
+        String[] actions = {CLIENT, SOCIAL, PARTNERS, 
+                            STOQ, RH, SALES, REPORT, 
+                            CONFIG, HELP};
 
         for (int i = 0; i < actions.length; i++) {
-            Tile tile = mainFrame.getModulos().get(i);
+            final Tile tile = mainFrame.getModulos().get(i);
             final String action = actions[i];
             mainPanel.add(tile);
             tile.addMouseListener(new MouseAdapter() {
 
                 public void mouseClicked(MouseEvent e) {
                     Switch(action);
+                    tile.exit();
                 }
             });
         }
@@ -94,21 +143,17 @@ public class Home extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbLogo = new javax.swing.JLabel();
         btUp = new javax.swing.JLabel();
         btDown = new javax.swing.JLabel();
+        containerPanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        scroll = new javax.swing.JScrollPane();
-        mainPanel = new javax.swing.JPanel();
+        lbData = new javax.swing.JLabel();
+        lbHora = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(64, 128, 128));
+        setBackground(new java.awt.Color(64, 135, 135));
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(990, 680));
         setPreferredSize(new java.awt.Dimension(990, 680));
-
-        lbLogo.setFont(new java.awt.Font("Roboto", 2, 36));
-        lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/logo 124.jpg"))); // NOI18N
 
         btUp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_inactive.png"))); // NOI18N
@@ -138,97 +183,109 @@ public class Home extends javax.swing.JPanel {
             }
         });
 
+        containerPanel.setOpaque(false);
+        containerPanel.setLayout(new java.awt.BorderLayout());
+
+        jLabel1.setFont(new java.awt.Font("Lucida Sans", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Usuario");
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("home");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Data e Hora");
+        lbData.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lbData.setForeground(new java.awt.Color(255, 255, 255));
+        lbData.setText("data");
 
-        scroll.setBorder(null);
-        scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        scroll.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        scroll.setOpaque(false);
-
-        mainPanel.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        mainPanel.setMinimumSize(new java.awt.Dimension(0, 0));
-        mainPanel.setOpaque(false);
-        mainPanel.setPreferredSize(new java.awt.Dimension(1000, 376));
-        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 7, 7));
-        scroll.setViewportView(mainPanel);
+        lbHora.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lbHora.setForeground(new java.awt.Color(255, 255, 255));
+        lbHora.setText("hora");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbLogo)
-                    .addComponent(btUp, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 910, Short.MAX_VALUE)
-                        .addComponent(jLabel2))
-                    .addComponent(btDown, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE)
-                    .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 1004, Short.MAX_VALUE))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(containerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                            .addComponent(btUp, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                            .addComponent(btDown, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbData))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lbHora)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbLogo)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btUp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(scroll, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btDown)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
+                .addComponent(containerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btDown)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(lbHora)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lbData)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 private void btUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUpMouseClicked
-    JScrollBar barra = scroll.getVerticalScrollBar();
-    barra.setValue(barra.getValue() - sensibility);
+    scroll.previousVertical();
 }//GEN-LAST:event_btUpMouseClicked
 
 private void btUpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUpMouseEntered
-    btUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_active.png")));
+    btUp.setIcon(new ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_active.png")));
 }//GEN-LAST:event_btUpMouseEntered
 
 private void btUpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUpMouseExited
-    btUp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_inactive.png")));
+    btUp.setIcon(new ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_acima_inactive.png")));
 }//GEN-LAST:event_btUpMouseExited
 
 private void btDownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDownMouseClicked
-    JScrollBar barra = scroll.getVerticalScrollBar();
-    barra.setValue(barra.getValue() + sensibility);
+    scroll.nextVertical();
 }//GEN-LAST:event_btDownMouseClicked
 
 private void btDownMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDownMouseEntered
-    btDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_active.png")));
+    btDown.setIcon(new ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_active.png")));
 }//GEN-LAST:event_btDownMouseEntered
 
 private void btDownMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDownMouseExited
-    btDown.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_inactive.png")));
+    btDown.setIcon(new ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/seta_baixo_inactive.png")));
 }//GEN-LAST:event_btDownMouseExited
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btDown;
     private javax.swing.JLabel btUp;
+    private javax.swing.JPanel containerPanel;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel lbLogo;
-    private javax.swing.JPanel mainPanel;
-    private javax.swing.JScrollPane scroll;
+    private javax.swing.JLabel lbData;
+    private javax.swing.JLabel lbHora;
     // End of variables declaration//GEN-END:variables
+    
+    /**
+     * Referencia ao frame principal
+     */
     private IBusinessUI mainFrame;
-    public static final int sensibility = 20;
+    
+    /**
+     * Containeres
+     */
+    private JPanel mainPanel;
+    private MagicScroll scroll;
+    
+    /**
+     * UI dos modulos
+     */
     private JPanel costumer = new CostumerUI(this);
     private JPanel social = new SocialUI(this);
     private JPanel rh = new RhUI(this);
@@ -238,4 +295,19 @@ private void btDownMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event
     private JPanel report = new ReportUI(this);
     private JPanel config = new ConfigUI(this);
     private JPanel help = new HelpUI(this);
+    
+    /**
+     * Nome dos modulos
+     */
+    public static final String CLIENT = "client";
+    public static final String SOCIAL = "social";
+    public static final String PARTNERS = "partners";
+    public static final String STOQ = "stoq";
+    public static final String RH = "rh";
+    public static final String SALES = "sales";
+    public static final String REPORT = "report";
+    public static final String CONFIG = "config";
+    public static final String HELP = "help";
+    
+    
 }

@@ -15,10 +15,9 @@ import br.ufrpe.bcc.ibusiness.ui.components.RhTile;
 import br.ufrpe.bcc.ibusiness.ui.components.SalesTile;
 import br.ufrpe.bcc.ibusiness.ui.components.SocialTile;
 import br.ufrpe.bcc.ibusiness.ui.components.StoqTile;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 /**
@@ -30,8 +29,16 @@ public class IBusinessUI extends javax.swing.JFrame {
     public IBusinessUI() {
         initComponents();
         loadModules();
-        setContentPane(new Home(this) );
+        setContentPane(new PresentationUI(this) );
         setLocationRelativeTo(null);
+    }
+    
+    /**
+     * seleciona a home
+     */
+    public void SwitchToHome() {
+        setContentPane(new Home(this) );
+        ((JComponent) getContentPane()).updateUI();
     }
     
     private void loadModules() {

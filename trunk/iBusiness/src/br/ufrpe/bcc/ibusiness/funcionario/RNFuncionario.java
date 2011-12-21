@@ -83,4 +83,9 @@ public class RNFuncionario implements IFuncionario {
         //Se tudo estiver ok retorna verdadeiro  
         return true;
     }
+
+    @Override
+    public Funcionario buscarFuncionarioNome(String nome) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

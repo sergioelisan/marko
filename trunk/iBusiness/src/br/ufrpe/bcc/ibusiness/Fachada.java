@@ -222,4 +222,9 @@ public class Fachada implements ICliente, IDespesa, IFornecedor, IFuncionario, I
         RNVenda rn = new RNVenda();
         return rn.buscarVendaFuncionario(id);
     }
+
+    @Override
+    public Funcionario buscarFuncionarioNome(String nome) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
