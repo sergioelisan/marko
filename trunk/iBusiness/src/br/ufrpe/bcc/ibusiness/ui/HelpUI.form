@@ -43,8 +43,8 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="btOptions" alignment="0" pref="38" max="32767" attributes="1"/>
                   <Component id="lbPanel" alignment="0" pref="38" max="32767" attributes="1"/>
-                  <Component id="btOptions" alignment="1" pref="38" max="32767" attributes="1"/>
                   <Component id="btOptions1" alignment="1" max="32767" attributes="1"/>
               </Group>
               <EmptySpace min="-2" pref="571" max="-2" attributes="0"/>
