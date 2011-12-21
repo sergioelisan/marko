@@ -11,7 +11,9 @@ import java.util.*;
  * @author Douglas Henrique e Francisco Fernandes
  */
 public class DAOFornecedor implements IFornecedor {
-
+    /**
+     *atributo de conexao
+     */
     private Connection conexao;
 
     public DAOFornecedor() throws ClassNotFoundException {
@@ -66,7 +68,7 @@ public class DAOFornecedor implements IFornecedor {
 
             return fornecedores;
         } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao listas funcionarios do banco");
+            throw DAOUtil.exception(e, "Problemas ao listar funcionarios do banco");
         }
     }
 
@@ -89,7 +91,7 @@ public class DAOFornecedor implements IFornecedor {
             stmt.execute();
 
         } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao alterar um fornecedor no banco");
+            throw DAOUtil.exception(e, "Problemas ao atualizar um fornecedor no banco");
         }
     }
 
