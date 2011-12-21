@@ -15,10 +15,17 @@ package br.ufrpe.bcc.ibusiness.ui;
  * @author serginho
  */
 public class CostumerUI extends javax.swing.JPanel {
+    
+    private Home home;
 
     /** Creates new form CostumerUI */
     public CostumerUI() {
         initComponents();
+    }
+
+    public CostumerUI(Home aThis) {
+        this();
+        this.home = aThis;               
     }
 
     /** This method is called from within the constructor to
@@ -91,6 +98,11 @@ public class CostumerUI extends javax.swing.JPanel {
         btOptions1.setMinimumSize(new java.awt.Dimension(38, 38));
         btOptions1.setOpaque(true);
         btOptions1.setPreferredSize(new java.awt.Dimension(38, 38));
+        btOptions1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btOptions1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel2.setForeground(new java.awt.Color(64, 128, 128));
@@ -298,6 +310,11 @@ public class CostumerUI extends javax.swing.JPanel {
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btHelp, btOptions, btOptions1});
 
     }// </editor-fold>//GEN-END:initComponents
+
+private void btOptions1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btOptions1MouseClicked
+home.Return();
+}//GEN-LAST:event_btOptions1MouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btHelp;
     private javax.swing.JLabel btOptions;

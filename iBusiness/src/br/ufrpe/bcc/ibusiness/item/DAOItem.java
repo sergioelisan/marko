@@ -70,4 +70,10 @@ public class DAOItem implements IItem{
         }
     }*/
     
+    }
+
+    @Override
+    public void inserirItem(Item item) throws Exception {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

@@ -15,8 +15,11 @@ import br.ufrpe.bcc.ibusiness.ui.components.RhTile;
 import br.ufrpe.bcc.ibusiness.ui.components.SalesTile;
 import br.ufrpe.bcc.ibusiness.ui.components.SocialTile;
 import br.ufrpe.bcc.ibusiness.ui.components.StoqTile;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.JPanel;
 
 /**
  *
@@ -41,7 +44,7 @@ public class IBusinessUI extends javax.swing.JFrame {
         modulos.add(new SalesTile());
         modulos.add(new ReportsTile());        
         modulos.add(new ConfigTile());
-        modulos.add(new HelpTile());
+        modulos.add(new HelpTile());        
     }
 
     @SuppressWarnings("unchecked")
@@ -73,6 +76,6 @@ public class IBusinessUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
 
-    
+    private List<JPanel> uis;
     private List<Tile> modulos;
 }

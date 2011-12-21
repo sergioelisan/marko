@@ -131,6 +131,7 @@
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[1920, 1080]"/>
         </Property>
+        <Property name="opaque" type="boolean" value="false"/>
       </Properties>
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -150,8 +151,8 @@
           </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout">
-            <Property name="horizontalGap" type="int" value="10"/>
-            <Property name="verticalGap" type="int" value="10"/>
+            <Property name="horizontalGap" type="int" value="7"/>
+            <Property name="verticalGap" type="int" value="7"/>
           </Layout>
         </Container>
       </SubComponents>
