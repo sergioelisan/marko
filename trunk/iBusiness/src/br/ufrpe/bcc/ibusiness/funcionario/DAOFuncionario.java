@@ -97,6 +97,7 @@ public class DAOFuncionario implements IFuncionario {
         String sql = DAOUtil.getQuery("funcionario.login");
         Funcionario funcionario = new Funcionario();
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
+            stmt.setString(1, Login);
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 funcionario.setId(rs.getInt("CODIGO"));
