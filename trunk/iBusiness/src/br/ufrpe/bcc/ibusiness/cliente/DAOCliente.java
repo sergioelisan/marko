@@ -3,6 +3,9 @@ package br.ufrpe.bcc.ibusiness.cliente;
 import br.ufrpe.bcc.ibusiness.database.Conexao;
 import br.ufrpe.bcc.ibusiness.database.DAOUtil;
 import java.sql.*;
+import br.ufrpe.bcc.ibusiness.database.Conexao;
+import br.ufrpe.bcc.ibusiness.database.DAOUtil;
+
 import java.util.*;
 
 /**
