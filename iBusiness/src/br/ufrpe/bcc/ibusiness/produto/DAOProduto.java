@@ -6,8 +6,9 @@ import java.util.*;
 import java.sql.*;
 
 /**
- *
- * @author Wolf
+ * Objeto de acesso aos dados de Produto
+ * 
+ * @author Douglas Henrique e Francisco Fernandes
  */
 class DAOProduto implements IProduto{
 
@@ -22,7 +23,7 @@ class DAOProduto implements IProduto{
     }
 
     /**
-     * lista os fornecedores do banco
+     * lista os produtos do banco
      * @return 
      */
     public ArrayList<Produto> listarProdutos() {
@@ -55,7 +56,7 @@ class DAOProduto implements IProduto{
     }
     /**
      * Adiciona um produto ao banco
-     * @param fornecedor 
+     * @param produto
      */
     public void inserirProduto(Produto produto) {
         String sql = DAOUtil.getQuery("produto.insert");
@@ -94,8 +95,8 @@ class DAOProduto implements IProduto{
     }
 
     /**
-     * Altera os fornecedores do banco
-     * @param fornecedor 
+     * Atualiza Produto do banco
+     * @param produto 
      */
     public void atualizarProduto(Produto produto) {
         String sql = DAOUtil.getQuery("produto.update");
@@ -122,6 +123,10 @@ class DAOProduto implements IProduto{
         }
     }
 
+    /**
+     * Buscar produto pelo Id
+     * @param id
+     */
     public Produto buscarProdutoID(int id) {
         String sql = DAOUtil.getQuery("produto.codigo");
         Produto produto = new Produto();
@@ -147,6 +152,10 @@ class DAOProduto implements IProduto{
         }
     }
    
+    /**
+     * Buscar produto pelo string
+     * @param nome
+     */
     
     public Produto buscarProdutoNome(String nome) {
         String sql = DAOUtil.getQuery("produto.nome");
