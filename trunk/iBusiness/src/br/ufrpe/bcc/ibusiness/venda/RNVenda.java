@@ -47,14 +47,12 @@ public class RNVenda implements IVenda {
     }
 
     @Override
-    public Venda buscarVendaFuncionario(int id) {
-        DAOVenda dao = new DAOVenda();
-        return dao.buscarVendaFuncionario(id);
+    public ArrayList<Venda> buscarVendaCliente(int id) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
-    public Venda buscarVendaCliente(int id) {
-        DAOVenda dao = new DAOVenda();
-        return dao.buscarVendaCliente(id);
+    public ArrayList<Venda> buscarVendaFuncionario(int id) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

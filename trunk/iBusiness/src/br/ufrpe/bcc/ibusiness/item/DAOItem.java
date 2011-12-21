@@ -5,6 +5,7 @@ import br.ufrpe.bcc.ibusiness.produto.Produto;
 import java.util.*;
 import java.sql.*;
 
+
 /**
  *
  * @author Wolf
@@ -52,12 +53,9 @@ public class DAOItem implements IItem{
         }
     }
 
-
-    
-    }
-
     @Override
     public void inserirItem(Item item) throws Exception {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
 }
