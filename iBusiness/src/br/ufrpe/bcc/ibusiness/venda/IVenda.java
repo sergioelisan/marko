@@ -14,7 +14,7 @@ public interface IVenda {
 
     public Venda buscarVendaId(int id);
 
-    public Venda buscarVendaCliente(int id);
+    public ArrayList<Venda> buscarVendaCliente(int id);
 
-    public Venda buscarVendaFuncionario(int id);
+    public ArrayList<Venda> buscarVendaFuncionario(int id);
 }

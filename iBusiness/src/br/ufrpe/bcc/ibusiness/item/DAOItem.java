@@ -52,19 +52,7 @@ public class DAOItem implements IItem{
         }
     }
 
-    public void inserirItem(Produto produto) {
-        String sql = DAOUtil.getQuery("item.insert");
 
-        /*try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
-            stmt.setString(1, produto.getNome());
-            stmt.setString(2, produto.getDescricao());
-            
-            stmt.executeUpdate();
-
-        } catch (SQLException e) {
-            throw DAOUtil.exception(e, "Problemas ao adicionar produto ao banco");
-        }
-    }*/
     
     }
 
