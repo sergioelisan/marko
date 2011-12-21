@@ -37,7 +37,7 @@ public class PresentationUI extends javax.swing.JPanel {
                 DateFormat fmt = DateFormat.getDateInstance(DateFormat.LONG);
                 lbData.setText(fmt.format(new Date()));
                 
-                int hora = Calendar.getInstance().get(Calendar.HOUR);
+                int hora = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
                 int minuto = Calendar.getInstance().get(Calendar.MINUTE);
                 String h = hora < 10 ? "0" + hora : "" + hora;
                 String m = minuto < 10 ? "0" + minuto : "" + minuto;
@@ -69,12 +69,12 @@ public class PresentationUI extends javax.swing.JPanel {
         lbHora.setBackground(new java.awt.Color(255, 255, 255));
         lbHora.setFont(new java.awt.Font("Tahoma", 0, 48));
         lbHora.setForeground(new java.awt.Color(255, 255, 255));
-        lbHora.setText("hora");
+        lbHora.setText("Carregando...");
 
         lbData.setBackground(new java.awt.Color(255, 255, 255));
         lbData.setFont(new java.awt.Font("Tahoma", 0, 14));
         lbData.setForeground(new java.awt.Color(255, 255, 255));
-        lbData.setText("data");
+        lbData.setText("loading...");
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/logo 124.jpg"))); // NOI18N
@@ -102,7 +102,7 @@ public class PresentationUI extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbData)
                             .addComponent(lbHora))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 769, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 574, Short.MAX_VALUE)
                         .addComponent(lbHora1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1))
                 .addContainerGap())
