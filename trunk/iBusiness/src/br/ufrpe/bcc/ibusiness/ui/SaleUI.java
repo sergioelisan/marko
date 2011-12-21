@@ -21,6 +21,10 @@ public class SaleUI extends javax.swing.JPanel {
         initComponents();
     }
 
+    SaleUI(Home aThis) {
+        
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is

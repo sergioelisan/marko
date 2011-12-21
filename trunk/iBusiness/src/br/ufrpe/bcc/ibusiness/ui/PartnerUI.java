@@ -16,9 +16,20 @@ package br.ufrpe.bcc.ibusiness.ui;
  */
 public class PartnerUI extends javax.swing.JPanel {
 
+    private Home home;
+
     /** Creates new form PartnerUI */
     public PartnerUI() {
         initComponents();
+    }
+
+    public PartnerUI(Home aThis) {
+        this();
+        this.home = aThis;
+    }
+
+    private void btOptions1MouseClicked(java.awt.event.MouseEvent evt) {
+        home.Return();
     }
 
     /** This method is called from within the constructor to
@@ -57,7 +68,7 @@ public class PartnerUI extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1024, 620));
 
         lbhome.setBackground(new java.awt.Color(153, 0, 153));
-        lbhome.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        lbhome.setFont(new java.awt.Font("Roboto", 1, 24));
         lbhome.setForeground(new java.awt.Color(255, 255, 255));
         lbhome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbhome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/casinha.png"))); // NOI18N
@@ -65,8 +76,13 @@ public class PartnerUI extends javax.swing.JPanel {
         lbhome.setMinimumSize(new java.awt.Dimension(38, 38));
         lbhome.setOpaque(true);
         lbhome.setPreferredSize(new java.awt.Dimension(38, 38));
+        lbhome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbhomeMouseClicked(evt);
+            }
+        });
 
-        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36)); // NOI18N
+        lbPanel.setFont(new java.awt.Font("Lucida Sans", 2, 36));
         lbPanel.setForeground(new java.awt.Color(255, 255, 255));
         lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPanel.setText("Fornecedores");
@@ -152,7 +168,7 @@ public class PartnerUI extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel2.setForeground(new java.awt.Color(64, 128, 128));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Contactar via Facebook");
@@ -188,7 +204,7 @@ public class PartnerUI extends javax.swing.JPanel {
         jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
 
         btOptions.setBackground(new java.awt.Color(255, 204, 0));
-        btOptions.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
+        btOptions.setFont(new java.awt.Font("Roboto", 1, 24));
         btOptions.setForeground(new java.awt.Color(255, 255, 255));
         btOptions.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btOptions.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/engrenagem.png"))); // NOI18N
@@ -214,7 +230,7 @@ public class PartnerUI extends javax.swing.JPanel {
         jLabel6.setOpaque(true);
 
         jLabel7.setBackground(new java.awt.Color(64, 128, 128));
-        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14));
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Limpar");
@@ -303,6 +319,9 @@ private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
 // TODO add your handling code here:
 }//GEN-LAST:event_jTextField7ActionPerformed
 
+private void lbhomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbhomeMouseClicked
+}//GEN-LAST:event_lbhomeMouseClicked
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btHelp;
     private javax.swing.JLabel btOptions;

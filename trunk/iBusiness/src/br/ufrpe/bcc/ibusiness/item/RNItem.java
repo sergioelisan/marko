@@ -23,7 +23,7 @@ public class RNItem implements IItem {
         if (item.getQuantidade() >= 0) {
             if (item.getProduto() != null) {
                 DAOItem dao = new DAOItem();
-                dao.inserirItem(item);
+                //dao.inserirItem(item);
             } else {
                 throw new Exception("O produto informado é inválido.");
             }

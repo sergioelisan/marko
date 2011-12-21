@@ -6,6 +6,11 @@
 package br.ufrpe.bcc.ibusiness.ui;
 
 import br.ufrpe.bcc.continuous.components.Tile;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 
 /**
  *
@@ -18,16 +23,70 @@ public class Home extends javax.swing.JPanel {
         initComponents();
         initTiles();
         scroll.getViewport().setOpaque(false);
-        scroll.setOpaque(false);
+    }
+
+    public void Return() {
+        mainFrame.setContentPane(this);
+        ((JComponent) mainFrame.getContentPane()).updateUI();
+    }
+
+    /**
+     * troca o painel
+     * @param panel 
+     */
+    public void Switch(String panel) {
+        switch (panel) {
+            case "client":
+                mainFrame.setContentPane(costumer);
+                break;
+            case "rh":
+                mainFrame.setContentPane(rh);
+                break;
+            case "stoq":
+                mainFrame.setContentPane(stoq);
+                break;
+            case "sales":
+                mainFrame.setContentPane(sale);
+                break;
+            case "social":
+                mainFrame.setContentPane(social);
+                break;
+            case "partners":
+                mainFrame.setContentPane(partner);
+                break;
+            case "report":
+                mainFrame.setContentPane(report);
+                break;
+            case "config":
+                mainFrame.setContentPane(config);
+                break;
+            case "help":
+                mainFrame.setContentPane(help);
+                break;
+
+        }
+
+        ((JComponent) mainFrame.getContentPane()).updateUI();
     }
 
     /**
      * Cria as tiles do sistema
      */
     private void initTiles() {
-        for (Tile tile : mainFrame.getModulos()) {
+        String[] actions = {"client", "social", "partners", "stoq", "rh", "sales", "report", "config", "help"};
+
+        for (int i = 0; i < actions.length; i++) {
+            Tile tile = mainFrame.getModulos().get(i);
+            final String action = actions[i];
             mainPanel.add(tile);
+            tile.addMouseListener(new MouseAdapter() {
+
+                public void mouseClicked(MouseEvent e) {
+                    Switch(action);
+                }
+            });
         }
+
         mainPanel.updateUI();
     }
 
@@ -89,12 +148,13 @@ public class Home extends javax.swing.JPanel {
         scroll.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         scroll.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
         scroll.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        scroll.setOpaque(false);
 
         mainPanel.setMaximumSize(new java.awt.Dimension(1920, 1080));
         mainPanel.setMinimumSize(new java.awt.Dimension(0, 0));
         mainPanel.setOpaque(false);
         mainPanel.setPreferredSize(new java.awt.Dimension(1000, 376));
-        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
+        mainPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 7, 7));
         scroll.setViewportView(mainPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -134,8 +194,8 @@ public class Home extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
 private void btUpMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUpMouseClicked
-    int atualposicao = scroll.getVerticalScrollBar().getValue();
-    scroll.getVerticalScrollBar().setValue(atualposicao - 100);
+    JScrollBar barra = scroll.getVerticalScrollBar();
+    barra.setValue(barra.getValue() - sensibility);
 }//GEN-LAST:event_btUpMouseClicked
 
 private void btUpMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btUpMouseEntered
@@ -147,8 +207,8 @@ private void btUpMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_b
 }//GEN-LAST:event_btUpMouseExited
 
 private void btDownMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDownMouseClicked
-    int atualposicao = scroll.getVerticalScrollBar().getValue();
-    scroll.getVerticalScrollBar().setValue(atualposicao + 100);
+    JScrollBar barra = scroll.getVerticalScrollBar();
+    barra.setValue(barra.getValue() + sensibility);
 }//GEN-LAST:event_btDownMouseClicked
 
 private void btDownMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btDownMouseEntered
@@ -168,4 +228,14 @@ private void btDownMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event
     private javax.swing.JScrollPane scroll;
     // End of variables declaration//GEN-END:variables
     private IBusinessUI mainFrame;
+    public static final int sensibility = 20;
+    private JPanel costumer = new CostumerUI(this);
+    private JPanel social = new SocialUI(this);
+    private JPanel rh = new RhUI(this);
+    private JPanel partner = new PartnerUI(this);
+    private JPanel stoq = new StoqUI(this);
+    private JPanel sale = new SaleUI(this);
+    private JPanel report = new ReportUI(this);
+    private JPanel config = new ConfigUI(this);
+    private JPanel help = new HelpUI(this);
 }
