@@ -35,10 +35,6 @@ public class StoqUI extends javax.swing.JPanel {
     private void initComponents() {
 
         lbPanel = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jTextField6 = new javax.swing.JTextField();
         jTextField5 = new javax.swing.JTextField();
@@ -54,6 +50,10 @@ public class StoqUI extends javax.swing.JPanel {
         btHelp = new javax.swing.JLabel();
         btOptions = new javax.swing.JLabel();
         lbhome = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(64, 128, 128));
         setMaximumSize(new java.awt.Dimension(1366, 768));
@@ -64,38 +64,6 @@ public class StoqUI extends javax.swing.JPanel {
         lbPanel.setForeground(new java.awt.Color(255, 255, 255));
         lbPanel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbPanel.setText("Estoque");
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 14));
-        jLabel4.setForeground(new java.awt.Color(84, 130, 184));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Adicionar");
-        jLabel4.setIconTextGap(15);
-        jLabel4.setOpaque(true);
-
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Roboto", 1, 14));
-        jLabel9.setForeground(new java.awt.Color(84, 130, 184));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Remover");
-        jLabel9.setIconTextGap(15);
-        jLabel9.setOpaque(true);
-
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Roboto", 1, 14));
-        jLabel10.setForeground(new java.awt.Color(84, 130, 184));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Limpar");
-        jLabel10.setIconTextGap(15);
-        jLabel10.setOpaque(true);
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Roboto", 1, 14));
-        jLabel11.setForeground(new java.awt.Color(84, 130, 184));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("Atualizar");
-        jLabel11.setIconTextGap(15);
-        jLabel11.setOpaque(true);
 
         jPanel1.setOpaque(false);
 
@@ -224,6 +192,38 @@ public class StoqUI extends javax.swing.JPanel {
         lbhome.setOpaque(true);
         lbhome.setPreferredSize(new java.awt.Dimension(38, 38));
 
+        jLabel4.setBackground(new java.awt.Color(64, 128, 128));
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 14));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Adicionar");
+        jLabel4.setIconTextGap(15);
+        jLabel4.setOpaque(true);
+
+        jLabel5.setBackground(new java.awt.Color(64, 128, 128));
+        jLabel5.setFont(new java.awt.Font("Roboto", 1, 14));
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("Remover");
+        jLabel5.setIconTextGap(15);
+        jLabel5.setOpaque(true);
+
+        jLabel7.setBackground(new java.awt.Color(64, 128, 128));
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 14));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Limpar");
+        jLabel7.setIconTextGap(15);
+        jLabel7.setOpaque(true);
+
+        jLabel6.setBackground(new java.awt.Color(64, 128, 128));
+        jLabel6.setFont(new java.awt.Font("Roboto", 1, 14));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("Atualizar");
+        jLabel6.setIconTextGap(15);
+        jLabel6.setOpaque(true);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -235,19 +235,16 @@ public class StoqUI extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(295, 295, 295)
-                        .addComponent(jLabel10)
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel11))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(22, 22, 22)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 414, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 322, Short.MAX_VALUE)
                 .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -272,11 +269,11 @@ public class StoqUI extends javax.swing.JPanel {
                             .addComponent(lbPanel))))
                 .addGap(313, 313, 313)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -294,13 +291,13 @@ public class StoqUI extends javax.swing.JPanel {
     private javax.swing.JLabel btHelp;
     private javax.swing.JLabel btOptions;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
