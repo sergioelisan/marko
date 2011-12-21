@@ -64,18 +64,18 @@ class DAOProduto implements IProduto{
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDescricao());
-            stmt.setInt(4, produto.getEstocado());
+            stmt.setInt(3, produto.getEstocado());
             
             java.util.Date utilDataCompra = produto.getCompra();
             java.sql.Date sqlDataCompra = new java.sql.Date(utilDataCompra.getTime());
-            stmt.setDate(5, sqlDataCompra);
+            stmt.setDate(4, sqlDataCompra);
             
             java.util.Date utilDataVencimento = produto.getVencimento();
             java.sql.Date sqlDataVencimento = new java.sql.Date(utilDataVencimento.getTime());
-            stmt.setDate(6, sqlDataVencimento);
+            stmt.setDate(5, sqlDataVencimento);
             
-            stmt.setDouble(7, produto.getPrecoCompra());
-            stmt.setDouble(8, produto.getPrecoVenda());
+            stmt.setDouble(6, produto.getPrecoCompra());
+            stmt.setDouble(7, produto.getPrecoVenda());
             
             stmt.executeUpdate();
 
@@ -104,17 +104,17 @@ class DAOProduto implements IProduto{
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDescricao());
-            stmt.setInt(4, produto.getEstocado());
+            stmt.setInt(3, produto.getEstocado());
             java.util.Date utilDataCompra = produto.getCompra();
             java.sql.Date sqlDataCompra = new java.sql.Date(utilDataCompra.getTime());
-            stmt.setDate(5, sqlDataCompra);
+            stmt.setDate(4, sqlDataCompra);
             
             java.util.Date utilDataVencimento = produto.getVencimento();
             java.sql.Date sqlDataVencimento = new java.sql.Date(utilDataVencimento.getTime());
-            stmt.setDate(6, sqlDataVencimento);
+            stmt.setDate(5, sqlDataVencimento);
             
-            stmt.setDouble(7, produto.getPrecoCompra());
-            stmt.setDouble(8, produto.getPrecoVenda());
+            stmt.setDouble(6, produto.getPrecoCompra());
+            stmt.setDouble(7, produto.getPrecoVenda());
             
             stmt.executeUpdate();
 
