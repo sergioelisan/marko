@@ -2,28 +2,28 @@ package br.ufrpe.bcc.ibusiness.produto;
 
 import br.ufrpe.bcc.ibusiness.database.Conexao;
 import br.ufrpe.bcc.ibusiness.database.DAOUtil;
-import java.util.*;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Objeto de acesso aos dados de Produto
  * 
  * @author Douglas Henrique e Francisco Fernandes
  */
-class DAOProduto implements IProduto{
+class DAOProduto implements IProduto {
 
+    /**
+     * atributo de conexao
+     */
     private Connection conexao;
 
-    public DAOProduto() {
-        try {
-            this.conexao = new Conexao().conectar();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        }
+    public DAOProduto() throws ClassNotFoundException {
+        this.conexao = new Conexao().conectar();
     }
 
     /**
-     * lista os produtos do banco
+     * lista os Produtos do banco
      * @return 
      */
     public ArrayList<Produto> listarProdutos() {
@@ -35,16 +35,22 @@ class DAOProduto implements IProduto{
 
             while (rs.next()) {
                 Produto produto = new Produto();
-                
                 produto.setId(rs.getInt("CODIGO"));
                 produto.setNome(rs.getString("NOME"));
                 produto.setDescricao(rs.getString("DESCRICAO"));
                 produto.setEstocado(rs.getInt("QUANTIDADE"));
-                produto.setCompra(rs.getDate("DATA_DE_COMPRA"));
-                produto.setVencimento(rs.getDate("VENCIMENTO"));
-                produto.setPrecoCompra(rs.getDouble("PRECO_DE_VENDA"));
-                produto.setPrecoVenda(rs.getDouble("PRECO_DE_COMPRA"));
-                                
+
+                java.sql.Date dataSql = rs.getDate("COMPRA");
+                java.util.Date utilData = new Date(dataSql.getTime());
+                produto.setCompra(utilData);
+
+                java.sql.Date dataSql2 = rs.getDate("VENCIMENTO");
+                java.util.Date utilData2 = new Date(dataSql2.getTime());
+                produto.setVencimento(utilData2);
+
+                produto.setPrecoVenda(rs.getDouble("CUSTO"));
+                produto.setPrecoCompra(rs.getDouble("PRECO_VENDA"));
+
                 produtos.add(produto);
             }
             rs.close();
@@ -54,11 +60,12 @@ class DAOProduto implements IProduto{
             throw DAOUtil.exception(e, "Problemas ao listas produtos do banco");
         }
     }
+  
     /**
      * Adiciona um produto ao banco
      * @param produto
      */
-    public void inserirProduto(Produto produto) {
+    public void inserirProduto(Produto produto){
         String sql = DAOUtil.getQuery("produto.insert");
 
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
@@ -66,17 +73,16 @@ class DAOProduto implements IProduto{
             stmt.setString(2, produto.getDescricao());
             stmt.setInt(3, produto.getEstocado());
             
-            java.util.Date utilDataCompra = produto.getCompra();
-            java.sql.Date sqlDataCompra = new java.sql.Date(utilDataCompra.getTime());
-            stmt.setDate(4, sqlDataCompra);
+            java.util.Date utilDate = produto.getCompra();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            stmt.setDate(4, sqlDate);
             
-            java.util.Date utilDataVencimento = produto.getVencimento();
-            java.sql.Date sqlDataVencimento = new java.sql.Date(utilDataVencimento.getTime());
-            stmt.setDate(5, sqlDataVencimento);
-            
+            java.util.Date utilDate2 = produto.getVencimento();
+            java.sql.Date sqlDate2 = new java.sql.Date(utilDate2.getTime());
+            stmt.setDate(5, sqlDate2);
             stmt.setDouble(6, produto.getPrecoCompra());
             stmt.setDouble(7, produto.getPrecoVenda());
-            
+
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -95,7 +101,7 @@ class DAOProduto implements IProduto{
     }
 
     /**
-     * Atualiza Produto do banco
+     * Altera os produtos do banco
      * @param produto 
      */
     public void atualizarProduto(Produto produto) {
@@ -105,17 +111,18 @@ class DAOProduto implements IProduto{
             stmt.setString(1, produto.getNome());
             stmt.setString(2, produto.getDescricao());
             stmt.setInt(3, produto.getEstocado());
-            java.util.Date utilDataCompra = produto.getCompra();
-            java.sql.Date sqlDataCompra = new java.sql.Date(utilDataCompra.getTime());
-            stmt.setDate(4, sqlDataCompra);
-            
-            java.util.Date utilDataVencimento = produto.getVencimento();
-            java.sql.Date sqlDataVencimento = new java.sql.Date(utilDataVencimento.getTime());
-            stmt.setDate(5, sqlDataVencimento);
-            
+
+            java.util.Date utilDate = produto.getCompra();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            stmt.setDate(4, sqlDate);
+
+            java.util.Date utilDate2 = produto.getVencimento();
+            java.sql.Date sqlDate2 = new java.sql.Date(utilDate2.getTime());
+            stmt.setDate(5, sqlDate2);
             stmt.setDouble(6, produto.getPrecoCompra());
             stmt.setDouble(7, produto.getPrecoVenda());
-            
+            stmt.setInt(8, produto.getId());
+
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -123,58 +130,59 @@ class DAOProduto implements IProduto{
         }
     }
 
-    /**
-     * Buscar produto pelo Id
-     * @param id
-     */
     public Produto buscarProdutoID(int id) {
         String sql = DAOUtil.getQuery("produto.codigo");
         Produto produto = new Produto();
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setInt(1, id);
-            
+
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                produto.setId(rs.getInt("CODIGO"));
                 produto.setNome(rs.getString("NOME"));
                 produto.setDescricao(rs.getString("DESCRICAO"));
                 produto.setEstocado(rs.getInt("QUANTIDADE"));
-                produto.setCompra(rs.getDate("DATA_DE_COMPRA"));
-                produto.setVencimento(rs.getDate("VENCIMENTO"));
-                produto.setPrecoCompra(rs.getDouble("PRECO_DE_VENDA"));
-                produto.setPrecoVenda(rs.getDouble("PRECO_DE_COMPRA"));
+
+                java.sql.Date dataSql = rs.getDate("COMPRA");
+                java.util.Date utilData = new Date(dataSql.getTime());
+                produto.setCompra(utilData);
+
+                java.sql.Date dataSql2 = rs.getDate("VENCIMENTO");
+                java.util.Date utilData2 = new Date(dataSql2.getTime());
+                produto.setVencimento(utilData2);
+                produto.setPrecoCompra(rs.getDouble("PRECO_VENDA"));
+                produto.setPrecoVenda(rs.getDouble("PRECO_COMPRA"));
             }
-            
+
             rs.close();
             return produto;
         } catch (SQLException e) {
             throw DAOUtil.exception(e, "problemas ao buscar produto pelo id");
         }
     }
-   
-    /**
-     * Buscar produto pelo string
-     * @param nome
-     */
-    
+
     public Produto buscarProdutoNome(String nome) {
         String sql = DAOUtil.getQuery("produto.nome");
         Produto produto = new Produto();
         try (PreparedStatement stmt = conexao.prepareStatement(sql)) {
             stmt.setString(1, nome);
-            
+
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                produto.setId(rs.getInt("CODIGO"));
                 produto.setNome(rs.getString("NOME"));
                 produto.setDescricao(rs.getString("DESCRICAO"));
-                produto.setEstocado(rs.getInt("ESTOCADO"));
-                produto.setCompra(rs.getDate("COMPRA"));
-                produto.setVencimento(rs.getDate("VENCIMENTO"));
+                produto.setEstocado(rs.getInt("QUANTIDADE"));
+
+                java.sql.Date dataSql = rs.getDate("COMPRA");
+                java.util.Date utilData = new Date(dataSql.getTime());
+                produto.setCompra(utilData);
+
+                java.sql.Date dataSql2 = rs.getDate("VENCIMENTO");
+                java.util.Date utilData2 = new Date(dataSql2.getTime());
+                produto.setVencimento(utilData2);
                 produto.setPrecoCompra(rs.getDouble("PRECO_VENDA"));
                 produto.setPrecoVenda(rs.getDouble("PRECO_COMPRA"));
             }
-            
+
             rs.close();
             return produto;
         } catch (SQLException e) {
