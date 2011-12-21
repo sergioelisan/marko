@@ -1,40 +1,164 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.ufrpe.bcc.ibusiness.despesa;
 
-import java.util.ArrayList;
+import java.sql.*;
+import br.ufrpe.bcc.idatabase.Conexao;
+import br.ufrpe.bcc.idatabase.DAOUtil;
+import java.util.*;
 
 /**
  *
- * @author Wolf
+ * @author Douglas Henrique e Francisco Fernandes
  */
-public class DAODespesa implements IDespesa{
+public class DAODespesa implements IDespesa {
 
-    @Override
-    public void inserirDespesa(Despesa despesa) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+    private Connection conexao7;
+
+    public DAODespesa() {
+        try {
+            this.conexao7 = new Conexao().conectar();
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        }
     }
 
-    @Override
+    /**
+     * Adiciona uma Despesa
+     * @param despesa
+     */
+    public void inserirDespesa(Despesa despesa) {
+        String sql = DAOUtil.getQuery("despesa.insert");
+        try (PreparedStatement stmt = conexao7.prepareStatement(sql)) {
+            stmt.setInt(1, despesa.getId());
+            stmt.setString(2, despesa.getDescricao());
+            stmt.setString(3, despesa.getCredor());
+            stmt.setDouble(4, despesa.getValor());
+
+            java.util.Date utilDate = despesa.getLancamento();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            stmt.setDate(5, sqlDate);
+
+            java.util.Date utilDate2 = despesa.getVencimento();
+            java.sql.Date sqlDate2 = new java.sql.Date(utilDate.getTime());
+            stmt.setDate(6, sqlDate2);
+
+            stmt.execute();
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao adicionar um cliente ao banco");
+        }
+    }
+
+    ;
+
+    /**
+     * Remover uma Despesa
+     * @param id
+     */
     public void removerDespesa(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sql = DAOUtil.getQuery("despesa.delete");
+        try (PreparedStatement stmt = conexao7.prepareStatement(sql)) {
+            stmt.setLong(1, id);
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @Override
-    public void atualizarDespesa(Despesa despesa) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet.");
+    /**
+     * Altera uma Despesa
+     * @param id
+     */
+    public void atualizarDespesa(Despesa despesa) {
+        String sql = DAOUtil.getQuery("despesa.update");
+        try (PreparedStatement stmt = conexao7.prepareStatement(sql)) {
+            stmt.setInt(1, despesa.getId());
+            stmt.setString(2, despesa.getDescricao());
+            stmt.setString(3, despesa.getCredor());
+            stmt.setDouble(4, despesa.getValor());
+
+            java.util.Date utilDate = despesa.getLancamento();
+            java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+            stmt.setDate(5, sqlDate);
+
+            java.util.Date utilDate2 = despesa.getVencimento();
+            java.sql.Date sqlDate2 = new java.sql.Date(utilDate.getTime());
+            stmt.setDate(6, sqlDate2);
+
+            stmt.setInt(7, despesa.getId());
+
+
+            stmt.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
-    @Override
+    /**
+     * Lista as Despesas
+     * @param 
+     */
     public ArrayList<Despesa> listarDespesas() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        ArrayList<Despesa> despesas = new ArrayList<>();
+        String sql = DAOUtil.getQuery("despesa.select");
+
+        try (PreparedStatement stmt = conexao7.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Despesa despesa = new Despesa();
+                despesa.setId(rs.getInt("CODIGO_CONTA"));
+                despesa.setDescricao(rs.getString("DESCRICAO"));
+                despesa.setCredor(rs.getString("CREDOR"));
+                despesa.setValor(rs.getDouble("VALOR"));
+
+                java.sql.Date sqlDate = rs.getDate("LANCAMENTO");
+                java.util.Date utilDate = new java.util.Date(sqlDate.getYear(), sqlDate.getMonth(), sqlDate.getDate());
+                despesa.setLancamento(utilDate);
+
+                java.sql.Date sqlDate2 = rs.getDate("VENCIMENTO");
+                java.util.Date utilDate2 = new java.util.Date(sqlDate.getYear(), sqlDate.getMonth(), sqlDate.getDate());
+                despesa.setLancamento(utilDate2);
+
+                despesas.add(despesa);
+            }
+            rs.close();
+
+            return despesas;
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "problemas ao listar clientes");
+        }
     }
 
-    @Override
+     /**
+     * busca uma Despesa
+     * @param 
+     */
     public Despesa buscarDespesa(int id) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sql = DAOUtil.getQuery("despesa.buscar");
+
+        try (PreparedStatement stmt = conexao7.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            Despesa despesa = new Despesa();
+
+            while (rs.next()) {
+                despesa.setId(rs.getInt("CODIGO_CONTA"));
+                despesa.setDescricao(rs.getString("DESCRICAO"));
+                despesa.setCredor(rs.getString("CREDOR"));
+                despesa.setValor(rs.getDouble("VALOR"));
+
+                java.sql.Date sqlDate = rs.getDate("LANCAMENTO");
+                java.util.Date utilDate = new java.util.Date(sqlDate.getYear(), sqlDate.getMonth(), sqlDate.getDate());
+                despesa.setLancamento(utilDate);
+
+                java.sql.Date sqlDate2 = rs.getDate("VENCIMENTO");
+                java.util.Date utilDate2 = new java.util.Date(sqlDate.getYear(), sqlDate.getMonth(), sqlDate.getDate());
+                despesa.setLancamento(utilDate2);
+            }
+            rs.close();
+            return despesa;
+
+        } catch (SQLException e) {
+            throw DAOUtil.exception(e, "Erro ao buscar pelo login do usuario");
+        }
     }
-    
 }
