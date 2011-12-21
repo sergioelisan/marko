@@ -13,7 +13,10 @@ import java.util.*;
  * @author Douglas Henrique e Francisco Fernandes
  */
 public class DAOCliente implements ICliente {
-
+    
+     /**
+     * Atributo de conexão
+     */
     private Connection conexao;
 
     public DAOCliente() {
