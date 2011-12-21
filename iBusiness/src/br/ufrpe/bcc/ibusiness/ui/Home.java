@@ -104,8 +104,8 @@ public class Home extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(64, 128, 128));
         setMaximumSize(new java.awt.Dimension(1366, 768));
-        setMinimumSize(new java.awt.Dimension(1024, 620));
-        setPreferredSize(new java.awt.Dimension(1024, 620));
+        setMinimumSize(new java.awt.Dimension(990, 680));
+        setPreferredSize(new java.awt.Dimension(990, 680));
 
         lbLogo.setFont(new java.awt.Font("Roboto", 2, 36));
         lbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/ufrpe/bcc/ibusiness/ui/img/logo 124.jpg"))); // NOI18N
