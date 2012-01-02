@@ -87,6 +87,56 @@ public class PerfectSwitch extends JPanel {
     public int getSelected() {
         return activated.equals(opt1) ? 0 : 1;
     }
+    
+    public void setFirstText(String text) {
+        opt1.setText(text);
+    }
+    
+    public void setSecondText(String text) {
+        opt2.setText(text);
+    }
+    
+    public String getFirstText() {
+        return opt1.getText();
+    }
+    
+    public String setSecondText() {
+        return opt2.getText();
+    }
+
+    public Color getInactivebackground() {
+        return inactivebackground;
+    }
+
+    public void setInactivebackground(Color inactivebackground) {
+        this.inactivebackground = inactivebackground;
+    }
+
+    public Color getInactiveforeground() {
+        return inactiveforeground;
+    }
+
+    public void setInactiveforeground(Color inactiveforeground) {
+        this.inactiveforeground = inactiveforeground;
+    }
+
+    public Color getOverbackground() {
+        return overbackground;
+    }
+
+    public void setOverbackground(Color overbackground) {
+        this.overbackground = overbackground;
+    }
+
+    public Color getOverforeground() {
+        return overforeground;
+    }
+
+    public void setOverforeground(Color overforeground) {
+        this.overforeground = overforeground;
+    }
+    
+    
 
     /**
      * Classe que trata os eventos do switch

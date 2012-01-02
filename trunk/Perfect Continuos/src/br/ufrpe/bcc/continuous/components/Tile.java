@@ -41,6 +41,22 @@ public class Tile extends JPanel implements PerfectContinuousConstants {
         setBackground(exited);
     }
     
+    public Color getEntered() {
+        return entered;
+    }
+
+    public void setEntered(Color entered) {
+        this.entered = entered;
+    }
+
+    public Color getExited() {
+        return exited;
+    }
+
+    public void setExited(Color exited) {
+        this.exited = exited;
+    }
+    
     /**
      * classe interna para tratamento de eventos baseados no mouse
      */
@@ -54,7 +70,7 @@ public class Tile extends JPanel implements PerfectContinuousConstants {
             over();
         }
     }
- 
+
     private Color entered;
     private Color exited;
     

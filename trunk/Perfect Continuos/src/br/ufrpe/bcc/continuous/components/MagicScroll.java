@@ -16,22 +16,28 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class MagicScroll extends JScrollPane {
 
-    private int sensibility;
-
-    public MagicScroll(Component comp, Integer sensibility, Boolean activeMouseGesture) {
-        this.setViewportView(comp);
+    private int sensibility = 70;
+    
+    public MagicScroll() {           
         this.setOpaque(false);
         this.getViewport().setOpaque(false);
         this.setBorder(null);
-        this.sensibility = sensibility;
-
         this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         this.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
-
+    }
+    
+    public MagicScroll(Boolean activeMouseGesture) {
+        this();
         if (activeMouseGesture) {
             this.addMouseMotionListener(new MouseGesture());
             this.addMouseWheelListener(new MouseWhellGesture());
         }
+    }
+
+    public MagicScroll(Component comp, Integer sensibility, Boolean activeMouseGesture) {
+        this(activeMouseGesture);
+        this.setViewportView(comp);
+        this.sensibility = sensibility;
     }
 
     /**
