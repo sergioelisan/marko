@@ -109,6 +109,11 @@ public class PerfectSwitch extends JPanel {
     }
 
     public void setInactivebackground(Color inactivebackground) {
+        if(activated.equals(opt1))
+            opt2.setBackground(inactivebackground);
+        else
+            opt1.setBackground(inactivebackground);
+        
         this.inactivebackground = inactivebackground;
     }
 
@@ -117,6 +122,11 @@ public class PerfectSwitch extends JPanel {
     }
 
     public void setInactiveforeground(Color inactiveforeground) {
+        if(activated.equals(opt1))
+            opt2.setForeground(inactiveforeground);
+        else
+            opt1.setForeground(inactiveforeground);
+        
         this.inactiveforeground = inactiveforeground;
     }
 
@@ -125,6 +135,11 @@ public class PerfectSwitch extends JPanel {
     }
 
     public void setOverbackground(Color overbackground) {
+        if(activated.equals(opt1))
+            opt1.setForeground(overbackground);
+        else
+            opt2.setForeground(overbackground);
+        
         this.overbackground = overbackground;
     }
 
@@ -133,6 +148,11 @@ public class PerfectSwitch extends JPanel {
     }
 
     public void setOverforeground(Color overforeground) {
+        if(activated.equals(opt1))
+            opt1.setForeground(overforeground);
+        else
+            opt2.setForeground(overforeground);
+        
         this.overforeground = overforeground;
     }
     
