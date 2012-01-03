@@ -16,26 +16,22 @@ import javax.swing.JScrollPane;
 @SuppressWarnings("serial")
 public class MagicScroll extends JScrollPane {
 
-    private int sensibility = 70;
-    
-    public MagicScroll() {           
+    public MagicScroll() {
         this.setOpaque(false);
         this.getViewport().setOpaque(false);
         this.setBorder(null);
         this.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
         this.setVerticalScrollBarPolicy(VERTICAL_SCROLLBAR_NEVER);
     }
-    
-    public MagicScroll(Boolean activeMouseGesture) {
+
+    public MagicScroll(Boolean activeMotionGesture, Boolean activeWheelGesture) {
         this();
-        if (activeMouseGesture) {
-            this.addMouseMotionListener(new MouseGesture());
-            this.addMouseWheelListener(new MouseWhellGesture());
-        }
+        this.setActiveMotionGesture(activeMotionGesture);
+        this.setActiveWheelGesture(activeWheelGesture);
     }
 
-    public MagicScroll(Component comp, Integer sensibility, Boolean activeMouseGesture) {
-        this(activeMouseGesture);
+    public MagicScroll(Component comp, Integer sensibility, Boolean activeMouseGesture, Boolean activeWheelGesture) {
+        this(activeMouseGesture, activeWheelGesture);
         this.setViewportView(comp);
         this.sensibility = sensibility;
     }
@@ -109,6 +105,32 @@ public class MagicScroll extends JScrollPane {
         barra.setValue(barra.getValue() + sensibility);
     }
 
+    public boolean isActiveMotionGesture() {
+        return activemotiongesture;
+    }
+    
+    public boolean isActiveWheelGesture() {
+        return activewheelgesture;
+    }
+
+    public void setActiveMotionGesture(boolean activeMotionGesture) {
+        this.activemotiongesture = activeMotionGesture;
+        if (activeMotionGesture) {
+            addMouseMotionListener(mousegesture);
+        } else {
+            removeMouseMotionListener(mousegesture);
+        }
+    }
+    
+    public void setActiveWheelGesture(boolean activeWheelGesture) {
+        this.activewheelgesture = activeWheelGesture;
+        if (activeWheelGesture) {
+            addMouseWheelListener(wheelgesture);
+        } else {
+            removeMouseWheelListener(wheelgesture);
+        }
+    }
+
     /**
      * @return the sensibility
      */
@@ -142,10 +164,17 @@ public class MagicScroll extends JScrollPane {
      * Handler responsável por tratar os eventos da rodinha do mouse (Whell
      * Motion), capturar a direção e chamar o método devido
      */
-    public class MouseWhellGesture extends MouseAdapter {
+    public class MouseWheelGesture extends MouseAdapter {
 
         public void mouseWheelMoved(MouseWheelEvent e) {
             detectWheel(e.getWheelRotation());
         }
     }
+    
+    private int sensibility = 45;
+    private boolean activemotiongesture;
+    private boolean activewheelgesture;
+    
+    private MouseGesture mousegesture = new MouseGesture();
+    private MouseWheelGesture wheelgesture = new MouseWheelGesture();
 }
