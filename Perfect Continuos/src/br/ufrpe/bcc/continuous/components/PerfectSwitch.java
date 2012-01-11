@@ -19,18 +19,18 @@ public class PerfectSwitch extends JPanel {
      */
     public PerfectSwitch() {
         setLayout(new FlowLayout(FlowLayout.CENTER, 0, 0));
-        
+
         overbackground = new Color(153, 204, 255);
         overforeground = Color.white;
         inactivebackground = Color.white;
         inactiveforeground = Color.black;
-        
+
         opt1 = new JLabel("ON");
         opt1.setHorizontalAlignment(JLabel.CENTER);
         opt1.setVerticalAlignment(JLabel.CENTER);
         opt1.addMouseListener(new SwitchHandler());
         opt1.setOpaque(true);
-        
+
         opt2 = new JLabel("OFF");
         opt2.setHorizontalAlignment(JLabel.CENTER);
         opt2.setVerticalAlignment(JLabel.CENTER);
@@ -38,15 +38,15 @@ public class PerfectSwitch extends JPanel {
         opt2.setBackground(inactivebackground);
         opt2.setForeground(inactiveforeground);
         opt2.setOpaque(true);
-        
+
         setPreferredSize(new Dimension(90, 20));
         opt1.setPreferredSize(new Dimension(45, 20));
         opt2.setPreferredSize(new Dimension(45, 20));
-        
+
         add(opt1);
         add(opt2);
         setOpaque(false);
-        
+
         opt1.setBackground(overbackground);
         opt1.setForeground(overforeground);
         activated = opt1;
@@ -54,8 +54,9 @@ public class PerfectSwitch extends JPanel {
 
     /**
      * Construtor que recebe os textos
+     *
      * @param opt1
-     * @param opt2 
+     * @param opt2
      */
     public PerfectSwitch(String opt1, String opt2) {
         this();
@@ -65,12 +66,13 @@ public class PerfectSwitch extends JPanel {
 
     /**
      * Construtor que recebe varios para metros, como textos e cores
+     *
      * @param o1
      * @param o2
      * @param ovback
      * @param ovfront
      * @param inback
-     * @param infront 
+     * @param infront
      */
     public PerfectSwitch(String o1, String o2, Color ovback, Color ovfront, Color inback, Color infront) {
         this(o1, o2);
@@ -82,25 +84,34 @@ public class PerfectSwitch extends JPanel {
 
     /**
      * Retorna a opcao selecionada
-     * @return 
+     *
+     * @return
      */
     public int getSelected() {
         return activated.equals(opt1) ? 0 : 1;
     }
-    
+
+    public void setSelected(int opcao) {
+        if (opcao == 0) {
+            setActivated(opt1);
+        } else {
+            setActivated(opt2);
+        }
+    }
+
     public void setFirstText(String text) {
         opt1.setText(text);
     }
-    
+
     public void setSecondText(String text) {
         opt2.setText(text);
     }
-    
+
     public String getFirstText() {
         return opt1.getText();
     }
-    
-    public String setSecondText() {
+
+    public String getSecondText() {
         return opt2.getText();
     }
 
@@ -109,11 +120,12 @@ public class PerfectSwitch extends JPanel {
     }
 
     public void setInactivebackground(Color inactivebackground) {
-        if(activated.equals(opt1))
+        if (activated.equals(opt1)) {
             opt2.setBackground(inactivebackground);
-        else
+        } else {
             opt1.setBackground(inactivebackground);
-        
+        }
+
         this.inactivebackground = inactivebackground;
     }
 
@@ -122,11 +134,12 @@ public class PerfectSwitch extends JPanel {
     }
 
     public void setInactiveforeground(Color inactiveforeground) {
-        if(activated.equals(opt1))
+        if (activated.equals(opt1)) {
             opt2.setForeground(inactiveforeground);
-        else
+        } else {
             opt1.setForeground(inactiveforeground);
-        
+        }
+
         this.inactiveforeground = inactiveforeground;
     }
 
@@ -135,11 +148,12 @@ public class PerfectSwitch extends JPanel {
     }
 
     public void setOverbackground(Color overbackground) {
-        if(activated.equals(opt1))
+        if (activated.equals(opt1)) {
             opt1.setForeground(overbackground);
-        else
+        } else {
             opt2.setForeground(overbackground);
-        
+        }
+
         this.overbackground = overbackground;
     }
 
@@ -148,37 +162,43 @@ public class PerfectSwitch extends JPanel {
     }
 
     public void setOverforeground(Color overforeground) {
-        if(activated.equals(opt1))
+        if (activated.equals(opt1)) {
             opt1.setForeground(overforeground);
-        else
+        } else {
             opt2.setForeground(overforeground);
-        
+        }
+
         this.overforeground = overforeground;
     }
-    
-    
+
+    private void setActivated(JLabel lb) {
+        lb.setBackground(overbackground);
+        lb.setForeground(overforeground);
+
+        activated.setBackground(inactivebackground);
+        activated.setForeground(inactiveforeground);
+        activated = lb;
+    }
 
     /**
      * Classe que trata os eventos do switch
      */
     private class SwitchHandler extends MouseAdapter {
-        
+
+        @Override
         public void mouseClicked(MouseEvent e) {
             JLabel lb = (JLabel) e.getSource();
-            lb.setBackground(overbackground);
-            lb.setForeground(overforeground);
-            
-            activated.setBackground(inactivebackground);
-            activated.setForeground(inactiveforeground);
-            activated = lb;
+            setActivated(lb);
         }
-        
+
+        @Override
         public void mouseEntered(MouseEvent e) {
             JLabel lb = (JLabel) e.getSource();
             lb.setBackground(overbackground);
             lb.setForeground(overforeground);
         }
-        
+
+        @Override
         public void mouseExited(MouseEvent e) {
             JLabel lb = (JLabel) e.getSource();
             if (!lb.equals(activated)) {
@@ -212,7 +232,8 @@ public class PerfectSwitch extends JPanel {
      */
     private Color inactivebackground;
     /**
-     * Cor da fonte quando o elemento nao estiver por cima e nao estiver selecionado
+     * Cor da fonte quando o elemento nao estiver por cima e nao estiver
+     * selecionado
      */
     private Color inactiveforeground;
 }
