@@ -50,7 +50,6 @@ public class PerfectSwitch extends JPanel {
 
         opt1.setBackground(overbackground);
         opt1.setForeground(overforeground);
-        activated = opt1;
     }
 
     /**
@@ -89,14 +88,14 @@ public class PerfectSwitch extends JPanel {
      * @return
      */
     public int getSelected() {
-        return activated.equals(opt1) ? 0 : 1;
+        return activated.equals(opt1) ? 1 : 0;
     }
 
     public void setSelected(int opcao) {
         if (opcao == 0) {
-            setActivated(opt1);
-        } else {
             setActivated(opt2);
+        } else {
+            setActivated(opt1);
         }
     }
 
