@@ -50,6 +50,8 @@ public class PerfectSwitch extends JPanel {
 
         opt1.setBackground(overbackground);
         opt1.setForeground(overforeground);
+        
+        activated = new JLabel();
     }
 
     /**
@@ -183,10 +185,11 @@ public class PerfectSwitch extends JPanel {
     private void setActivated(JLabel lb) {
         lb.setBackground(overbackground);
         lb.setForeground(overforeground);
-
+        
         activated.setBackground(inactivebackground);
         activated.setForeground(inactiveforeground);
         activated = lb;
+        
     }
 
     /**
