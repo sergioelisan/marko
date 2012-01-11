@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -170,7 +171,16 @@ public class PerfectSwitch extends JPanel {
 
         this.overforeground = overforeground;
     }
+    
+    public void setClickEvent(MouseListener evt) {
+        opt1.addMouseListener(evt);
+        opt2.addMouseListener(evt);
+    }
 
+    /**
+     * ativa
+     * @param lb 
+     */
     private void setActivated(JLabel lb) {
         lb.setBackground(overbackground);
         lb.setForeground(overforeground);
