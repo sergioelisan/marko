@@ -1,0 +1,1 @@
+the bcc ibusiness is a tool to control your enterprise, dedicated to adminitrate info and social interaction with your costumers.
