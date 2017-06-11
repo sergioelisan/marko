@@ -1,5 +1,5 @@
-create database m4rk0;
-use m4rk0;
+-- create database m4rk0;
+-- use m4rk0;
 
 -- OK
 create table funcionario (
